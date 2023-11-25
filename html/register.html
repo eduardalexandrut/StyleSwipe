@@ -6,6 +6,53 @@
     <title>Register</title>
 </head>
 <body>
-    
+    <h1>New Account</h1>
+    <section>
+        <fieldset>
+            <form action="#">
+                <ul>
+                    <li>
+                        <label for="profilepic">Profile Picture</label>
+                        <input type="file" value="" id="profilepic" accept="image/*" required/>
+                    </li>
+                    <li>
+                        <label for="email">Email</label>
+                        <input type="email" value="" id="email" required/>
+                    </li>
+                    <li>
+                        <label for="password1">Password</label>
+                        <input type="password" value="" id="password1" placeholder="Password" required/>
+                    </li>
+                    <li>
+                        <label for="password2">Repeat Password</label>
+                        <input type="password" value="" id="password2" placeholder="Repeat Password" required/>
+                    </li>
+                    <li>
+                        <input type="text" value="" placeholder="Name" required />
+                    </li>
+                    <li>
+                        <input type="text" value=""  placeholder="Surname" required/>
+                    </li>
+                    <li>
+                        <input type="date" value="" required/>
+                    </li>
+                    <li>
+                        <label for="gender">Gender</label>
+                        <select id="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="none">Prefer not to mention</option>
+                        </select>
+                    </li>
+                    <li>
+                        <input type="submit" value="Sign Up" />
+                    </li>
+                    <li>
+                        <input type="button" value="Cancel"/>
+                    </li>
+                </ul>
+            </form>
+        </fieldset>
+    </section>
 </body>
 </html>
