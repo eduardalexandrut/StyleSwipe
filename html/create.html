@@ -24,7 +24,7 @@
             <!--NavBar-->
             <div class="col-2">
                 <nav class="border">
-                    <ul>
+                    <ul class="text-center">
                         <li><a href="home.html">Home</a></li>
                         <li><a href="#">Search</a></li>
                         <li><a href="create.html">New Outfit</a></li>
@@ -35,9 +35,23 @@
             </div>
             <!--Main-->
             <div class="col-8">
-                <main class="">
-                    <h2>New Post</h2>
-                    
+                <main class="px-4">
+                    <h2 class="my-5">New Post</h2>
+                    <!--Post Form-->
+                    <div class="post border">
+                        <form action="#" method="post" class="d-flex">
+                            <section class="col-7 bg-dark-subtle">
+                                <a href="#" class="btn btn-secondary">Select Photo +</a>
+                            </section>
+                            <section class="col-5 bg-body">
+                                <ul class="text-center">
+                                    <li><textarea class="col-12" placeholder="Add a description..."></textarea></li>
+                                    <li><input class="col-10" type="submit" value="Create"/></li>
+                                    <li><a class="col-10 btn" href="home.html">Discard</a></li>
+                                </ul>
+                            </section>
+                        </form>
+                    </div>
                 </main>
             </div>
             <!--Aside Progress bar-->
