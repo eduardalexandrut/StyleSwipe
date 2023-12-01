@@ -8,7 +8,7 @@
     <link href="../style/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 overflow-hidden">
         <!--Header-->    
         <div class="row">
             <header class="row bg-dark text-white px-4 py-3">
@@ -27,29 +27,38 @@
                 <nav class="border p">
                     <ul class="text-center">
                         <li><a href="home.html">Home</a></li>
-                        <li><a href="#">Search</a></li>
+                        <li><a data-bs-toggle="offcanvas" href="#offcanvasExample">Search</a></li>
                         <li><a href="create.html">New Outfit</a></li>
                         <li><a href="#">Notifications</a></li>
                         <li><a href="#">Profile</a></li>
                     </ul>
                 </nav>
             </div>
+            <!--Search Offcanvas-->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                  <h3 class="offcanvas-title" id="offcanvasExampleLabel">Search Users</h3>
+                  <input type="search" value="Search by username"/>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                 
+                </div>
+              </div>
             <!--Main-->
             <div class="col-8">
                 <main class="px-4">
                     <h2 class="my-5">New Post</h2>
                     <!--Post Form-->
                         <form action="#" method="post" class="post d-flex">
-                            <section class="col-7 bg-dark-subtle d-flex justify-content-center align-items-center">
-                                <input type="file" class="d-none" id="selectedFile"/>
-                                <input type="button" value="Select Photo +" onclick="document.getElementById('selectedFile').click();" />
+                            <section class="col-7 d-flex justify-content-center align-items-center">
+                                <input type="file" accept="image/*" class="d-none" id="selectedFile"/>
+                                <input type="button" value="Select Photo +" class="col-5" onclick="document.getElementById('selectedFile').click();" />
                             </section>
                             <section class="col-5 bg-body">
-                                <ul class="text-center">
-                                    <li><textarea class="col-12 py-2" placeholder="Add a description..."></textarea></li>
-                                    <li><input class="col-12" type="submit" value="Create"/></li>
-                                    <li><a class="col-12 btn" href="home.html">Discard</a></li>
-                                </ul>
+                                <textarea class="col-12 py-2" placeholder="Add a description..."></textarea>
+                                <input class="col-12" type="submit" value="Create"/>
+                                <input class="col-12" type="button" value="Discard"/>
                             </section>
                         </form>
                 </main>
