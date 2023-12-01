@@ -20,6 +20,9 @@ nav ul li a {
     font-size: 28px;
     opacity: 50%;
 }
+nav ul li a:hover {
+    opacity: 1;
+}
 .post {
     height: 430px;
     background-color: white !important;
