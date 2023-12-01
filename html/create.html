@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../style/style.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
     <div class="container-fluid p-0">
         <!--Header-->    
         <div class="row">
@@ -39,20 +39,19 @@
                 <main class="px-4">
                     <h2 class="my-5">New Post</h2>
                     <!--Post Form-->
-                    <div class="post border">
-                        <form action="#" method="post" class="d-flex">
-                            <section class="col-7 bg-dark-subtle">
-                                <a href="#" class="btn btn-secondary">Select Photo +</a>
+                        <form action="#" method="post" class="post d-flex">
+                            <section class="col-7 bg-dark-subtle d-flex justify-content-center align-items-center">
+                                <input type="file" class="d-none" id="selectedFile"/>
+                                <input type="button" value="Select Photo +" onclick="document.getElementById('selectedFile').click();" />
                             </section>
                             <section class="col-5 bg-body">
                                 <ul class="text-center">
-                                    <li><textarea class="col-12" placeholder="Add a description..."></textarea></li>
-                                    <li><input class="col-10" type="submit" value="Create"/></li>
-                                    <li><a class="col-10 btn" href="home.html">Discard</a></li>
+                                    <li><textarea class="col-12 py-2" placeholder="Add a description..."></textarea></li>
+                                    <li><input class="col-12" type="submit" value="Create"/></li>
+                                    <li><a class="col-12 btn" href="home.html">Discard</a></li>
                                 </ul>
                             </section>
                         </form>
-                    </div>
                 </main>
             </div>
             <!--Aside Progress bar-->
