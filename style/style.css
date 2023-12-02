@@ -1,8 +1,15 @@
 body {
     background-color: #F9F9F9;
+    margin: 0 0;
+    padding: 0 0;
+}
+
+nav, aside, main {
+    display: inline-block;
 }
 
 nav, aside {
+    display: inline;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -10,12 +17,15 @@ nav, aside {
 }
 
 nav {
+    float: left;
     border-right: 1px solid rgba(0, 0, 0, 0.6);
+    width: 20%;
 }
 
 nav ul li {
     margin-bottom: 20px;
     list-style: none;
+    text-align: center;
 }
 
 nav ul li a {
@@ -28,11 +38,22 @@ nav ul li a {
 nav ul li a:hover {
     opacity: 1;
 }
+
+main {
+    width: 60%;
+}
+main>h1 {
+    padding:5% 0 5% 10%;
+}
 .post {
     height: 430px;
+    width: 80%;
     background-color: white !important;
     box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.25), -5px -5px 10px 0px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .post ul li {
@@ -44,6 +65,7 @@ nav ul li a:hover {
    height: 50%;
    padding:5% 10%;
    border: none;
+   opacity: 0.7;
 }
 
 .post section:first-child {
@@ -91,5 +113,52 @@ nav ul li a:hover {
 }
 
 aside {
+    width: 20%;
+    float: right;
     border-left: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        background-color: #3C3C3C;
+        height: 50px;
+        width: 100%;
+        color: white;
+        margin-top: auto;
+    }
+    nav ul  {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    nav ul li a {
+        color: white;
+        font-size: 10px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    main > h1 {
+        text-align: center;
+    }
+
+    .post {
+        width: 100%;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+    }
+    .post section, .post section input {
+        width: 100%;
+    }
+
+
+    aside {
+        display: none;
+    }
+
 }
