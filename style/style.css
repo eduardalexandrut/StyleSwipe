@@ -118,6 +118,90 @@ aside {
     border-left: 1px solid rgba(0, 0, 0, 0.6);
 }
 
+.personalInfo h1 {
+    text-align: center;
+    padding: 20px 0px 30px 0px;
+}
+
+.personalInfo form{
+    width: 80;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr; 
+    column-gap: 5px;
+    padding: 10px;
+    min-height: 80vh;
+}
+
+.personalInfo form .left-column {
+    grid-column: 1; 
+    padding: 20px;
+}
+
+.personalInfo form .separator {
+    grid-column: 2;
+    height: 100%;
+    border-left: 1px solid #ccc;
+}
+
+.personalInfo form .right-column {
+    grid-column: 3;
+}
+
+
+.personalInfo form li {
+    list-style-type: none;
+    margin-bottom: 40px;
+}
+
+.personalInfo form label {
+    display: inline-block;
+    width: 30%;
+}
+
+.personalInfo form input:not([type="submit"]):not([type="button"]){
+    width: 50%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 35px;
+}
+
+.personalInfo form input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    padding: 10px
+}
+
+.personalInfo form .button {
+    width: 40%;
+    box-sizing: border-box;
+    border-radius: 45px;
+    height: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    border: 1px solid #6C10F4;
+    color: #6C10F4;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 5%;
+}
+
+.personalInfo form input[type="submit"] {
+    background: linear-gradient(to top, #6C10F4, #9013FE);
+    color:white;
+    margin-top: 20px;
+}
+
+.personalInfo form .button:hover {
+    box-shadow: 0px 15px 20px #F6EBFF;
+    transform: translateY(-7px);
+  }
+
 @media screen and (max-width: 600px) {
     nav {
         background-color: #3C3C3C;
