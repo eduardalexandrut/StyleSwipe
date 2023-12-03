@@ -123,6 +123,15 @@ main>h1 {
 *Register view
 *
 */
+
+
+
+.personalInfo section {
+    margin: 0px 100px 30px 100px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
 .personalInfo h1 {
     text-align: center;
     padding: 20px 0px 30px 0px;
@@ -140,7 +149,7 @@ main>h1 {
 
 .personalInfo form .left-column {
     grid-column: 1; 
-    padding: 20px;
+    padding: 30px 20px 20px 20px;
 }
 
 .personalInfo form .separator {
@@ -151,6 +160,7 @@ main>h1 {
 
 .personalInfo form .right-column {
     grid-column: 3;
+    padding-top: 30px;
 }
 
 
