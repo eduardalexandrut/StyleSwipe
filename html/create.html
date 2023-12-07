@@ -42,44 +42,45 @@
 
                 <main>
                     <h1>New Outfit</h1>
-                    <!--Post Form-->
+                    <!--Image Picker-->
                     <section>
                         <input type="file" accept="image/*" class="d-none" id="selectedFile"/>
                         <input type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
                     </section>
+                    <!--Items Table-->
                     <h3>Items</h3>
                     <div class="container-fluid table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-hover">
                             <tr>
-                                <th>Name</th>
-                                <th>Brand</th>
-                                <th>Link</th>
-                                <th>Size</th>
-                                <th>Price</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Price</th>
+                                <th scope="col"></th>
                             </tr>
-                            <td>
+                            <tr>
                                 <td>Lorem</td>
                                 <td>Lorem</td>
                                 <td>Lorem</td>
                                 <td>Lorem</td>
                                 <td>Lorem</td>
-                            </td>
+                                <td>cc</td>
+                            </tr>
                         </table>
                     </div>
                 </main><aside>
                     <section>
-                        <img src="" alt=""/>
-                        <h4>@username</h4>
-                        <p>Today</p>
+                        <img src="../img/outfit.jpeg" alt=""/>
+                        <ul>
+                            <li><h4>@username</h4></li>
+                            <li><p>Today</p></li>
+                        </ul> 
                     </section>
                     <form action="#" method="post" class="post">
-                        <!--<section>
-                            <input type="file" accept="image/*" class="d-none" id="selectedFile"/>
-                            <input type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
-                        </section>-->
-                        <textarea class="col-12" placeholder="Add a description..."></textarea>
-                        <input class="col-12" type="submit" value="Create"/>
-                        <input class="col-12" type="button" value="Discard"/>
+                        <textarea  placeholder="Add a description..."></textarea>
+                        <input  type="submit" value="Add Post"/>
+                        <input  type="button" value="Discard"/>
                     </form>
                 </aside>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
