@@ -163,11 +163,6 @@ main>h1 {
     padding: 20px 0px 30px 0px;
 }
 
-.personalInfo h2 {
-    text-align: center;
-    padding-bottom: 10%;
-}
-
 .personalInfo form{
     width: 80;
     margin: auto;
@@ -205,7 +200,7 @@ main>h1 {
     width: 30%;
 }
 
-.personalInfo form input:not([type="submit"]):not([type="button"]){
+.personalInfo form input:not([type="submit"]){
     width: 50%;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -243,15 +238,19 @@ main>h1 {
     color:white;
 }
 
-.personalInfo form input[type="button"] {
+/*.personalInfo form input[type="button"] {
     float:right;
     margin-right: 10%;
-}
+}*/
 
 .personalInfo form .button:hover {
     box-shadow: 0px 15px 20px #F6EBFF;
     transform: translateY(-7px);
-  }
+}
+
+option[disabled] {
+    color: #ccc;
+}
 
 @media screen and (max-width: 768px) {
     nav {

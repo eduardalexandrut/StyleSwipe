@@ -12,56 +12,53 @@
         <h1>StyleSwipe</h1>
         <section>
             <fieldset>
+                <!--<h2>New Account</h2>-->
                 <form action="#">
-                    <ul>
-                        <div class="left-column">
-                            <h2>New Account</h2>
-                            <li>
-                                <label for="profilepic">Profile Picture</label>
-                                <input type="file" value="" id="profilepic" accept="image/*" required/>
-                            </li>
-                            <li>
-                                <label for="email">Email</label>
-                                <input type="email" value="" id="email" required/>
-                            </li>
-                            <li>
-                                <label for="password1">Password</label>
-                                <input type="password" value="" id="password1" placeholder="Password" required/>
-                            </li>
-                            <li>
-                                <label for="password2">Repeat Password</label>
-                                <input type="password" value="" id="password2" placeholder="Repeat Password" required/>
-                            </li>
-                        </div>
+                    <ul class="left-column">
+                        <li>
+                            <label for="profilepic">Profile Picture</label>
+                            <input type="file" id="profilepic" accept="image/*" required/>
+                        </li>
+                        <li>
+                            <label for="email">Email</label>
+                            <input type="email" value="" id="email" required/>
+                        </li>
+                        <li>
+                            <label for="password1">Password</label>
+                            <input type="password" value="" id="password1" placeholder="Password" required/>
+                        </li>
+                        <li>
+                            <label for="password2">Repeat Password</label>
+                            <input type="password" value="" id="password2" placeholder="Repeat Password" required/>
+                        </li>
                     </ul>
                     <div class="separator"></div>
-                    <ul>
-                        <div class="right-column">
-                            <li>
-                                <label for="name">Name</label>
-                                <input type="text" value="" id="name" placeholder="Name" required />
-                            </li>
-                            <li>
-                                <label for="surname">Surname</label>
-                                <input type="text" value="" id="surname" placeholder="Surname" required/>
-                            </li>
-                            <li>
-                                <label for="birthDate">Date of Birth</label>
-                                <input type="date" value="" id="birthDate" required/>
-                            </li>
-                            <li>
-                                <label for="gender">Gender</label>
-                                <select id="gender" required>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="none">Prefer not to mention</option>
-                                </select>
-                            </li>
-                            <li>
-                                <input type="submit" value="Sign Up" class="button"/>
-                                <input type="button" value="Cancel" class="button"/>
-                            </li>
-                        </div>
+                    <ul class="right-column">
+                        <li>
+                            <label for="name">Name</label>
+                            <input type="text" value="" id="name" placeholder="Name" required />
+                        </li>
+                        <li>
+                            <label for="surname">Surname</label>
+                            <input type="text" value="" id="surname" placeholder="Surname" required/>
+                        </li>
+                        <li>
+                            <label for="birthDate">Date of Birth</label>
+                            <input type="date" value="" id="birthDate" required/>
+                        </li>
+                        <li>
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="" disabled selected hidden>-</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="none">Prefer not to mention</option>
+                            </select>
+                        </li>
+                        <li>
+                            <input type="submit" value="Sign Up" class="button"/>
+                            <button class="button" onclick='window.location.href="login.html"'>Cancel</button>
+                        </li>
                     </ul>
                 </form>
             </fieldset>
