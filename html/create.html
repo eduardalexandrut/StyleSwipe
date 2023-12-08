@@ -82,23 +82,71 @@
                         <input  type="button" value="Discard"/>
                     </form>
                 </aside>
+                <!--Modal-->
+                <div class="modal fade" id="exampleModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>Add link</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="input-group" type="text" value="" name="link" placeholder="Add Link"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
     <script>
-        const nav = document.querySelector("nav");
+        class Pin {
+            x;
+            y;
+        
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+        };
         const imgInput = document.getElementById('selectedFile');
+        const image = document.createElement('img');
+        const pins = [];
         const canvas = document.createElement('canvas');
+        let ctx = canvas.getContext("2d");
 
+        /*Event listener to draw the selected image on the canavs element, once it is loaded.*/
+        image.addEventListener("load",()=> {ctx.drawImage(image,0,0,490,490);},false);
+        canvas.addEventListener("click", (e)=>addCircle(e.clientX, e.clientY), false);
+        canvas.style = "width:380px; height:500px; border-radius:30px;";
+        canvas.setAttribute("data-bs-toggle","modal");
+        canvas.setAttribute("data-bs-target","#exampleModal");
+
+        
         /*Function to create a displayable image selected by the user.*/
         function previewImg() {
             let [file] = imgInput.files;
             if (file) {
-                const image = document.createElement('img');
-                canvas.style = "width:100%; height:100%;";
                 image.src = URL.createObjectURL(file);
                 document.querySelector("main > section").appendChild(canvas);
-                image.style="object-fit:contain";
                 document.querySelector("main>section input[type='button']").style="display:none;"
             }
         }
+
+        /*Function to create and draw the pins on the selected image.*/
+        function addCircle(x, y) {
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0 , 2*Math.PI);
+            ctx.strokeStyle="red";
+            ctx.fillStyle="blue";
+            ctx.stroke();
+            ctx.fill();
+            let pin = new Pin(x, y);
+            pins.push(pin);
+            console.log(pin);
+        }
+        
        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
