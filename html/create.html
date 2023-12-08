@@ -14,7 +14,6 @@
             <h2>StyleSwipe</h2>
             <a class="" href="login.html">Log Out</a>
         </header>
-
                 <nav>
                     <ul>
                         <li>
@@ -44,7 +43,7 @@
                     <h1>New Outfit</h1>
                     <!--Image Picker-->
                     <section>
-                        <input type="file" accept="image/*" class="d-none" id="selectedFile"/>
+                        <input type="file" accept="image/*" class="d-none" id="selectedFile" onchange="previewImg()"/>
                         <input type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
                     </section>
                     <!--Items Table-->
@@ -83,26 +82,35 @@
                         <input  type="button" value="Discard"/>
                     </form>
                 </aside>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
-        const nav = document.querySelectorAll("nav ul li a");
-        let selected;
+        const nav = document.querySelector("nav");
+        const imgInput = document.getElementById('selectedFile');
+        const canvas = document.createElement('canvas');
 
-        nav.forEach((elem) => elem.addEventListener('click', setSelected(elem), false));
-
-        function setSelected(elem) {
-            selected = elem;
-            selected
+        /*Function to create a displayable image selected by the user.*/
+        function previewImg() {
+            let [file] = imgInput.files;
+            if (file) {
+                const image = document.createElement('img');
+                canvas.style = "width:100%; height:100%;";
+                image.src = URL.createObjectURL(file);
+                document.querySelector("main > section").appendChild(canvas);
+                image.style="object-fit:contain";
+                document.querySelector("main>section input[type='button']").style="display:none;"
+            }
         }
+       
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
 <!--
     TO DO:
     .Nav:
     -Add animations on hover
-    -Change style on selected
-    Create
+    -Change style on selected link
+
+    .Create:
     - Add more margin between elements.
     - Add trash icons to the table.
     - Add canvas instead of section
@@ -111,4 +119,8 @@
     - Add js code to add rows in the table
     - Add js to delete pins and tables
     - Add php tp create post instance
+
+    .Home: 
+    - Add search page with animation
+
 -->

@@ -89,6 +89,11 @@ main>section {
     justify-content: center;
     align-items: center;
 }
+main > section img{
+    width: 380px;
+    height: 500px;
+    border-radius: 30px;
+}
 main > section input:last-child {
     border-radius: 30px;
     height: 60px;
@@ -329,6 +334,7 @@ aside {
 
     main > section {
         width: 90%;
+        max-width: 350px;
     }
 
 
