@@ -99,6 +99,11 @@ main > section input:last-child {
 main>h3 {
     text-align: center;
 }
+.form-control{
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+}
 aside > section {
     width: 100%;
     display: flex;
