@@ -182,6 +182,11 @@
             let rTrash = document.createElement('td');
             let trashIcon = document.createElement('i');
             trashIcon.setAttribute("class", "bi-trash");
+            /*Add event listener to remove a row and a pin when the trash icon gets clicked*/
+            trashIcon.addEventListener("click",(e)=>{
+                document.querySelector(".table tbody").removeChild(newRow);
+                //pins.remove(pin);
+            }, false);
             rTrash.appendChild(trashIcon);
 
             newRow.appendChild(rName);
@@ -210,12 +215,12 @@
 
     .Create:
     - Add more margin between elements.
-    - Add trash icons to the table.
+    - Add trash icons to the table.--DONE
     - Add canvas instead of section--DONE
-    - Add js code to add pins
+    - Add js code to add pins--BUG
     - Add modal for pins--DONE
-    - Add js code to add rows in the table
-    - Add js to delete pins and tables
+    - Add js code to add rows in the table--DONE
+    - Add js to delete pins and tables--1/2
     - Add php tp create post instance
 
     .Home: 

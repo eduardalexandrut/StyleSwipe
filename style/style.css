@@ -382,6 +382,7 @@ aside {
 
     aside > section {
         padding-left:5% ;
+        margin-top: 50px;
     }
 
     aside form textarea, aside form input {
