@@ -162,6 +162,33 @@ aside form>input:last-child {
    color: #6C10F4;
 }
 
+#addItemModal .modal-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: none;
+    padding-top: 30px;
+}
+#addItemModal .modal-footer input[type="button"]{
+    width: 45%;
+    border-radius: 30px;
+    height: 45px;
+    border: none;
+}
+
+#addItemModal .modal-footer input[type="button"]:first-of-type {
+    background: linear-gradient(91deg, #6C10F4, #9013FE);
+    color: white;
+}
+
+#addItemModal .modal-footer input[type="button"]:last-of-type {
+    background-color: white;
+    border: 1px solid #6C10F4 !important;
+    color: #6C10F4;;
+}
+
+
 /*
 *
 *Register view
@@ -337,6 +364,13 @@ aside {
         max-width: 350px;
     }
 
+    #addItemModal .modal-footer {
+        flex-direction: column;
+    }
+    #addItemModal .modal-footer input[type="button"]{
+        width: 100%;
+        margin-bottom: 20px;
+    }
 
     aside {
         width: 100%;
