@@ -83,7 +83,7 @@
                     </form>
                 </aside>
                 <!--Modal-->
-                <div class="modal fade" id="exampleModal">
+                <div class="modal fade" id="addItemModal">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -107,11 +107,11 @@
                                     </div>
                                     <div class="form-floating mb-3 col-6">
                                         <input class="form-control" id="itemSize" type="text" value="" name="link" placeholder="Size"/>
-                                        <label for="itemSize"s>Name</label>
+                                        <label for="itemSize">Size</label>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-secondary" >Add</button>
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Discard</button>
+                                <input type="button" value="Add"/>
+                                <input type="button" data-bs-dismiss="modal" value="Discard">
                             </div>
                         </div>
                     </div>
@@ -133,11 +133,11 @@
         let ctx = canvas.getContext("2d");
 
         /*Event listener to draw the selected image on the canavs element, once it is loaded.*/
-        image.addEventListener("load",()=> {ctx.drawImage(image,0,0,490,490);},false);
+        image.addEventListener("load",()=> {ctx.drawImage(image,1,1,489,489);},false);
         canvas.addEventListener("click", (e)=>addCircle(e.clientX, e.clientY), false);
         canvas.style = "width:380px; height:500px; border-radius:30px;";
         canvas.setAttribute("data-bs-toggle","modal");
-        canvas.setAttribute("data-bs-target","#exampleModal");
+        canvas.setAttribute("data-bs-target","#addItemModal");
 
         
         /*Function to create a displayable image selected by the user.*/
