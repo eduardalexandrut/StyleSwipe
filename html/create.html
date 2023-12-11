@@ -73,7 +73,7 @@
                         <img src="../img/outfit.jpeg" alt=""/>
                         <ul>
                             <li><h4>@username</h4></li>
-                            <li><p>Today</p></li>
+                            <li><p id="dateTime"></p></li>
                         </ul> 
                     </section>
                     <form action="#" method="post" class="post">
@@ -166,6 +166,11 @@
             pins.push(pin);
             console.log(pin);
         }
+
+        /*Code to inject current date in #dateTime*/
+        let now = new Date();
+        let date = now.toLocaleString();
+        document.getElementById("dateTime").innerHTML = date;
         
        
     </script>
