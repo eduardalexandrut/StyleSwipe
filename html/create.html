@@ -64,7 +64,7 @@
                                 <td>Lorem</td>
                                 <td>Lorem</td>
                                 <td>Lorem</td>
-                                <td>cc</td>
+                                <td><i class="bi-trash"></i></td>
                             </tr>
                         </table>
                     </div>
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="button" value="Add"/>
+                                    <input type="button" data-bs-dismiss="modal" value="Add" onclick="addRow()"/>
                                     <input type="button" data-bs-dismiss="modal" value="Discard">
 
                                 </div>
@@ -164,9 +164,34 @@
             ctx.fill();
             let pin = new Pin(x, y);
             pins.push(pin);
-            console.log(pin);
         }
 
+        /**Function to add a row within the table everytime a new pin is added.*/
+        function addRow() {
+            let newRow = document.createElement('tr');
+            let rName = document.createElement('td');
+            rName.innerHTML = "Lorem";
+            let rBrand = document.createElement('td');
+            rBrand.innerHTML = "Lorem";
+            let rLink = document.createElement('td');
+            rLink.innerHTML = "Lorem";
+            let rPrice = document.createElement('td');
+            rPrice.innerHTML = "Lorem";
+            let rSize = document.createElement('td');
+            rSize.innerHTML = "Lorem";
+            let rTrash = document.createElement('td');
+            let trashIcon = document.createElement('i');
+            trashIcon.setAttribute("class", "bi-trash");
+            rTrash.appendChild(trashIcon);
+
+            newRow.appendChild(rName);
+            newRow.appendChild(rBrand);
+            newRow.appendChild(rLink);
+            newRow.appendChild(rPrice);
+            newRow.appendChild(rSize);
+            newRow.appendChild(rTrash);
+            document.querySelector(".table tbody").appendChild(newRow);
+        }
         /*Code to inject current date in #dateTime*/
         let now = new Date();
         let date = now.toLocaleString();
@@ -186,9 +211,9 @@
     .Create:
     - Add more margin between elements.
     - Add trash icons to the table.
-    - Add canvas instead of section
+    - Add canvas instead of section--DONE
     - Add js code to add pins
-    - Add modal for pins
+    - Add modal for pins--DONE
     - Add js code to add rows in the table
     - Add js to delete pins and tables
     - Add php tp create post instance
