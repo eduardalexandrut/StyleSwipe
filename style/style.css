@@ -4,14 +4,14 @@
 *
 */
 body {
-    background-color: #F9F9F9;
+    background-color: #ffff;
     margin: 0 0;
     padding: 0 0;
 }
 i {
     display: none;
 }
-header {
+header:first-child {
     width: 100%;
     height: 70px;
     padding: 0px 20px;
@@ -27,6 +27,7 @@ header h2, header a {
 
 header h2 {
     text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.50);
+    font-weight: 400;
 }
 
 header a {
@@ -46,7 +47,6 @@ nav {
 
 nav {
     float: left;
-    border-right: 1px solid rgba(0, 0, 0, 0.6);
     width: 20%;
 }
 
@@ -68,57 +68,81 @@ nav ul li a:hover {
 }
 
 main {
-    width: 60%;
-    
+    width: 59%;
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 main>h1 {
-    padding:5% 0 5% 10%;
+   padding:5% 0 5% 10%;
 }
-.post {
-    height: 400px;
-    width: 80%;
-    background-color: white !important;
-    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.25), -5px -5px 10px 0px rgba(0, 0, 0, 0.25);
+
+main>section {
+    width: 380px;
+    height: 500px;
+    border: 1px solid black;
     border-radius: 30px;
-    display: flex;
     margin-left: auto;
     margin-right: auto;
-}
-
-.post ul li {
-    list-style: none;
-}
-
-.post textarea {
-   margin: 20px 0px;
-   height: 50%;
-   padding:5% 10%;
-   border: none;
-   opacity: 0.7;
-}
-
-.post section:first-child {
-    background-color: #E7E7E7;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    width: 60%;
+    margin-bottom: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.post section:last-child {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    width: 40%;
-}
-.post section:first-child input:last-child {
+main > section input:last-child {
     border-radius: 30px;
-    height: 65px;
+    height: 60px;
     border: 1px solid black;
     background-color: transparent;
+    width: 60%;
+}
+main>h3 {
+    text-align: center;
+}
+.form-control{
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+}
+aside > section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0 20px 10%;
+}
+aside > section img {
+    display: inline;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+aside > section p {
+    opacity: .5;
+}
+aside ul {
+    float: inline-end;
+    list-style: none;
+}
+aside form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+aside form textarea {
+    margin: 20px 0px 40px 0px;
+    height: 260px;
+    width: 80%;
+    padding:5% 10%;
+    border: 1px solid black;
+    opacity: 0.7;
+    border-radius: 30px;
+    background: transparent;
 }
 
-.post section:last-child input {
+aside form input {
     width: 80%;
     border: none;
     border-radius: 30px;
@@ -126,19 +150,43 @@ main>h1 {
     justify-content: center;
     align-items: center;
     padding: 12px 0px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 30px;
 }
-.post section:last-child > input {
-    background-color: #3C3C3C;
+aside form input:nth-child(2) {
+    background: linear-gradient(91deg, #6C10F4, #9013FE);
     color: white;
 }
 
-.post section:last-child input:last-child {
-   border: 1px solid black;
-   background-color: white;
-   color: black;
+aside form>input:last-child {
+   border: 1px solid #6C10F4 !important;
+   background-color: white !important;
+   color: #6C10F4;
+}
+
+#addItemModal .modal-footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: none;
+    padding-top: 30px;
+}
+#addItemModal .modal-footer input[type="button"]{
+    width: 45%;
+    border-radius: 30px;
+    height: 45px;
+    border: none;
+}
+
+#addItemModal .modal-footer input[type="button"]:first-of-type {
+    background: linear-gradient(91deg, #6C10F4, #9013FE);
+    color: white;
+}
+
+#addItemModal .modal-footer input[type="button"]:last-of-type {
+    background-color: white;
+    border: 1px solid #6C10F4 !important;
+    color: #6C10F4;;
 }
 
 
@@ -148,83 +196,81 @@ main>h1 {
 *
 */
 
-.register {
+.registration {
     background-image: url(../img/backgroundReg1.png);
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.personalInfo section {
-    margin: 0px 170px 30px 170px;
+.wrapper {
+    margin: 2% 3% 2% 3%;
     border: 1px solid rgba(0,0,0, 0.1);
     border-radius: 20px;
     background-color: #F9F9F9;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
-.personalInfo h1 {
+.wrapper h1 {
     text-align: center;
     padding: 20px 0px 30px 0px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.personalInfo h2 {
-    text-align: center;
-    padding-bottom: 10%;
+.wrapper ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 0px 5%;
 }
 
-.personalInfo form{
-    width: 80;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr; 
-    column-gap: 5px;
-    padding: 10px;
-    min-height: 80vh;
-}
-
-.personalInfo form .left-column {
-    grid-column: 1; 
-    padding: 30px 20px 20px 20px;
-}
-
-.personalInfo form .separator {
-    grid-column: 2;
-    height: 100%;
-    border-left: 1px solid #ccc;
-}
-
-.personalInfo form .right-column {
-    grid-column: 3;
-    padding-top: 15%;
-}
-
-
-.personalInfo form li {
+.wrapper .input-box ul li {
     list-style-type: none;
-    margin-bottom: 40px;
+    margin-bottom: 5%;
+    display: flex;
+    padding: 0px 5%;
+    width: 100%
 }
 
-.personalInfo form label {
-    display: inline-block;
-    width: 30%;
+.wrapper .input-box ul li input {
+    flex:1;
 }
 
-.personalInfo form input:not([type="submit"]):not([type="button"]){
-    width: 50%;
-    box-sizing: border-box;
+.wrapper .input-box select {
+    border-radius: 45px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 50px; 
+    width: 100%;
+}
+
+.wrapper form input:not([type="submit"]){
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    /*border-radius: 5px;*/
+    /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
     height: 35px;
+    background-color: #F9F9F9
 }
 
-.personalInfo form input::placeholder {
+.wrapper form input::placeholder {
     color: rgba(0, 0, 0, 0.5);
-    padding: 10px
 }
 
-.personalInfo form .button {
-    width: 40%;
+.wrapper .input-box i {
+    margin: 0;
+    display: inline;
+}
+
+.wrapper form .button {
+    width: 100%;
     box-sizing: border-box;
     border-radius: 45px;
     height: 50px;
@@ -238,34 +284,34 @@ main>h1 {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    margin-left: 5%;
-    margin-top: 10%;
+    background-color: white;
 }
 
-.personalInfo form input[type="submit"] {
+.wrapper form input[type="submit"] {
     background: linear-gradient(to top, #6C10F4, #9013FE);
     color:white;
 }
 
-.personalInfo form input[type="button"] {
-    float:right;
-    margin-right: 10%;
-}
-
-.personalInfo form .button:hover {
+.wrapper form .button:hover {
     box-shadow: 0px 15px 20px #F6EBFF;
     transform: translateY(-7px);
-  }
+}
 
 /**
 *Home View
 */
 aside {
+    float: right;
     height: 100vh;
-    border-right: 1px solid rgba(0, 0, 0, 0.6);
+    width: 20%;
+
 }
 
 @media screen and (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+    }
     i {
         display:initial;
     }
@@ -276,6 +322,7 @@ aside {
         color: white;
         position: fixed;
         bottom: 0;
+        float: initial;
     }
     nav ul  {
         display: flex;
@@ -298,24 +345,40 @@ aside {
 
     main {
         width: 100%;
+        float: initial;
+        margin-top: 80px;
+        border: none;
     }
 
     main > h1 {
         text-align: center;
     }
 
-    .post {
-        width: 100%;
-        box-shadow: none;
-        display: flex;
+    main > section {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    #addItemModal .modal-footer {
         flex-direction: column;
     }
-    .post section, .post section input {
+    #addItemModal .modal-footer input[type="button"]{
         width: 100%;
+        margin-bottom: 20px;
     }
 
     aside {
-        display: none;
+        width: 100%;
+        float: initial;
+        border: none;
     }
 
+    aside > section {
+        padding-left:5% ;
+        margin-top: 50px;
+    }
+
+    aside form textarea, aside form input {
+        width: 90%;
+    }
 }
