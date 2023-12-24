@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal"  value="Add"/>
+                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal" onclick="addRow()"  value="Add"/>
                                     <input type="button" data-bs-dismiss="modal" value="Discard">
                                 </div>
                             </div>
@@ -183,7 +183,6 @@
             ctx.fill();
             let pin = new Pin(x,y);
             pins.push(pin);
-            document.getElementById("addPinBtn").addEventListener("click", addRow(), false);
         }
         
         /**Function to add a row within the table everytime a new pin is added.*/

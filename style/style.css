@@ -8,7 +8,7 @@ body {
     margin: 0 0;
     padding: 0 0;
 }
-i {
+nav i {
     display: none;
 }
 header:first-child {
