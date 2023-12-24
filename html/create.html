@@ -128,13 +128,24 @@
             price;
             size;
         
-            constructor(x, y, name, brand, link, price, size) {
+            constructor(x, y) {
                 this.x = x;
                 this.y = y;
+            }
+
+            setName(name) {
                 this.name = name;
+            }
+            setBrand(brand) {
                 this.brand = brand;
+            }
+            setLink(link) {
                 this.link = link;
+            }
+            setPrice(price) {
                 this.price = price;
+            }
+            setSize(size) {
                 this.size = size;
             }
         };
@@ -148,6 +159,7 @@
 
         /*Event listener to draw the selected image on the canavs element, once it is loaded.*/
         image.addEventListener("load",()=> {ctx.drawImage(image,1,1,489,489);},false);
+        console.log(document.querySelector(".modal-footer input[type='button']"));
         document.querySelector(".modal-footer input[type='button']").addEventListener("click",console.log("ciao cc"), false);
         canvas.addEventListener("click", (e)=>{x = e.clientX; y = e.clientY;}, false);
         canvas.style = "width:380px; height:500px; border-radius:30px;";
@@ -173,15 +185,12 @@
             ctx.fillStyle="blue";
             ctx.stroke();
             ctx.fill();
-            let pin = new Pin(
-                x,
-                y,
-                document.getElementById("itemName").value,
-                document.getElementById("itemBrand").value,
-                document.getElementById("itemLink").value,
-                document.getElementById("itemSize").value,
-                document.getElementById("itemPrice").value
-                );
+            let pin = new Pin(x,y);
+            pin.setName(document.getElementById("itemName").value);
+            pin.setBrand(document.getElementById("itemBrand").value);
+            pin.setLink(document.getElementById("itemLink").value);
+            pin.setSize(document.getElementById("itemSize").value);
+            pin.setPrice(document.getElementById("itemPrice").value);
             pins.push(pin);
             console.log(pin);
             addRow(pin.name, pin.brand, pin.link, pin.size, pin.price);
