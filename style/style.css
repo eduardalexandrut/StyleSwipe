@@ -225,7 +225,7 @@ aside form>input:last-child {
 
 .wrapper h1 {
     text-align: center;
-    padding: 20px 0px 30px 0px;
+    padding: 5% 0px 5% 0px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -305,6 +305,32 @@ aside form>input:last-child {
     box-shadow: 0px 15px 20px #F6EBFF;
     transform: translateY(-7px);
 }
+
+#profile-pic-icon {
+    justify-content: center;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    text-align: center;
+    padding: 20px; /* Aumenta il padding per rendere l'area cliccabile più grande */
+    cursor: pointer;
+}
+
+#profile-pic-icon svg {
+    width: 40px;
+    height: auto;
+    text-align: center;
+}
+
+.input-box #add-profile-pic {
+    flex: 0 0 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+#profile-pic {
+    display: none;
+}
+
 
 /**
 *Home View
@@ -393,9 +419,11 @@ aside {
 }
 
 @media screen and (min-width: 768px) {
+    
     /* Register view */
+    
     .wrapper{
-        margin: 3% 10% 3% 10%;
+        margin: 1% 10% 1% 10%;
     }
     .input-box ul{
         flex-direction: initial;
@@ -405,12 +433,8 @@ aside {
         box-sizing: border-box;
         padding: 5px; 
     }
-    
-    .input-box #profile-pic {
-        flex: 0 0 100%;
-        text-align: center;
-    }
-    .input-box #profile-pic input {
+
+    .input-box #add-profile-pic input {
         width: 100%;
     }
 }
