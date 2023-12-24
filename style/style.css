@@ -196,7 +196,7 @@ aside form>input:last-child {
 *
 */
 
-.registration {
+.registration, #login {
     background-image: url(../img/backgroundReg1.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -213,6 +213,14 @@ aside form>input:last-child {
     border-radius: 20px;
     background-color: #F9F9F9;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    min-height: 95vh;
+    width: 100vh;
+}
+
+.wrapper .logo {
+    width: 70%;
+    height: auto;
+    margin: 2% 13%;
 }
 
 .wrapper h1 {
@@ -285,6 +293,7 @@ aside form>input:last-child {
     cursor: pointer;
     outline: none;
     background-color: white;
+    margin-top: 5%;
 }
 
 .wrapper form input[type="submit"] {
@@ -380,5 +389,28 @@ aside {
 
     aside form textarea, aside form input {
         width: 90%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* Register view */
+    .wrapper{
+        margin: 3% 10% 3% 10%;
+    }
+    .input-box ul{
+        flex-direction: initial;
+    }
+    .input-box ul li {
+        flex: 0 0 50%;
+        box-sizing: border-box;
+        padding: 5px; 
+    }
+    
+    .input-box #profile-pic {
+        flex: 0 0 100%;
+        text-align: center;
+    }
+    .input-box #profile-pic input {
+        width: 100%;
     }
 }
