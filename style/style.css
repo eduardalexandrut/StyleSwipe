@@ -8,7 +8,7 @@ body {
     margin: 0 0;
     padding: 0 0;
 }
-i {
+nav i {
     display: none;
 }
 header:first-child {
@@ -71,13 +71,16 @@ main {
     width: 59%;
     padding: 0;
     margin: 0;
+    padding-bottom: 150px;
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
 main>h1 {
    padding:5% 0 5% 10%;
 }
-
+main > h3 {
+    margin-bottom: 50px;
+}
 main>section {
     width: 380px;
     height: 500px;
