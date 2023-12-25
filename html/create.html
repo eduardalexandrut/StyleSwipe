@@ -89,33 +89,31 @@
                             <div class="modal-body">
                                 <h3>Component Info</h3>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemName" type="text" value="" name="link" placeholder="Name"/>
+                                    <input class="form-control" id="itemName" type="text"  name="link" placeholder="Name"/>
                                     <label for="itemName">Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemBrand" type="text" value="" name="link" placeholder="Brand"/>
+                                    <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand"/>
                                     <label for="itemBrand">Brand</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemLink" type="text" value="" name="link" placeholder="Link"/>
+                                    <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link"/>
                                     <label for="itemLink">Link</label>
                                 </div>
                                 <div class="row">
                                     <div class="form-floating mb-3 col-6">
-                                        <input class="form-control" id="itemPrice" type="text" value="" name="link" placeholder="Price"/>
+                                        <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price"/>
                                         <label for="itemPrice">Price</label>
                                     </div>
                                     <div class="form-floating mb-3 col-6">
-                                        <input class="form-control" id="itemSize" type="text" value="" name="link" placeholder="Size"/>
+                                        <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size"/>
                                         <label for="itemSize">Size</label>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="button" data-bs-dismiss="modal" value="Add" onclick="addRow()"/>
+                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal" onclick="addRow()"  value="Add"/>
                                     <input type="button" data-bs-dismiss="modal" value="Discard">
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -124,10 +122,31 @@
         class Pin {
             x;
             y;
+            name;
+            brand;
+            link;
+            price;
+            size;
         
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
+            }
+
+            setName(name) {
+                this.name = name;
+            }
+            setBrand(brand) {
+                this.brand = brand;
+            }
+            setLink(link) {
+                this.link = link;
+            }
+            setPrice(price) {
+                this.price = price;
+            }
+            setSize(size) {
+                this.size = size;
             }
         };
         const imgInput = document.getElementById('selectedFile');
@@ -139,7 +158,7 @@
         /*Event listener to draw the selected image on the canavs element, once it is loaded.*/
         image.addEventListener("load",()=> {ctx.drawImage(image,1,1,489,489);},false);
         canvas.addEventListener("click", (e)=>addCircle(e.clientX, e.clientY), false);
-        canvas.style = "width:380px; height:500px; border-radius:30px;";
+        canvas.style = "width:400px; height:500px; border-radius:30px;";
         canvas.setAttribute("data-bs-toggle","modal");
         canvas.setAttribute("data-bs-target","#addItemModal");
 
@@ -153,42 +172,51 @@
                 document.querySelector("main>section input[type='button']").style="display:none;"
             }
         }
-
+       
         /*Function to create and draw the pins on the selected image.*/
         function addCircle(x, y) {
             ctx.beginPath();
-            ctx.arc(x, y, 5, 0 , 2*Math.PI);
+            ctx.arc(x, y-100, 5, 0 , 2*Math.PI);
             ctx.strokeStyle="red";
             ctx.fillStyle="blue";
             ctx.stroke();
             ctx.fill();
-            let pin = new Pin(x, y);
+            let pin = new Pin(x,y);
             pins.push(pin);
         }
-
+        
         /**Function to add a row within the table everytime a new pin is added.*/
         function addRow() {
+            //Get the last pin and set its fields
+            let pin = pins[pins.length - 1];
+            pin.setName(document.getElementById("itemName").value);
+            pin.setBrand(document.getElementById("itemBrand").value);
+            pin.setLink(document.getElementById("itemLink").value);
+            pin.setSize(document.getElementById("itemSize").value);
+            pin.setPrice(document.getElementById("itemPrice").value);
+
+            //Add row and create table datas
             let newRow = document.createElement('tr');
             let rName = document.createElement('td');
-            rName.innerHTML = "Lorem";
+            rName.innerText = pin.name;
             let rBrand = document.createElement('td');
-            rBrand.innerHTML = "Lorem";
+            rBrand.innerText = pin.brand;
             let rLink = document.createElement('td');
-            rLink.innerHTML = "Lorem";
+            rLink.innerText = pin.link;
             let rPrice = document.createElement('td');
-            rPrice.innerHTML = "Lorem";
+            rPrice.innerText = pin.price;
             let rSize = document.createElement('td');
-            rSize.innerHTML = "Lorem";
+            rSize.innerText = pin.size;
             let rTrash = document.createElement('td');
             let trashIcon = document.createElement('i');
             trashIcon.setAttribute("class", "bi-trash");
             /*Add event listener to remove a row and a pin when the trash icon gets clicked*/
             trashIcon.addEventListener("click",(e)=>{
                 document.querySelector(".table tbody").removeChild(newRow);
-                //pins.remove(pin);
+                //pins.(pin);
+                /*Redaw canvas*/
             }, false);
             rTrash.appendChild(trashIcon);
-
             newRow.appendChild(rName);
             newRow.appendChild(rBrand);
             newRow.appendChild(rLink);
@@ -201,9 +229,7 @@
         let now = new Date();
         let date = now.toLocaleString();
         document.getElementById("dateTime").innerHTML = date;
-        
-       
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

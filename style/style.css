@@ -199,78 +199,89 @@ aside form>input:last-child {
 *
 */
 
-.register {
+.registration, #login {
     background-image: url(../img/backgroundReg1.png);
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.personalInfo section {
-    margin: 0px 170px 30px 170px;
+.wrapper {
+    margin: 2% 3% 2% 3%;
     border: 1px solid rgba(0,0,0, 0.1);
     border-radius: 20px;
     background-color: #F9F9F9;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    min-height: 95vh;
+    width: 100vh;
 }
 
-.personalInfo h1 {
+.wrapper .logo {
+    width: 70%;
+    height: auto;
+    margin: 2% 13%;
+}
+
+.wrapper h1 {
     text-align: center;
-    padding: 20px 0px 30px 0px;
+    padding: 5% 0px 5% 0px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.personalInfo form{
-    width: 80;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr; 
-    column-gap: 5px;
-    padding: 10px;
-    min-height: 80vh;
+.wrapper ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 0px 5%;
 }
 
-.personalInfo form .left-column {
-    grid-column: 1; 
-    padding: 30px 20px 20px 20px;
-}
-
-.personalInfo form .separator {
-    grid-column: 2;
-    height: 100%;
-    border-left: 1px solid #ccc;
-}
-
-.personalInfo form .right-column {
-    grid-column: 3;
-    padding-top: 15%;
-}
-
-
-.personalInfo form li {
+.wrapper .input-box ul li {
     list-style-type: none;
-    margin-bottom: 40px;
+    margin-bottom: 5%;
+    display: flex;
+    padding: 0px 5%;
+    width: 100%
 }
 
-.personalInfo form label {
-    display: inline-block;
-    width: 30%;
+.wrapper .input-box ul li input {
+    flex:1;
 }
 
-.personalInfo form input:not([type="submit"]){
-    width: 50%;
-    box-sizing: border-box;
+.wrapper .input-box select {
+    border-radius: 45px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 50px; 
+    width: 100%;
+}
+
+.wrapper form input:not([type="submit"]){
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    /*border-radius: 5px;*/
+    /*box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);*/
     height: 35px;
+    background-color: #F9F9F9
 }
 
-.personalInfo form input::placeholder {
+.wrapper form input::placeholder {
     color: rgba(0, 0, 0, 0.5);
-    padding: 10px
 }
 
-.personalInfo form .button {
-    width: 40%;
+.wrapper .input-box i {
+    margin: 0;
+    display: inline;
+}
+
+.wrapper form .button {
+    width: 100%;
     box-sizing: border-box;
     border-radius: 45px;
     height: 50px;
@@ -284,28 +295,45 @@ aside form>input:last-child {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    margin-left: 5%;
-    margin-top: 10%;
+    background-color: white;
+    margin-top: 5%;
 }
 
-.personalInfo form input[type="submit"] {
+.wrapper form input[type="submit"] {
     background: linear-gradient(to top, #6C10F4, #9013FE);
     color:white;
 }
 
-/*.personalInfo form input[type="button"] {
-    float:right;
-    margin-right: 10%;
-}*/
-
-.personalInfo form .button:hover {
+.wrapper form .button:hover {
     box-shadow: 0px 15px 20px #F6EBFF;
     transform: translateY(-7px);
 }
 
-option[disabled] {
-    color: #ccc;
+#profile-pic-icon {
+    justify-content: center;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    text-align: center;
+    padding: 20px; /* Aumenta il padding per rendere l'area cliccabile più grande */
+    cursor: pointer;
 }
+
+#profile-pic-icon svg {
+    width: 40px;
+    height: auto;
+    text-align: center;
+}
+
+.input-box #add-profile-pic {
+    flex: 0 0 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+#profile-pic {
+    display: none;
+}
+
 
 /**
 *Home View
@@ -390,5 +418,26 @@ aside {
 
     aside form textarea, aside form input {
         width: 90%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+    /* Register view */
+    
+    .wrapper{
+        margin: 1% 10% 1% 10%;
+    }
+    .input-box ul{
+        flex-direction: initial;
+    }
+    .input-box ul li {
+        flex: 0 0 50%;
+        box-sizing: border-box;
+        padding: 5px; 
+    }
+
+    .input-box #add-profile-pic input {
+        width: 100%;
     }
 }
