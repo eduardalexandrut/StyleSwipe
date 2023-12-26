@@ -375,7 +375,7 @@ aside {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 10px 10px;
+    padding: 15px 15px;
 }
 .post header h6 {
     margin-left: 15px;
@@ -587,21 +587,61 @@ nav i {
         box-sizing: border-box;
         padding: 5px; 
     }
-
+    
     .input-box #add-profile-pic input {
         width: 100%;
     }
-
+    
     .wrapper .logo {
         width: 40%;
         margin-top: 3%;
     }
-
+    
     #loginForm {
         margin-top: 2%
     }
-
+    
     #loginForm .input-box {
         margin-top: 0%;
+    }
+        /*
+        *
+        Home Section
+        *
+        */
+    .post {
+        display: grid;
+        width: 800px;
+        max-width: 800px !important;
+        grid-template-columns: 500px 300px;
+        grid-template-rows: 100px 100px 100px 120px;
+        border: 1px solid black;
+        border-radius: 30px;
+    }
+    .post >img {
+        height: none;
+        grid-column-start:1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 4;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+    .post > header {
+        padding: 0px 25px 0px 25px;
+        grid-column-start:2;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    .post > section {
+        grid-column-start:2;
+        grid-column-end: 2;
+        grid-row-start:second ;
+        grid-row-end: third;
+    }
+    .post > footer {
+        display: initial;
+        padding: 0px 25px 0px 25px;
     }
 }
