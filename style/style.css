@@ -196,7 +196,7 @@ aside form>input:last-child {
 *
 */
 
-.registration, #login {
+.personalInfo {
     background-image: url(../img/backgroundReg1.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -215,12 +215,18 @@ aside form>input:last-child {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     min-height: 95vh;
     width: 100vh;
+    text-align: center;
 }
 
 .wrapper .logo {
-    width: 70%;
+    width: 60%;
     height: auto;
-    margin: 2% 13%;
+    margin: 8% 0 0 0;
+    display: inline-block;
+}
+
+#loginForm {
+    margin-top: 10%;
 }
 
 .wrapper h1 {
@@ -238,12 +244,20 @@ aside form>input:last-child {
     padding: 0px 5%;
 }
 
+#loginForm .input-box {
+    margin-top: 8%;
+}
+
 .wrapper .input-box ul li {
     list-style-type: none;
     margin-bottom: 5%;
     display: flex;
     padding: 0px 5%;
     width: 100%
+}
+
+#loginForm .input-box ul li {
+    margin-top: 2%;
 }
 
 .wrapper .input-box ul li input {
@@ -495,5 +509,18 @@ aside {
 
     .input-box #add-profile-pic input {
         width: 100%;
+    }
+
+    .wrapper .logo {
+        width: 40%;
+        margin-top: 3%;
+    }
+
+    #loginForm {
+        margin-top: 2%
+    }
+
+    #loginForm .input-box {
+        margin-top: 0%;
     }
 }
