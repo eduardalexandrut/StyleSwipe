@@ -8,9 +8,7 @@ body {
     margin: 0 0;
     padding: 0 0;
 }
-nav i {
-    display: none;
-}
+
 body > header:first-of-type {
     width: 100%;
     height: 70px;
@@ -21,6 +19,7 @@ body > header:first-of-type {
     align-items: center;
     justify-content: space-between;
 }
+
 header h2, header a {
     color: white;
 }
@@ -356,10 +355,16 @@ aside {
     float: right;
     height: 100vh;
     width: 20%;
+    display: none;
 }
 
 .post {
     width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 480px;
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgb(209, 209, 209);
@@ -382,12 +387,13 @@ aside {
 }
 
 .post header img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50px;
 }
 .post > img {
     width: 100%;
+    height: 510px;
     order: 1;
 }
 .post section {
@@ -406,25 +412,37 @@ aside {
 }
 
 .post section > div div i{
-   font-size: larger;
+   font-size: x-large;
 }
 
 
 .post section > div div p{
     opacity: .5;
+    font-size: smaller;
+}
+
+.post section button {
+    border: none;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.post section button:hover {
+    background-color: #e0e0e0;
 }
 
 .post footer {
     display: none;
 }
 
+
 @media screen and (max-width: 768px) {
+    nav i {
+        display: none;
+    }
     body > header:first-of-type {
         position: fixed;
         top: 0;
-    }
-    i {
-        display:initial;
     }
     nav {
         background: linear-gradient(91deg, #9013FE -2.61%, #6C10F4 100%);
