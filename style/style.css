@@ -11,7 +11,7 @@ body {
 nav i {
     display: none;
 }
-header:first-child {
+body > header:first-of-type {
     width: 100%;
     height: 70px;
     padding: 0px 20px;
@@ -339,11 +339,70 @@ aside {
     float: right;
     height: 100vh;
     width: 20%;
+}
 
+.post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgb(209, 209, 209);
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+.post header {
+    order: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px;
+}
+.post header h6 {
+    margin-left: 15px;
+}
+.post header p {
+    margin-left: auto;
+    font-size: small;
+    opacity: .5;
+}
+
+.post header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+.post > img {
+    width: 100%;
+    order: 1;
+}
+.post section {
+    order: 2;
+}
+
+.post section > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 0px 0px 0px;
+}
+
+.post section > div div{
+    text-align: center;
+}
+
+.post section > div div i{
+   font-size: larger;
+}
+
+
+.post section > div div p{
+    opacity: .5;
+}
+
+.post footer {
+    display: none;
 }
 
 @media screen and (max-width: 768px) {
-    header {
+    body > header:first-of-type {
         position: fixed;
         top: 0;
     }
