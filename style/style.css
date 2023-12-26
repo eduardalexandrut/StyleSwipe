@@ -11,7 +11,7 @@ body {
 nav i {
     display: none;
 }
-header:first-child {
+body > header:first-of-type {
     width: 100%;
     height: 70px;
     padding: 0px 20px;
@@ -199,7 +199,7 @@ aside form>input:last-child {
 *
 */
 
-.registration, #login {
+.personalInfo {
     background-image: url(../img/backgroundReg1.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -218,12 +218,18 @@ aside form>input:last-child {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     min-height: 95vh;
     width: 100vh;
+    text-align: center;
 }
 
 .wrapper .logo {
-    width: 70%;
+    width: 60%;
     height: auto;
-    margin: 2% 13%;
+    margin: 8% 0 0 0;
+    display: inline-block;
+}
+
+#loginForm {
+    margin-top: 10%;
 }
 
 .wrapper h1 {
@@ -241,12 +247,20 @@ aside form>input:last-child {
     padding: 0px 5%;
 }
 
+#loginForm .input-box {
+    margin-top: 8%;
+}
+
 .wrapper .input-box ul li {
     list-style-type: none;
     margin-bottom: 5%;
     display: flex;
     padding: 0px 5%;
     width: 100%
+}
+
+#loginForm .input-box ul li {
+    margin-top: 2%;
 }
 
 .wrapper .input-box ul li input {
@@ -342,11 +356,70 @@ aside {
     float: right;
     height: 100vh;
     width: 20%;
+}
 
+.post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgb(209, 209, 209);
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+.post header {
+    order: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px;
+}
+.post header h6 {
+    margin-left: 15px;
+}
+.post header p {
+    margin-left: auto;
+    font-size: small;
+    opacity: .5;
+}
+
+.post header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+.post > img {
+    width: 100%;
+    order: 1;
+}
+.post section {
+    order: 2;
+}
+
+.post section > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 0px 0px 0px;
+}
+
+.post section > div div{
+    text-align: center;
+}
+
+.post section > div div i{
+   font-size: larger;
+}
+
+
+.post section > div div p{
+    opacity: .5;
+}
+
+.post footer {
+    display: none;
 }
 
 @media screen and (max-width: 768px) {
-    header {
+    body > header:first-of-type {
         position: fixed;
         top: 0;
     }
@@ -439,5 +512,18 @@ aside {
 
     .input-box #add-profile-pic input {
         width: 100%;
+    }
+
+    .wrapper .logo {
+        width: 40%;
+        margin-top: 3%;
+    }
+
+    #loginForm {
+        margin-top: 2%
+    }
+
+    #loginForm .input-box {
+        margin-top: 0%;
     }
 }
