@@ -355,7 +355,7 @@ aside {
     float: right;
     height: 100vh;
     width: 20%;
-    display: none;
+
 }
 
 .post {
@@ -435,11 +435,68 @@ aside {
     display: none;
 }
 
+#commentsModal .modal-header button {
+    border: none !important;
+    background: none !important;
+}
+#commentsModal .modal-body {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#commentsModal .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#commentsModal .modal-footer .input-group {
+    border: 1px solid black;
+    border-radius: 30px;
+}
 
+#commentsModal .modal-footer .input-group input {
+    border: none;
+    border-radius: 30px;
+}
+#commentsModal .modal-footer .input-group button {
+    border: none;
+   
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: linear-gradient(to top, #6C10F4, #9013FE);
+    color:white;
+}
+
+.comment {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    margin-bottom: 20px;
+}
+.comment section header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.comment section header p:first-of-type {
+    font-weight: 500;
+}
+.comment section header p:last-of-type {
+    margin-left: auto;
+    opacity: .4;
+    font-size: smaller;
+}
+.comment img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+
+nav i {
+    display: initial;
+}
 @media screen and (max-width: 768px) {
-    nav i {
-        display: none;
-    }
     body > header:first-of-type {
         position: fixed;
         top: 0;
@@ -471,23 +528,23 @@ aside {
         color: white;
         font-size: 10px;
     }
-
+    
     main {
         width: 100%;
         float: initial;
         margin-top: 80px;
         border: none;
     }
-
+    
     main > h1 {
         text-align: center;
     }
-
+    
     main > section {
         width: 90%;
         max-width: 350px;
     }
-
+    
     #addItemModal .modal-footer {
         flex-direction: column;
     }
@@ -495,24 +552,27 @@ aside {
         width: 100%;
         margin-bottom: 20px;
     }
-
+    
     aside {
         width: 100%;
         float: initial;
         border: none;
     }
-
+    
     aside > section {
         padding-left:5% ;
         margin-top: 50px;
     }
-
+    
     aside form textarea, aside form input {
         width: 90%;
     }
 }
 
 @media screen and (min-width: 768px) {
+    nav i {
+        display: none !important;
+    }
     
     /* Register view */
     
