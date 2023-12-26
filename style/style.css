@@ -198,7 +198,7 @@ aside form>input:last-child {
 *
 */
 
-.personalInfo {
+#registration, #login {
     background-image: url(../img/backgroundReg1.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -227,7 +227,7 @@ aside form>input:last-child {
     display: inline-block;
 }
 
-#loginForm {
+#login .wrapper form {
     margin-top: 10%;
 }
 
@@ -246,7 +246,7 @@ aside form>input:last-child {
     padding: 0px 5%;
 }
 
-#loginForm .input-box {
+#login .wrapper form .input-box {
     margin-top: 8%;
 }
 
@@ -258,7 +258,7 @@ aside form>input:last-child {
     width: 100%
 }
 
-#loginForm .input-box ul li {
+#login .wrapper form .input-box ul li {
     margin-top: 2%;
 }
 
@@ -338,7 +338,6 @@ aside form>input:last-child {
 }
 
 .input-box #add-profile-pic {
-    flex: 0 0 100%;
     text-align: center;
     justify-content: center;
 }
@@ -576,32 +575,64 @@ nav i {
     
     /* Register view */
     
-    .wrapper{
+    #registration .wrapper{
         margin: 1% 10% 1% 10%;
     }
-    .input-box ul{
+
+    #login {
+        background: linear-gradient(to bottom, #6C10F4, #9013FE);
+    }
+
+    #login .wrapper {
+        height: 100vh;
+        border-radius: 0%;
+        margin: 0 0 0 auto;
+        width: 30%;
+    }
+
+    #registration .wrapper .input-box ul{
         flex-direction: initial;
     }
-    .input-box ul li {
+
+    #registration .wrapper .input-box ul li {
         flex: 0 0 50%;
         box-sizing: border-box;
         padding: 5px; 
     }
+<<<<<<< HEAD
     
     .input-box #add-profile-pic input {
+=======
+
+    .input-box #add-profile-pic {
+        flex: 0 0 100% !important;
+    }
+
+    #registration .wrapper .input-box #add-profile-pic input {
+>>>>>>> 1104360ed83a30bbeb1006094e017923b40af9bb
         width: 100%;
     }
     
     .wrapper .logo {
-        width: 40%;
+        width: 45%;
         margin-top: 3%;
     }
+<<<<<<< HEAD
     
     #loginForm {
         margin-top: 2%
     }
     
     #loginForm .input-box {
+=======
+
+    #login .wrapper form {
+        margin-top: 2%;
+        margin-bottom: auto;
+    }
+
+    #login .wrapper form .input-box {
+>>>>>>> 1104360ed83a30bbeb1006094e017923b40af9bb
         margin-top: 0%;
     }
         /*
