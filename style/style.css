@@ -572,6 +572,13 @@ nav i {
     nav i {
         display: none !important;
     }
+    i[data="active"] {
+        display: initial !important;
+    }
+
+    a[data = "active"] {
+        opacity: 1;
+    }
     
     /* Register view */
     
