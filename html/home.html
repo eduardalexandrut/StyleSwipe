@@ -19,15 +19,15 @@
                 <i data="active" class="bi-house"></i>
                 <a data="active" href="home.html">Home</a>
             </li>
-            <li>
+            <li >
                 <i class="bi-search"></i>
-                <a href="#">Search</a>
+                <a data-bs-toggle="modal" data-bs-target="#notifyModal" href="#">Search</a>
             </li>
             <li>
                 <i class="bi-plus-circle"></i>
                 <a href="create.html">New Outfit</a>
             </li>
-            <li>
+            <li data="hidden">
                 <i class="bi-bell"></i>
                 <a href="notifications.html">Notifications</a>
             </li>
@@ -138,6 +138,49 @@
 
                     <div class="comment">
                         <img alt="none" src="../img/logo.png">
+                        <section>
+                            <header>
+                                <p>@username</p>
+                                <p>24/1/2012</p>
+                            </header>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="input-group">
+                        <input type="text" name="comment" class="form-control" placeholder="Add a comment..." aria-label="Add a comment..." aria-describedby="button-addon2">
+                        <button class="btn" type="button" id="button-addon2">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Notifications Modal-->
+    <div class="modal fade" id="notifyModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Notifications</h3>
+                    <button data-bs-dismiss="modal">
+                        <i class="bi-x-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="notification">
+                        <img alt="none" width="60" height="60" src="../img/logo.png">
+                        <section>
+                            <header>
+                                <p>@username</p>
+                                <p>24/1/2012</p>
+                            </header>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
+                        </section>
+                    </div>
+
+                    <div class="notification">
+                        <img alt="none" width="60" height="60" src="../img/logo.png">
                         <section>
                             <header>
                                 <p>@username</p>

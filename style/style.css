@@ -49,6 +49,11 @@ nav {
     width: 20%;
 }
 
+nav ul {
+    display: flex;
+    flex-direction: column;
+}
+
 nav ul li {
     margin-bottom: 20px;
     list-style: none;
@@ -578,6 +583,10 @@ nav i {
 
     a[data = "active"] {
         opacity: 1;
+    }
+
+    nav ul li[data="hidden"] {
+        display: none;
     }
     
     /* Register view */
