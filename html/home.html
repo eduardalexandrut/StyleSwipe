@@ -173,40 +173,40 @@
     <!--Notifications Modal-->
     <div class="modal fade" id="notifyModal">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class=" modal-content">
                 <div class="modal-header">
-                    <h3>Notifications</h3>
+                    <h2>Notifications</h2>
                     <button data-bs-dismiss="modal">
                         <i class="bi-x-circle"></i>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" width="60" height="60" src="../img/logo.png">
-                        <section>
-                            <header>
-                                <p>@username</p>
-                                <p>24/1/2012</p>
-                            </header>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
-                        </section>
+                        <img alt="none" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
                     </div>
 
+                    <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" width="60" height="60" src="../img/logo.png">
-                        <section>
-                            <header>
-                                <p>@username</p>
-                                <p>24/1/2012</p>
-                            </header>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
-                        </section>
+                        <img alt="none" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span>  Starred your post. <span class="notify-time">3h ago</span></p>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="input-group">
-                        <input type="text" name="comment" class="form-control" placeholder="Add a comment..." aria-label="Add a comment..." aria-describedby="button-addon2">
-                        <button class="btn" type="button" id="button-addon2">Add</button>
+
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="none" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Commented your post. <span class="notify-time">5h ago</span></p>
+                    </div>
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="none" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                    </div>
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="none" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
                     </div>
                 </div>
             </div>
@@ -214,6 +214,18 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        /*const homeAside = document.querySelector("#home-aside");
+        window.addEventListener("resize", (event)=>{
+            if (window.innerWidth < 1024) {
+                homeAside.setAttribute("class", "modal fade");
+                homeAside.setAttribute("id", "notifyModal");
+            } else {
+                homeAside.setAttribute("id", "home-aside");
+                homeAside.setAttribute("class", "");
+            }
+        })*/
+    </script>
 </body>
 </html>
 <!--TODO
