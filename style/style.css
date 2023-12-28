@@ -79,13 +79,15 @@ main {
     border-left: 1px solid black;
     border-right: 1px solid black;
 }
-main>h1 {
-   padding:5% 0 5% 10%;
+#createMain h1{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 main > h3 {
     margin-bottom: 50px;
 }
-main>section {
+#createMain>section {
     width: 380px;
     height: 500px;
     border: 1px solid black;
@@ -97,14 +99,14 @@ main>section {
     justify-content: center;
     align-items: center;
 }
-main > section input:last-child {
+#createMain > section input:last-child {
     border-radius: 30px;
     height: 60px;
     border: 1px solid black;
     background-color: transparent;
     width: 60%;
 }
-main>h3 {
+#createMain>h3 {
     text-align: center;
 }
 .form-control{
