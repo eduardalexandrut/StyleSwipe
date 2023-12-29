@@ -552,6 +552,77 @@ aside {
 nav i {
     display: initial;
 }
+
+/*
+    Profile view
+*/
+
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5%;
+}
+
+#profile-info {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile-pic-container {
+    width: 25%;
+    aspect-ratio: 1 / 1; /* Crea un contenitore quadrato */
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#profile-info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#profile-stats {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+  
+.stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 0 5%;
+}
+
+#switch-container {
+    background: linear-gradient(91deg, #9013FE -2.61%, #6C10F4 100%);
+    margin-top: 3%;
+    padding: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon {
+    cursor: pointer;
+    color: #e0e0e0;
+    font-size: 1.2em;
+    width: 10%;
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+.icon.active {
+    border-bottom: 1.5px solid #e0e0e0;
+}
+
 @media screen and (max-width: 768px) {
     body > header:first-of-type {
         position: fixed;
