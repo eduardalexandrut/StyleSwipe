@@ -16,8 +16,8 @@
     <nav>
         <ul>
             <li>
-                <i data="active" class="bi-house"></i>
-                <a data="active" href="home.html">Home</a>
+                <i data-name="active" class="bi-house"></i>
+                <a data-name="active" href="home.html">Home</a>
             </li>
             <li >
                 <i class="bi-search"></i>
@@ -27,7 +27,7 @@
                 <i class="bi-plus-circle"></i>
                 <a href="create.html">New Outfit</a>
             </li>
-            <li data="hidden">
+            <li data-name="hidden">
                 <i class="bi-bell"></i>
                 <a data-bs-toggle="modal" data-bs-target="#notifyModal" href="#">Notifications</a>
             </li>
@@ -41,11 +41,11 @@
         <!--Post Structure-->
         <div class="post">
             <header>
-                <img src="..\img\outfit.jpeg" width="30px" height="30px"/>
+                <img alt="User Profile Pic" src="../img/outfit.jpeg" />
                 <h6>@username</h6>
                 <p>22 Jul 2024</p>
             </header>
-            <img src="..\img\outfit.jpeg" />
+            <img alt="Outfit Pic" src="../img/outfit.jpeg" />
             <section>
                 <div>
                     <div>
@@ -76,11 +76,11 @@
         <!--Post Structure-->
         <div class="post">
             <header>
-                <img src="..\img\outfit.jpeg" width="30px" height="30px"/>
+                <img alt="User Profile pic" src="../img/outfit.jpeg" />
                 <h6>@username</h6>
                 <p>22 Jul 2024</p>
             </header>
-            <img src="..\img\outfit.jpeg" />
+            <img alt="Outfit Pic" src="../img/outfit.jpeg" />
             <section>
                 <div>
                     <div>
@@ -111,19 +111,19 @@
         <h2>Notifications:</h2>
         <!--Notification element.-->
         <div class="notification">
-            <img alt="none" src="../img/outfit.jpeg" />
+            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
             <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
         </div>
 
         <!--Notification element.-->
         <div class="notification">
-            <img alt="none" src="../img/outfit.jpeg" />
+            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
             <p><span class="notify-user">@username</span>  Starred your post. <span class="notify-time">3h ago</span></p>
         </div>
 
         <!--Notification element.-->
         <div class="notification">
-            <img alt="none" src="../img/outfit.jpeg" />
+            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
             <p><span class="notify-user">@username</span> Commented your post. <span class="notify-time">5h ago</span></p>
         </div>
     </aside>
@@ -139,7 +139,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="comment">
-                        <img alt="none" src="../img/logo.png">
+                        <img alt="User Profile Pic" src="../img/logo.png">
                         <section>
                             <header>
                                 <p>@username</p>
@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="comment">
-                        <img alt="none" src="../img/logo.png">
+                        <img alt="User Profile Pic" src="../img/logo.png">
                         <section>
                             <header>
                                 <p>@username</p>
@@ -183,29 +183,29 @@
                 <div class="modal-body">
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
                         <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
                     </div>
 
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
                         <p><span class="notify-user">@username</span>  Starred your post. <span class="notify-time">3h ago</span></p>
                     </div>
 
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
                         <p><span class="notify-user">@username</span> Commented your post. <span class="notify-time">5h ago</span></p>
                     </div>
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
                         <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
                     </div>
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="none" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
                         <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
                     </div>
                 </div>
@@ -236,4 +236,6 @@
 - css better structure
 - modal for posts image
 - pin behaviuor on modal for post
+- post comment as first comment in comment modal on mobile
+- style for large screens.
 -->

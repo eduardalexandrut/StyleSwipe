@@ -727,11 +727,11 @@ aside {
     nav i {
         display: none !important;
     }
-    i[data="active"] {
+    i[data-name="active"] {
         display: initial !important;
     }
 
-    a[data = "active"] {
+    a[data-name = "active"] {
         opacity: 1;
     }
 
