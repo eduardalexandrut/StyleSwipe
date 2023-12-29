@@ -30,7 +30,7 @@
                         </li>
                         <li>
                             <i class="bi-bell"></i>
-                            <a href="notifications.html">Notifications</a>
+                            <a data-bs-toggle="modal" data-bs-target="#notifyModal" href="#">Notifications</a>
                         </li>
                         <li>
                             <i class="bi-person"></i>
@@ -68,7 +68,7 @@
                             </tr>
                         </table>
                     </div>
-                </main><aside>
+                </main><aside id="createAside">
                     <section>
                         <img src="../img/outfit.jpeg" alt=""/>
                         <ul>
@@ -82,7 +82,7 @@
                         <input  type="button" value="Discard"/>
                     </form>
                 </aside>
-                <!--Modal-->
+                <!--Add Item Modal-->
                 <div class="modal fade" id="addItemModal">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -118,6 +118,49 @@
                         </div>
                     </div>
                  </div>
+
+                 <!--Notifications Modal-->
+                <div class="modal fade" id="notifyModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class=" modal-content">
+                            <div class="modal-header">
+                                <h2>Notifications</h2>
+                                <button data-bs-dismiss="modal">
+                                    <i class="bi-x-circle"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!--Notification element.-->
+                                <div class="notification">
+                                    <img alt="none" src="../img/outfit.jpeg" />
+                                    <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                                </div>
+
+                                <!--Notification element.-->
+                                <div class="notification">
+                                    <img alt="none" src="../img/outfit.jpeg" />
+                                    <p><span class="notify-user">@username</span>  Starred your post. <span class="notify-time">3h ago</span></p>
+                                </div>
+
+                                <!--Notification element.-->
+                                <div class="notification">
+                                    <img alt="none" src="../img/outfit.jpeg" />
+                                    <p><span class="notify-user">@username</span> Commented your post. <span class="notify-time">5h ago</span></p>
+                                </div>
+                                <!--Notification element.-->
+                                <div class="notification">
+                                    <img alt="none" src="../img/outfit.jpeg" />
+                                    <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                                </div>
+                                <!--Notification element.-->
+                                <div class="notification">
+                                    <img alt="none" src="../img/outfit.jpeg" />
+                                    <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     <script>
         class Pin {
             x;
