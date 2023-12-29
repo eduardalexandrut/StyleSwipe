@@ -71,6 +71,10 @@ nav ul li a:hover {
     opacity: 1;
 }
 
+nav i {
+    display: initial;
+}
+
 main {
     width: 59%;
     padding: 0;
@@ -161,12 +165,12 @@ aside form input {
     padding: 12px 0px;
     margin-bottom: 30px;
 }
-aside form input:nth-child(2) {
+aside#createAside form input:nth-child(2) {
     background: linear-gradient(91deg, #6C10F4, #9013FE);
     color: white;
 }
 
-aside form>input:last-child {
+aside#createAside form>input:last-child {
    border: 1px solid #6C10F4 !important;
    background-color: white !important;
    color: #6C10F4;
@@ -549,9 +553,6 @@ aside {
     font-size: small;
 }
 
-nav i {
-    display: initial;
-}
 
 /*
     Profile view
