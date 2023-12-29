@@ -631,11 +631,10 @@ nav i {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(0, 1fr);
-    gap: 0px;
+    gap: 1px;
 }
 
 .profile-post {
-    border: 1px solid #ccc;
     overflow: hidden;
     aspect-ratio: 1 / 1;
 }
@@ -720,9 +719,15 @@ nav i {
 }
 
 @media screen and (min-width: 768px) {
+
+    body {
+        height: 100%;
+    }
+
     nav i {
         display: none !important;
     }
+
     i[data="active"] {
         display: initial !important;
     }
@@ -783,11 +788,12 @@ nav i {
     #login .wrapper form .input-box {
         margin-top: 0%;
     }
-        /*
-        *
+    /*
+    *
         Home Section
-        *
-        */
+    *
+    */
+
     .post {
         display: grid;
         margin-bottom: 80px;
@@ -828,5 +834,42 @@ nav i {
 
     #home-aside h2 {
         margin: 50px 0px;
+    }
+
+    /*
+        Profile view
+    */
+
+    #profile-main {
+        height: 100%;
+    }
+
+    #switch-container {
+        background: #ffffff;
+        border-top: 1px solid rgba(0, 0, 0, 0.70);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.70);
+        margin-top: 3%;
+        padding: 2%;
+        padding-bottom: 1%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .grid {
+        margin-top: 1%;
+    }
+    
+    .icon {
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.60);
+        font-size: 1.6em;
+        width: 40%;
+        text-align: center;
+    }
+    
+    .icon.active {
+        border-bottom: none;
+        color: rgba(0, 0, 0, 0.80);
     }
 }
