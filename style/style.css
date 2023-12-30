@@ -96,6 +96,7 @@ main {
     float: initial;
     margin-top: 80px;
     border: none;
+    min-height: fit-content;
 }
 
 #createMain h1{
