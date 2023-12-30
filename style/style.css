@@ -97,6 +97,7 @@ main {
     margin-top: 80px;
     border: none;
     min-height: fit-content;
+    margin-bottom: 20%;
 }
 
 #createMain h1{
@@ -860,7 +861,7 @@ aside#createAside form>input:last-child {
     *Create View
     *
     */
-    main#createMain {
+    main, #createMain {
         padding-top: 100px;
         margin-left: 20%;
     }
