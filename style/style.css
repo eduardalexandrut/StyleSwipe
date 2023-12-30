@@ -49,9 +49,7 @@ header h2 {
     font-weight: 400;
 }
 
-header a {
-    text-decoration: none;
-}
+
 nav,  main, aside {
     display: inline-block;
 }
@@ -704,10 +702,14 @@ aside#createAside form>input:last-child {
 /*Desktop view*/
 @media screen and (min-width: 768px) {
     
+
     body {
         height: 100%;
     }
     
+    header {
+        z-index: 2;
+    }
     nav {
         position: fixed;
         background: none;
@@ -843,10 +845,10 @@ aside#createAside form>input:last-child {
     aside.notificationAside {
         display: initial;
         width: 20%;
-        padding-top: 100px;
+        padding-top: 50px;
     }
 
-    .notificationAside h2 {
+    aside.notificationAside h2 {
         margin: 50px 0px;
     }
 
