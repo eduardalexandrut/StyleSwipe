@@ -789,7 +789,8 @@ aside#createAside form>input:last-child {
         border-left: 1px solid black;
         border-right: 1px solid black;
         margin-left: 20%;
-        padding-top: 100px;
+        padding-top: 3%;
+        margin-top: 70px;
     }
     
     aside {
@@ -904,6 +905,10 @@ aside#createAside form>input:last-child {
 
     #profile-main {
         height: 100%;
+    }
+
+    #profile-container {
+        padding: 0;
     }
 
     #switch-container {
