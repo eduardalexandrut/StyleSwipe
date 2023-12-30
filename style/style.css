@@ -478,7 +478,7 @@ aside#createAside form>input:last-child {
     display: none;
 }
 
-#commentsModal .modal-header button {
+.modal-header button {
     border: none !important;
     background: none !important;
 }
@@ -539,15 +539,12 @@ aside#createAside form>input:last-child {
     display: none;
 }
 
-#notifyModal .modal-content{
+.modal-content {
     background-color: #fcfcfc;
     max-height: 600px !important;
     overflow-y: scroll;
 }
-#notifyModal .modal-header button {
-    background: none !important;
-    border: none !important;
-}
+
 #notifyModal .modal-body {
     width: 100%;
 }
@@ -612,7 +609,7 @@ aside#createAside form>input:last-child {
     align-items: center;
 }
 
-#profile-pic-container {
+.profile-pic-container {
     width: 25%;
     aspect-ratio: 1 / 1; /* Crea un contenitore quadrato */
     border-radius: 50%;
@@ -622,7 +619,7 @@ aside#createAside form>input:last-child {
     align-items: center;
   }
 
-#profile-info img {
+#profile-info img, .profile-pic-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -682,6 +679,28 @@ aside#createAside form>input:last-child {
     height: auto;
     object-fit: cover;
 }
+
+.followUser {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.followUser p {
+    text-align: center;
+    font-weight: bold;
+}
+
+#modalFollow .modalTitle {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+
+
 /*Desktop view*/
 @media screen and (min-width: 768px) {
     
