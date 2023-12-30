@@ -104,7 +104,7 @@ main {
     margin-top: 80px;
     border: none;
     min-height: fit-content;
-    margin-bottom: 20%;
+    padding-bottom: 20%;
 }
 
 
@@ -533,10 +533,6 @@ aside#createAside form>input:last-child {
     border-radius: 50px;
 }
 
-#home-aside {
-    display: none;
-}
-
 .modal-content {
     background-color: #fcfcfc;
     max-height: 600px !important;
@@ -732,7 +728,7 @@ aside#createAside form>input:last-child {
         text-decoration: none;
         color: black;
         font-size: 28px;
-        opacity: 50%;
+        opacity: .3;
     }
     
     nav ul li[data="hidden"] {
@@ -751,6 +747,8 @@ aside#createAside form>input:last-child {
     aside {
         float: right;
         height: 100vh;
+        max-height: 100vh;
+        overflow-y: scroll;
         width: 21% !important;
         position: fixed; 
     }
@@ -844,12 +842,11 @@ aside#createAside form>input:last-child {
 
     aside.notificationAside {
         display: initial;
-        width: 20%;
         padding-top: 50px;
     }
 
-    aside.notificationAside h2 {
-        margin: 50px 0px;
+    aside.notificationAside h3 {
+        margin: 50px 0 50px 5%;
     }
 
     /*
