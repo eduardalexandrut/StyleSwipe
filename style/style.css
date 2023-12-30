@@ -18,6 +18,23 @@
     border-radius: 30px;
   }
 
+/*Global .notification style*/
+.notify-badge {
+    width: fit-content;
+    position: relative;
+    right: 10px;
+    top: 10px;
+}
+
+.notification .notify-liked {
+    color: tomato;
+}
+.notification .notify-commented {
+    color: #6C10F4;
+}
+.notification .notify-stared {
+    color: rgb(141, 141, 0);
+}
 .modal-header {
     position: sticky !important;
     top: 0;

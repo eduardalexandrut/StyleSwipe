@@ -109,22 +109,23 @@
         </div>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
-        <!--Notification element.-->
+        <!--New Notification element.-->
         <div class="notification">
             <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
+            <span class="notify-badge badge rounded-pill bg-primary">New</span>
+            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
         </div>
 
         <!--Notification element.-->
         <div class="notification">
             <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
+            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
         </div>
 
         <!--Notification element.-->
         <div class="notification">
             <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
+            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
         </div>
     </aside>
     <!--Comments Modal-->
@@ -181,32 +182,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!--Notification element.-->
+                    <!--New Notification element.-->
                     <div class="notification">
                         <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
+                        <span class="notify-badge badge rounded-pill bg-primary">New</span>
+                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
                     </div>
 
                     <!--Notification element.-->
                     <div class="notification">
                         <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
+                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
                     </div>
 
                     <!--Notification element.-->
                     <div class="notification">
                         <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> Liked your post. <span class="notify-time">2h ago</span></p>
+                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
                     </div>
                 </div>
             </div>
@@ -231,11 +223,10 @@
 <!--TODO
 - Laptop media query -> NAv and aside smaller.
 - slide bar for comments
-- links in user image, username, posts, --- manca image
 - modal for posts image
 - post profilepic, username and dat better positioning
 - Solve margin issue in main
-- scrollable aside
+- button liked and starred style change when pressed.
 - pin desiggn
 - pin procedure in create.html.
 - new notifications spy
