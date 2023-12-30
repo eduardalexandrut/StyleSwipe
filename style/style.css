@@ -96,6 +96,7 @@ main {
     margin-top: 80px;
     border: none;
     min-height: fit-content;
+    margin-bottom: 20%;
 }
 
 #createMain h1{
