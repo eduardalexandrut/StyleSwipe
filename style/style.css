@@ -2,6 +2,22 @@
 * Global
 *
 */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b9b9b9;
+    border-radius: 30px;
+  }
+
 .modal-header {
     position: sticky !important;
     top: 0;
