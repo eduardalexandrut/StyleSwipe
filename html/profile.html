@@ -30,13 +30,13 @@
                 <i class="bi-plus-circle"></i>
                 <a href="create.html">New Outfit</a>
             </li>
-            <li>
+            <li data-name="hidden"> 
                 <i class="bi-bell"></i>
-                <a href="notifications.html">Notifications</a>
+                <a data-bs-toggle="modal" data-bs-target="#notifyModal" href="#">Notifications</a>
             </li>
             <li>
-                <i data="active" class="bi-person"></i>
-                <a data="active" href="profile.html">Profile</a>
+                <i data-name="active" class="bi-person"></i>
+                <a data-name="active" href="profile.html">Profile</a>
             </li>
         </ul>
     </nav>
@@ -96,7 +96,68 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main><aside class="notificationAside">
+        <h2>Notifications:</h2>
+        <!--Notification element.-->
+        <div class="notification">
+            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+            <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+        </div>
+
+        <!--Notification element.-->
+        <div class="notification">
+            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+            <p><span class="notify-user">@username</span>  Starred your post. <span class="notify-time">3h ago</span></p>
+        </div>
+
+        <!--Notification element.-->
+        <div class="notification">
+            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+            <p><span class="notify-user">@username</span> Commented your post. <span class="notify-time">5h ago</span></p>
+        </div>
+    </aside>
+    <!--Notifications Modal-->
+    <div class="modal fade" id="notifyModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class=" modal-content">
+                <div class="modal-header">
+                    <h2>Notifications</h2>
+                    <button data-bs-dismiss="modal">
+                        <i class="bi-x-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                    </div>
+
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span>  Starred your post. <span class="notify-time">3h ago</span></p>
+                    </div>
+
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Commented your post. <span class="notify-time">5h ago</span></p>
+                    </div>
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                    </div>
+                    <!--Notification element.-->
+                    <div class="notification">
+                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <p><span class="notify-user">@username</span> Liked your post. <span class="notify-time">2h ago</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         document.getElementById('posts-icon').addEventListener('click', function() {
             document.getElementById('posts-grid').classList.remove('hidden');

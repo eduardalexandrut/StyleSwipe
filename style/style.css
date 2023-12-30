@@ -1,8 +1,14 @@
 /*
-*
-*Create view
+* Global
 *
 */
+.modal-header {
+    position: sticky !important;
+    top: 0;
+    background-color: inherit; /* [1] */
+    z-index: 1055; /* [2] */
+}
+
 a {
     text-decoration: none;
 }
@@ -48,6 +54,10 @@ header a {
 }
 nav,  main, aside {
     display: inline-block;
+}
+
+aside.notificationAside {
+    display: none;
 }
 
 nav {
@@ -99,12 +109,15 @@ main {
     margin-bottom: 20%;
 }
 
+
+/**
+*
+* CREATE VIEW
+*
+*/
 #createMain h1{
     text-align: center;
     margin-top: 50px;
-    margin-bottom: 50px;
-}
-main > h3 {
     margin-bottom: 50px;
 }
 #createMain>section {
@@ -808,13 +821,13 @@ aside#createAside form>input:last-child {
         padding: 0px 25px 0px 25px;
     }
 
-    aside#home-aside {
+    aside.notificationAside {
         display: initial;
         width: 20%;
         padding-top: 100px;
     }
 
-    #home-aside h2 {
+    .notificationAside h2 {
         margin: 50px 0px;
     }
 
