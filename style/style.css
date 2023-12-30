@@ -9,7 +9,7 @@
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #fffefe;
   }
   
   /* Handle */
@@ -71,6 +71,7 @@ body > header:first-of-type {
     justify-content: space-between;
     position: fixed;
     top: 0;
+    z-index: 3;
 }
 
 header h2, header a {
@@ -446,6 +447,7 @@ aside#createAside form>input:last-child {
 }
 .post header {
     order: 0;
+    z-index: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -740,10 +742,7 @@ aside#createAside form>input:last-child {
     body {
         height: 100%;
     }
-    
-    header {
-        z-index: 2;
-    }
+
     nav {
         position: fixed;
         background: none;
@@ -875,6 +874,7 @@ aside#createAside form>input:last-child {
         display: initial;
         grid-column: 4/ span 2;
         grid-row: 2/span 2;
+        overflow-y: scroll;
         padding: 0px 25px 0px 25px;
     }
 
