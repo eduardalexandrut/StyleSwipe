@@ -714,6 +714,11 @@ aside#createAside form>input:last-child {
     object-fit: cover;
 }
 
+#profile-main a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .followUser {
     display: flex;
     flex-direction: row;
@@ -733,7 +738,21 @@ aside#createAside form>input:last-child {
     font-weight: 500;
 }
 
+#postModal .modal-header {
+    justify-content: right;
+}
 
+#postModal .modal-footer {
+    justify-content: left;
+}
+
+#postUsername {
+    font-weight: bold;
+}
+
+.profile-post {
+    cursor: pointer;
+}
 
 /*Desktop view*/
 @media screen and (min-width: 768px) {
