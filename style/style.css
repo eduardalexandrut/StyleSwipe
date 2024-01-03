@@ -47,13 +47,14 @@ a {
     text-decoration: none;
 }
 
-i[data-name="active"] {
-    display:initial;
-}
-
 a[data-name = "active"] {
     opacity: 1;
 }
+
+nav i:not([data-name="active"]) {
+    opacity: .7;
+}
+
 
 body {
     background-color: #FCFCFC;
