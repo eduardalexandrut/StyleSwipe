@@ -201,22 +201,14 @@
                 this.size = size;
             }
         };
+        const offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
+        const offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
         const imgInput = document.getElementById('selectedFile');
         const image = document.createElement('img');
         const pins = [];
         const canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
-
-        /*Event listener to draw the selected image on the canavs element, once it is loaded.
-        image.addEventListener("load",()=> {ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.drawImage(image, 0,0, canvas.width, canvas.height); ;
-        document.querySelector("#createMain section:first-of-type").style = "border: none;";},false);*/
-        canvas.addEventListener("click", (e)=>addCircle(e.clientX, e.clientY), false);
-        //canvas.style = "width:100%; height:500px; border-radius:30px;";
-        canvas.setAttribute("data-bs-toggle","modal");
-        canvas.setAttribute("data-bs-target","#addItemModal");
         
-
         
         /*Function to create a displayable image selected by the user.*/
         function previewImg() {
@@ -225,6 +217,11 @@
                 image.src = URL.createObjectURL(file);
                 document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%";
                 document.querySelector("main#createMain > section").appendChild(image);
+                canvas.addEventListener("click", (e)=>addCircle(e.clientX, e.clientY), false);
+                canvas.setAttribute("data-bs-toggle","modal");
+                canvas.setAttribute("data-bs-target","#addItemModal");
+                canvas.setAttribute("width", "380");
+                canvas.setAttribute("height","500");
                 document.querySelector("main#createMain > section").appendChild(canvas);
                 document.querySelector("main#createMain > section input[type='button']").style="display:none;"
             }
@@ -233,8 +230,9 @@
        
         /*Function to create and draw the pins on the selected image.*/
         function addCircle(x, y) {
+            let ctx = canvas.getContext("2d");
             ctx.beginPath();
-            ctx.arc(x, y-100, 5, 0 , 2*Math.PI);
+            ctx.arc(x-offsetX, y-offsetY, 5, 0 , 2*Math.PI);
             ctx.strokeStyle="red";
             ctx.fillStyle="blue";
             ctx.stroke();
@@ -292,16 +290,8 @@
 </body>
 </html>
 <!--
-
     .Create:
-    - Add more margin between elements.---DONE
-    - Add trash icons to the table.--DONE
-    - Add canvas instead of section--DONE
-    - Add js code to add pins--BUG
-    - Add modal for pins--DONE
-    - Add js code to add rows in the table--DONE
     - Add js to delete pins and tables--1/2
-    - Scale the image canvas in a better way
     - Add php tp create post instance
 
 -->

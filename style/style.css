@@ -175,7 +175,7 @@ main {
     width: 60%;
 }
 #createMain > section:first-of-type img , #createMain > section:first-of-type canvas{
-    width: 100%;
+    width: 380px;
     height: 500px;
     border-radius: 30px;
     grid-row: 1/ span 1;
