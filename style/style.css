@@ -442,9 +442,6 @@ aside#createAside form>input:last-child {
     margin-left: auto;
     margin-right: auto;
     max-width: 480px;
-    /*display: flex;
-    flex-direction: column;
-    */
     display: grid;
     grid-template-rows: 10px 50px 10px 510px auto auto;
     border-top: 1px solid rgb(209, 209, 209);
@@ -476,11 +473,18 @@ aside#createAside form>input:last-child {
     height: 50px;
     border-radius: 50px;
 }
-.post > img {
+.post > img, .post > canvas {
     width: 100%;
     grid-row: 4/span 1;
     height: 510px;
     order: 1;
+}
+.post > img {
+    z-index: 0;
+}
+
+.post > canvas {
+    z-index: 1;
 }
 .post section {
     order: 2;
@@ -946,7 +950,7 @@ aside#createAside form>input:last-child {
         border-radius: 30px;
         box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.25);
     }
-    .post >img {
+    .post >img,.post > canvas {
         height: 430px;
         grid-column:1/ span 3;
         grid-row:1 / span 4;
@@ -1052,11 +1056,12 @@ aside#createAside form>input:last-child {
     aside.notificationAside{
         display: none !important;
     }
+
     main {
         width: 80%;
         border-right: none;
     }
-
+    
     nav ul li[data-name="hidden"] {
         text-align: center;
         display: flex;
@@ -1065,4 +1070,19 @@ aside#createAside form>input:last-child {
     nav ul li a {
         font-size: 20px;
     }
+    
+    /*Create View*/
+    #createAside {
+        float: right;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: scroll;
+        width: 21% !important;
+        position: fixed; 
+    }
+
+    main#createMain {
+        display: initial;
+    }
+    
 }
