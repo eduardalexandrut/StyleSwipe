@@ -297,7 +297,11 @@
             console.log("openNav() called");
             document.querySelector('body').style.overflow = "hidden";
             document.querySelector('nav').style.display = "none";
-            document.getElementById("search-sidebar").style.width = "40%";
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                document.getElementById("search-sidebar").style.width = "40%";
+            } else {
+                document.getElementById("search-sidebar").style.width = "90%";
+            }
             document.getElementById("overlay").style.display = "block";
         }
 
