@@ -303,6 +303,7 @@
 
         function closeNav() {
             console.log("closeNav() called");
+            document.querySelector('body').style.overflow = "scroll";
             document.querySelector('nav').style.display = "flex";
             document.getElementById("search-sidebar").style.width = "0%";
             document.getElementById("overlay").style.display = "none";
