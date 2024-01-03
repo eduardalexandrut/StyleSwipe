@@ -23,8 +23,8 @@
                 <a href="home.html">Home</a>
             </li>
             <li>
-                <i class="bi-search"></i>
-                <a href="#">Search</a>
+                <i class="bi-search" onclick="openNav()"></i>
+                <a href="#" onclick="openNav()">Search</a>
             </li>
             <li>
                 <i class="bi-plus-circle"></i>
@@ -165,35 +165,35 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
-                <div class="followUser">
+                <div class="userContainer">
                     <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
                     <p>@username</p>
                 </div>
@@ -224,6 +224,44 @@
         </div>
     </div>
 
+    <!--
+        Search Sidebar 
+        (Verrà sostituito da una pagina php che contiene il blocco di codice in modo da non doverlo replicare in tutte le pagine)
+        es. <?php include "searchBar.php"; ?>
+    -->
+    <div id="search-sidebar">
+        <div class="sidebar-header">
+            <input type="text" id="search-bar" placeholder="Search">
+            <button class="close-sidebar" onclick="closeNav()">
+                <i class="bi-x-circle"></i>
+            </button>
+        </div>
+        <div class="search-container">
+            <!--Qui verranno inseriti i profili trovati-->
+            <div class="userContainer">
+                <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
+                <p>@username</p>
+            </div>
+            <div class="userContainer">
+                <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
+                <p>@username</p>
+            </div>
+            <div class="userContainer">
+                <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
+                <p>@username</p>
+            </div>
+            <div class="userContainer">
+                <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
+                <p>@username</p>
+            </div>
+            <div class="userContainer">
+                <span class="profile-pic-container"><img src="../img/logo.png" alt="profile picture"></span>
+                <p>@username</p>
+            </div>
+        </div>
+    </div>
+    <div id="overlay" onclick="closeNav()"></div>
+
 
     <script>
         document.getElementById('posts-icon').addEventListener('click', function() {
@@ -253,6 +291,21 @@
             /*document.getElementById('postUsername').textContent = post.querySelector('.username').textContent;
             document.getElementById('postCaption').textContent = post.querySelector('.caption').textContent;*/
             new bootstrap.Modal(document.getElementById('postModal')).show();
+        }
+
+        function openNav() {
+            console.log("openNav() called");
+            document.querySelector('body').style.overflow = "hidden";
+            document.querySelector('nav').style.display = "none";
+            document.getElementById("search-sidebar").style.width = "40%";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeNav() {
+            console.log("closeNav() called");
+            document.querySelector('nav').style.display = "flex";
+            document.getElementById("search-sidebar").style.width = "0%";
+            document.getElementById("overlay").style.display = "none";
         }
 
     </script>
