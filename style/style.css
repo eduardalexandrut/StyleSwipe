@@ -452,6 +452,7 @@ aside#createAside form>input:last-child {
     max-width: 480px;
     display: grid;
     grid-template-rows: 10px 50px 10px 510px auto auto;
+    grid-template-columns: 100%;
     border-top: 1px solid rgb(209, 209, 209);
     border-bottom: 1px solid rgb(209, 209, 209);
 }
@@ -484,16 +485,16 @@ aside#createAside form>input:last-child {
 .post > img, .post > canvas {
     width: 100%;
     grid-row: 4/span 1;
-    height: 510px;
-    order: 1;
+    grid-column: 1/span 1;
+    height: 100%;
 }
 .post > img {
     z-index: 0;
 }
-
-.post > canvas {
+.post  canvas {
     z-index: 1;
 }
+
 .post section {
     order: 2;
     grid-row: 5/ span 1
@@ -1089,8 +1090,6 @@ aside#createAside form>input:last-child {
         position: fixed; 
     }
 
-    main#createMain {
-        display: initial;
-    }
+   
     
 }
