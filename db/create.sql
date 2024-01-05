@@ -12,8 +12,8 @@ CREATE TABLE User (
 /*Post Table*/
 CREATE TABLE Post (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    image VARCHAR(100), -- Assuming a file path or URL for the image
+    user_id INT NOT NULL,
+    image VARCHAR(100) NOT NULL,
     posted DATETIME NOT NULL,
     comment TEXT,
     FOREIGN KEY (user_id) REFERENCES User(id)
@@ -24,21 +24,21 @@ CREATE TABLE Item (
     id INT PRIMARY KEY AUTO_INCREMENT,
     post_id INT,
     name VARCHAR(100) NOT NULL,
-    brand VARCHAR(100),
+    brand VARCHAR(100) NOT NULL,
     link VARCHAR(255), -- Assuming a URL link for the item
-    size VARCHAR(50),
-    price DECIMAL(10, 2), -- Assuming a decimal data type for price
+    size VARCHAR(50) NOT NULL,
+    price FLOAT(6, 2), -- Assuming a decimal data type for price
     currency VARCHAR(10),
-    x FLOAT, -- Assuming numeric coordinates for x and y
-    y FLOAT,
+    x FLOAT NOT NULL, -- Assuming numeric coordinates for x and y
+    y FLOAT NOT NULL,
     FOREIGN KEY (post_id) REFERENCES Post(id)
 );
 
 /*Like Table*/
 CREATE TABLE Like (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    post_id INT,
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
     date_liked DATETIME NOT NULL,
     FOREIGN KEY (user_id) REFERENCES User(id),
     FOREIGN KEY (post_id) REFERENCES Post(id)
@@ -46,8 +46,8 @@ CREATE TABLE Like (
 /*Comment Table*/
 CREATE TABLE Comment (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    post_id INT,
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
     comment_text TEXT NOT NULL,
     date_posted DATETIME NOT NULL, 
     FOREIGN KEY (user_id) REFERENCES User(id),
@@ -56,8 +56,8 @@ CREATE TABLE Comment (
 /*Star Table*/
 CREATE TABLE Star (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    post_id INT,
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
     date_starred DATETIME NOT NULL,
     FOREIGN KEY (user_id) REFERENCES User(id),
     FOREIGN KEY (post_id) REFERENCES Post(id)
@@ -67,10 +67,10 @@ CREATE TABLE Star (
 CREATE TABLE Notification (
     id INT PRIMARY KEY AUTO_INCREMENT,
     notification_type ENUM('liked', 'starred', 'commented'),
-    from_user_id INT,
-    to_user_id INT,
-    post_id INT,
-    date_posted DATETIME,
+    from_user_id INT NOT NULL,
+    to_user_id INT NOT NULL,
+    post_id INT NOT NULL,
+    date_posted DATETIME NOT NULL,
     FOREIGN KEY (from_user_id) REFERENCES User(id),
     FOREIGN KEY (to_user_id) REFERENCES User(id),
     FOREIGN KEY (post_id) REFERENCES Post(id)
