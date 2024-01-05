@@ -227,26 +227,53 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
-        let postCanvas = document.querySelectorAll(".post > canvas");
-        postCanvas.forEach(elem => elem.addEventListener("click",(e)=>drawPins(elem), false));
+        class Pin {
+            x;
+            y;
+            strokeStyle = "white";
+            fillStyle = "#9013FE";
+            lineWidth = 10;
+            radius = 15;
+            
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            };
+            
+            draw(ctx) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0 , 2*Math.PI);
+                ctx.strokeStyle=this.strokeStyle;
+                ctx.fillStyle = this.fillStyle;
+                ctx.lineWidth = this.lineWidth;
+                ctx.stroke();
+                ctx.fill();
+            }
+        };
+        const postCanvas = document.querySelectorAll(".post > canvas");
+        const randomPins = generateRandomPins();
+        let offsetX = document.querySelector(".post").getBoundingClientRect().x;
+        let offsetY = document.querySelector(".post").getBoundingClientRect().y;
+
+        postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem), false));
+        postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
+
+        //Event listener to dynamically resize the canvas'.
+        window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
         //Function to draw the pins relative to a post image(or hide them).
-        function drawPins(elem) {
-            let ctx = elem.getContext("2d");
-            if (elem.getAttribute("data-selected") == "false"){
-                elem.setAttribute("data-selected", "true");
-                for(i=0; i < 10; i++) {
-                    ctx.beginPath();
-                    ctx.arc(i*10, i*10, 5, 0 , 2*Math.PI);
-                    ctx.strokeStyle="red";
-                    ctx.fillStyle="blue";
-                    ctx.stroke();
-                    ctx.fill();
-                }
-            } else {
-                ctx.clearRect(0, 0, elem.width, elem.height);
-                elem.setAttribute("data-selected", "false");
-            }
+        function drawPins(canvas) {
+            let ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (canvas.getAttribute("data-selected") == "true"){
+                randomPins.forEach((elem) => elem.draw(ctx));
+            } 
+        }
+
+        //Function that draws the pins of an image and sets the selected state of the canvas.
+        function clickPost(canvas) {
+            setSelected(canvas);
+            drawPins(canvas);
         }
     
         //Function to open an itemo info modal when a certain item gets clicked on the image of a post.
@@ -254,17 +281,58 @@
             elem.setAttribute("data-bs-toggle", "modal");
             elem.setAttribute("data-bs-target", "#itemInfoModal");
         }
-        
+
+        //Function to set a clicked canvas to selected or not.
+        function setSelected(canvas) {
+            if(canvas.getAttribute("data-selected") == "false") {
+                canvas.setAttribute("data-selected", "true");
+            } else {
+                canvas.setAttribute("data-selected", "false");
+            }
+        }
+
+        //Function to resize all the canvas'.
+        function resizeCanvas(canvasList) {
+            let imgW = document.querySelector(".post > img").width;
+            postCanvas.forEach((elem) => {
+                elem.width = imgW;
+                elem.height = imgW; 
+                if (elem.getAttribute("data-selected") == "true"){
+                    drawPins(elem);
+                }
+            });
+        }
+
+        //Function to detect if a pin gets clicked.
+
+        //Function to generate 10 random posts.
+        function generateRandomPins() {
+            const pins = [];
+            const canvasWidth = 300; // Maximum x coordinate
+            const canvasHeight = 300; // Maximum y coordinate
+
+            // Create 10 pins with random x, y coordinates
+            for (let i = 0; i < 10; i++) {
+                const randomX = Math.floor(Math.random() * canvasWidth); // Random x coordinate
+                const randomY = Math.floor(Math.random() * canvasHeight); // Random y coordinate
+
+                // Create Pin objects and add them to the array
+                const pin = new Pin(randomX, randomY /* pass your canvas context here */);
+                pins.push(pin);
+            }
+
+            return pins;
+        }
+
+        resizeCanvas();
     </script>
 </body>
 </html>
 <!--TODO
-- adjust canvas
 - button liked and starred style change when pressed.
 - Change design for create.html on small laptops
 - Mandatory fields in create.html
 - Pins:
-    .Pin style
     .Pin detection
     .modal item
     .new item design

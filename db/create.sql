@@ -70,6 +70,7 @@ CREATE TABLE Notification (
     from_user_id INT NOT NULL,
     to_user_id INT NOT NULL,
     post_id INT NOT NULL,
+    seen BOOLEAN DEFAULT NOT NULL False,
     date_posted DATETIME NOT NULL,
     FOREIGN KEY (from_user_id) REFERENCES User(id),
     FOREIGN KEY (to_user_id) REFERENCES User(id),
