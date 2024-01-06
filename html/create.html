@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal" onclick="addRow()"  value="Add"/>
+                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal" onclick="createItem()"  value="Add"/>
                                     <input type="button" data-bs-dismiss="modal" value="Discard">
                                 </div>
                             </div>
@@ -172,8 +172,9 @@
                 </div>
                 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../js/Item.js"></script>
     <script>
-        class Pin {
+        /*class Pin {
             x;
             y;
             name;
@@ -202,12 +203,15 @@
             setSize(size) {
                 this.size = size;
             }
-        };
-        let offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
-        let offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
+        };*/
+        let offsetX;
+        let offsetY;
+        let clientX;
+        let clientY;
+        const items = [];
+        const pins = [];
         const imgInput = document.getElementById('selectedFile');
         const image = document.createElement('img');
-        const pins = [];
         const canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
         
@@ -221,7 +225,7 @@
                 image.src = URL.createObjectURL(file);
                 document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%";
                 document.querySelector("main#createMain > section").appendChild(image);
-                canvas.addEventListener("click", (e)=>addCircle(e.clientX, e.clientY, offsetX, offsetY), false);
+                canvas.addEventListener("click", (e)=>{setClientCo(e);}/*addCircle(e.clientX, e.clientY, offsetX, offsetY)*/, false);
                 canvas.setAttribute("data-bs-toggle","modal");
                 canvas.setAttribute("data-bs-target","#addItemModal");
                 canvas.setAttribute("width", "380");
@@ -231,12 +235,11 @@
             }
         }
 
-       
+       /*
         /*Function to create and draw the pins on the selected image.*/
         function addCircle(x, y, offsetX, offsetY) {
             let ctx = canvas.getContext("2d");
             ctx.beginPath();
-            console.log(offsetX);
             ctx.arc(x-offsetX, y-offsetY, 5, 0 , 2*Math.PI);
             ctx.strokeStyle="red";
             ctx.fillStyle="blue";
@@ -287,10 +290,27 @@
             document.querySelector(".table tbody").appendChild(newRow);
         }
 
+        //Function to set x and y.
+        function setClientCo(e) {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        }
+
         //Function to change the offsetX, offsetY variables.
         function setOffset() {
             offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
             offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
+        }
+
+        //Function to create am Item object.
+        function createItem() {
+            let iName = document.getElementById("itemName").value;
+            let iBrand = document.getElementById("itemBrand").value;
+            let iLink = document.getElementById("itemLink").value;
+            let iSize = document.getElementById("itemSize").value;
+            let iValue = document.getElementById("itemPrice").value;
+            
+            items.push(new Item(iName, iBrand, iLink, iSize, iValue, clientX, clientY));
         }
         /*Code to inject current date in #dateTime*/
         let now = new Date();
@@ -303,9 +323,7 @@
 </html>
 <!--
     .Create:
-    - Change offset based on window size
     - Use new pin class
-    - Use new item class.
     - swap table for item-posts.
     - Add js to delete pins and tables--1/2
     - Add php tp create post instance
