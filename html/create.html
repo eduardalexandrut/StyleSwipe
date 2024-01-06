@@ -170,6 +170,7 @@
                         </div>
                     </div>
                 </div>
+    
     <script>
         class Pin {
             x;
@@ -201,14 +202,16 @@
                 this.size = size;
             }
         };
-        const offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
-        const offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
+        let offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
+        let offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
         const imgInput = document.getElementById('selectedFile');
         const image = document.createElement('img');
         const pins = [];
         const canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
         
+        //reset offest when the window gets resized.
+        window.addEventListener("resize", ()=>setOffset(offsetX, offsetY), false);
         
         /*Function to create a displayable image selected by the user.*/
         function previewImg() {
@@ -281,6 +284,13 @@
             newRow.appendChild(rTrash);
             document.querySelector(".table tbody").appendChild(newRow);
         }
+
+        //Function to change the offsetX, offsetY variables.
+        function setOffset(offsetX, offsetY) {
+            offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
+            offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
+            console.log(offsetX);
+        }
         /*Code to inject current date in #dateTime*/
         let now = new Date();
         let date = now.toLocaleString();
@@ -292,6 +302,9 @@
 <!--
     .Create:
     - Change offset based on window size
+    - Use new pin class
+    - Use new item class.
+    - swap table for item-posts.
     - Add js to delete pins and tables--1/2
     - Add php tp create post instance
 
