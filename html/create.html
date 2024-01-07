@@ -41,13 +41,73 @@
 
                 <main id="createMain">
                     <h1>New Outfit</h1>
-                    <!--Image Picker-->
-                    <section>
-                        <input type="file" accept="image/*" class="d-none" id="selectedFile" onchange="previewImg()"/>
-                        <input type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
-                    </section>
+                    <div>
+                        <!--Image Picker-->
+                        <div>
+                            <section>
+                                <input type="file" accept="image/*" class="d-none" id="selectedFile" onchange="previewImg()"/>
+                                <input type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
+                            </section>
+                        </div>
+                        <!--Items-->
+                        <h2>Items</h2>
+                        <div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name"/>
+                                                <label for="itemName">Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand"/>
+                                                <label for="itemBrand">Brand</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link"/>
+                                            <label for="itemLink">Link</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price"/>
+                                                <label for="itemPrice">Price</label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size"/>
+                                                <label for="itemSize">Size</label>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
+                                                <label for="itemName">Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand"/>
+                                                <label for="itemBrand">Brand</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link"/>
+                                            <label for="itemLink">Link</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price"/>
+                                                <label for="itemPrice">Price</label>
+                                            </div>
+                                            <div class="form-floating mb-3 col-6">
+                                                <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size"/>
+                                                <label for="itemSize">Size</label>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
                     <!--Items Table-->
-                    <h3>Items</h3>
+                   <!-- <h3>Items</h3>
                     <div class="container-fluid table-responsive">
                         <table class="table table-striped table-hover">
                             <tr>
@@ -67,7 +127,7 @@
                                 <td><i class="bi-trash"></i></td>
                             </tr>
                         </table>
-                    </div>
+                    </div>-->
                 </main><aside id="createAside">
                     <section>
                         <img src="../img/outfit.jpeg" alt=""/>
@@ -332,7 +392,11 @@
 <!--
     .Create:
     - swap table for item-posts.
+        - style for items
+        - style for items desktop
+        - change js to add items element.
     - Add js to delete pins and tables--1/2
+    - controls on post creation.
     - Add php tp create post instance
 
 -->

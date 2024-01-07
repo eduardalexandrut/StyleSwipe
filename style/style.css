@@ -150,12 +150,16 @@ main {
 * CREATE VIEW
 *
 */
-#createMain h1{
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
+#createMain {
+    padding: 40px 0px 0px 0px;
 }
-#createMain > section {
+
+#createMain h1:first-of-type, #createMain h2:first-of-type {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#createMain  section:first-of-type {
     width: 380px;
     height: 500px;
     border: 1px solid black;
@@ -167,22 +171,25 @@ main {
     justify-content: center;
     align-items: center;
 }
-#createMain > section input:last-child {
+#createMain section:first-of-type input:last-child {
     border-radius: 30px;
     height: 60px;
     border: 1px solid black;
     background-color: transparent;
     width: 60%;
 }
-#createMain > section:first-of-type img , #createMain > section:first-of-type canvas{
+#createMain  section:first-of-type img , #createMain  section:first-of-type canvas{
     width: 380px;
     height: 500px;
     border-radius: 30px;
     grid-row: 1/ span 1;
     grid-column: 1/span 1;
 }
-#createMain>h3 {
-    text-align: center;
+
+#createMain .item {
+    width: 90%;
+    height: fit-content;
+    border: 1px solid black;
 }
 .form-control{
     border: none;
@@ -625,7 +632,7 @@ aside#createAside form>input:last-child {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     display: grid;
     grid-template-columns: 10px 60px 20px auto 10px;
-    grid-template-rows: 20px 30px 30px 20px;
+    grid-template-rows: 20px 30px 30px 30px;
 }
 
 .notification img {
@@ -638,6 +645,7 @@ aside#createAside form>input:last-child {
 .notification p:first-of-type {
     grid-column: 4/span 1;
     grid-row: 2/span 2;
+
 }
 
 .notification .notify-user {
@@ -1047,8 +1055,30 @@ aside#createAside form>input:last-child {
     *
     */
     main#createMain {
-        padding-top: 0;
+        padding:0 30px 0 30px;
     }
+    
+    main#createMain > div:first-of-type {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 200px;
+    }
+   
+    main#createMain > div:first-of-type div:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    main#createMain .item {
+        flex: 0 0 45%;
+
+    }
+   
     aside#createAside {
         margin: 100px 0;
         padding: 0;
@@ -1057,6 +1087,7 @@ aside#createAside form>input:last-child {
         width: 100%;
         margin: 0;
     }
+    
     aside#createAside form textarea, aside form input {
         width: 90%;
     }
@@ -1072,11 +1103,6 @@ aside#createAside form>input:last-child {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     aside.notificationAside{
         display: none !important;
-    }
-
-    main {
-        width: 80%;
-        border-right: none;
     }
     
     nav ul li[data-name="hidden"] {
@@ -1096,6 +1122,15 @@ aside#createAside form>input:last-child {
         overflow-y: scroll;
         width: 21% !important;
         position: fixed; 
+    }
+
+    #createAside > section:first-of-type {
+        flex-direction: column;
+        align-items: center;
+    }
+    #createAside > section:first-of-type ul {
+       margin: 0;
+       padding: 0;
     }
 
    
