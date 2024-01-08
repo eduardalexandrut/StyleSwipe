@@ -1095,8 +1095,10 @@ aside#createAside form>input:last-child {
         margin-bottom: 200px;
     }
    
-    main#createMain > div:first-of-type div:last-child {
-        justify-content: space-between;
+    #createMain > div:first-of-type > div:last-child {
+        flex-wrap: wrap;
+        flex-direction: initial;
+        justify-content: space-around;
     }
 
     main#createMain .item {
@@ -1140,13 +1142,17 @@ aside#createAside form>input:last-child {
     }
     
     /*Create View*/
+    #createMain {
+        width: 80%;
+        border-right: none;
+        padding-bottom: 0 !important;
+    }
     #createAside {
-        float: right;
-        height: 100vh;
-        max-height: 100vh;
-        overflow-y: scroll;
-        width: 21% !important;
-        position: fixed; 
+        position: relative;
+        display: inline-block;
+        margin: 0px 0px 0px 20% !important;
+        width: 80% !important;
+        border-left: 1px solid black !important;
     }
 
     #createAside > section:first-of-type {
