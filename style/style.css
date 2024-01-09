@@ -219,7 +219,6 @@ main {
     width: 90% !important;
 }
 
-
 .form-control{
     border: none;
     border-radius: 0;
@@ -243,8 +242,13 @@ aside#createAside > section img {
     width: 70px;
     border-radius: 50px;
 }
+aside#createAside > section > ul li:first-of-type {
+    font-size: 22px;
+    font-weight: 500;
+}
 aside#createAside > section p {
     opacity: .5;
+    font-size: small;
 }
 aside#createAside ul {
     float: inline-end;
@@ -1149,16 +1153,28 @@ aside#createAside form>input:last-child {
     }
     #createAside {
         position: relative;
-        display: inline-block;
+        display: flex;
         margin: 0px 0px 0px 20% !important;
         width: 80% !important;
+        height: fit-content;
         border-left: 1px solid black !important;
+        flex-direction: row;
+        align-items: center;
+
     }
 
     #createAside > section:first-of-type {
         flex-direction: column;
         align-items: center;
+        margin: 0;
     }
+    #createAside > section:first-of-type > img {
+        width: 155px;
+        height: 155px;
+        border: 5px solid white;
+        box-shadow: -2px -2px 5px 0px rgba(0, 0, 0, 0.25), 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 50%;
+    } 
     #createAside > section:first-of-type ul {
        margin: 0;
        padding: 0;
