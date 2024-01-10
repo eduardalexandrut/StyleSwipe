@@ -293,7 +293,6 @@
             }
         }
 
-       /*
         /*Function to create and draw the pins on the selected image.*/
         function addCircle(x, y, offsetX, offsetY) {
             let ctx = canvas.getContext("2d");
@@ -307,46 +306,6 @@
             pins.push(pin);
         }
         
-        /**Function to add a row within the table everytime a new pin is added.*/
-        function addRow() {
-            //Get the last pin and set its fields
-            let pin = pins[pins.length - 1];
-            pin.setName(document.getElementById("itemName").value);
-            pin.setBrand(document.getElementById("itemBrand").value);
-            pin.setLink(document.getElementById("itemLink").value);
-            pin.setSize(document.getElementById("itemSize").value);
-            pin.setPrice(document.getElementById("itemPrice").value);
-
-            //Add row and create table datas
-            let newRow = document.createElement('tr');
-            let rName = document.createElement('td');
-            rName.innerText = pin.name;
-            let rBrand = document.createElement('td');
-            rBrand.innerText = pin.brand;
-            let rLink = document.createElement('td');
-            rLink.innerText = pin.link;
-            let rPrice = document.createElement('td');
-            rPrice.innerText = pin.price;
-            let rSize = document.createElement('td');
-            rSize.innerText = pin.size;
-            let rTrash = document.createElement('td');
-            let trashIcon = document.createElement('i');
-            trashIcon.setAttribute("class", "bi-trash");
-            /*Add event listener to remove a row and a pin when the trash icon gets clicked*/
-            trashIcon.addEventListener("click",(e)=>{
-                document.querySelector(".table tbody").removeChild(newRow);
-                //pins.(pin);
-                /*Redaw canvas*/
-            }, false);
-            rTrash.appendChild(trashIcon);
-            newRow.appendChild(rName);
-            newRow.appendChild(rBrand);
-            newRow.appendChild(rLink);
-            newRow.appendChild(rPrice);
-            newRow.appendChild(rSize);
-            newRow.appendChild(rTrash);
-            document.querySelector(".table tbody").appendChild(newRow);
-        }
 
         //Function to set x and y.
         function setClientCo(e) {
@@ -362,12 +321,13 @@
 
         //Function to create an Item object.
         function createItem() {
-            let iName = document.getElementById("itemName").value;
-            let iBrand = document.getElementById("itemBrand").value;
-            let iLink = document.getElementById("itemLink").value;
-            let iSize = document.getElementById("itemSize").value;
-            let iValue = document.getElementById("itemPrice").value;
+            let iName = document.querySelector(".modal#addItemModal  input#itemName").value;
+            let iBrand = document.querySelector(".modal#addItemModal  input#itemBrand").value;
+            let iLink = document.querySelector(".modal#addItemModal  input#itemLink").value;
+            let iSize = document.querySelector(".modal#addItemModal  input#itemSize").value;
+            let iValue = document.querySelector(".modal#addItemModal  input#itemPrice").value;
             items.push(new Item(iName, iBrand, iLink, iSize, iValue, clientX - offsetX, clientY - offsetY));
+            console.log(items);
             createPin();
         }
 
