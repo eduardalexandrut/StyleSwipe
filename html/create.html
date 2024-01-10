@@ -282,14 +282,14 @@
             if (file) {
                 image.src = URL.createObjectURL(file);
                 document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%";
-                document.querySelector("main#createMain > section").appendChild(image);
+                document.querySelector("main#createMain  section:first-of-type").appendChild(image);
                 canvas.addEventListener("click", (e)=>{setClientCo(e);}/*addCircle(e.clientX, e.clientY, offsetX, offsetY)*/, false);
                 canvas.setAttribute("data-bs-toggle","modal");
                 canvas.setAttribute("data-bs-target","#addItemModal");
                 canvas.setAttribute("width", "380");
                 canvas.setAttribute("height","500");
-                document.querySelector("main#createMain > section").appendChild(canvas);
-                document.querySelector("main#createMain > section input[type='button']").style="display:none;"
+                document.querySelector("main#createMain section:first-of-type").appendChild(canvas);
+                document.querySelector("main#createMain  section:first-of-type input[type='button']").style="display:none;"
             }
         }
 
