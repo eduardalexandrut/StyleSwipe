@@ -51,7 +51,7 @@
                         </div>
                         <!--Items-->
                         <h2>Items</h2>
-                        <div>
+                        <div id="itemContainer">
                             <div class="item">
                                 <div>
                                     <div class="form-floating mb-3">
@@ -268,6 +268,7 @@
         let clientY;
         const items = [];
         const pins = [];
+        const itemContainer = document.querySelector("#itemContainer");
         const imgInput = document.getElementById('selectedFile');
         const image = document.createElement('img');
         const canvas = document.createElement('canvas');
@@ -325,9 +326,36 @@
             let iBrand = document.querySelector(".modal#addItemModal  input#itemBrand").value;
             let iLink = document.querySelector(".modal#addItemModal  input#itemLink").value;
             let iSize = document.querySelector(".modal#addItemModal  input#itemSize").value;
-            let iValue = document.querySelector(".modal#addItemModal  input#itemPrice").value;
-            items.push(new Item(iName, iBrand, iLink, iSize, iValue, clientX - offsetX, clientY - offsetY));
-            console.log(items);
+            let iPrice= document.querySelector(".modal#addItemModal  input#itemPrice").value;
+            let item = `
+            <div class="item">
+                                <div>
+                                    <div class="form-floating mb-3">
+                                         <input class="form-control" value="${iName}" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
+                                        <label for="itemName">Name</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="itemBrand" value="${iBrand}" type="text"  name="link" placeholder="Brand" readonly/>
+                                        <label for="itemBrand">Brand</label>
+                                    </div>
+                                </div>                  
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="itemLink" value="${iLink}" type="text"  name="link" placeholder="Link" readonly/>
+                                    <label for="itemLink">Link</label>
+                                </div>
+                                <div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="itemSize" value="${iSize}" type="text"  name="link" placeholder="Price" readonly/>
+                                        <label for="itemPrice">Size</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="itemPrice" value="${iPrice}" type="text" name="link" placeholder="Size" readonly/>
+                                        <label for="itemSize">Price</label>
+                                    </div>
+                                </div>
+                            </div>`
+            itemContainer.innerHTML = itemContainer.innerHTML + item;
+            items.push(new Item(iName, iBrand, iLink, iSize, iPrice, clientX - offsetX, clientY - offsetY));
             createPin();
         }
 
