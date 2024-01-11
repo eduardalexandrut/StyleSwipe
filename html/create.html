@@ -257,8 +257,6 @@
             itemDivs = itemContainer.querySelectorAll(".item");
 
             Array.from(itemDivs).forEach((item) => item.querySelector(".trashBtn").addEventListener("click", ()=>removeItem(item, Array.from(itemDivs).indexOf(item))))
-           /* let latestItem = itemDivs[itemDivs.length - 1];
-            latestItem.querySelector(".trashBtn").addEventListener("click", ()=>removeItem(latestItem, Array.from(itemDivs).indexOf(latestItem)))*/
             items.push(new Item(iName, iBrand, iLink, iSize, iPrice, clientX - offsetX, clientY - offsetY));
             console.log(items);
             createPin();
@@ -273,11 +271,27 @@
 
         //Function to remove an item from the DOM and the list.
         function removeItem(item, index) {
+            let xToRemove = items[index].getX();
+            let yToRemove = items[index].getY();
+            //remove item div.
             itemContainer.removeChild(item);
+
+            //Remove pin.
+            let pinToRemove = Array.from(pins).filter((pin) => pin.x === xToRemove && pin.y === yToRemove);
+            let indexPin = Array.from(pins).indexOf(pinToRemove);
+
+            //remove item object an pin.
             if (index > -1) {
                 items.splice(index, 1);
+                pins.splice(indexPin, 1);
             }
-            console.log(items)
+            console.log(pins);
+            
+            //redraw canvas.
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+
+            //redraw pins.
+            Array.from(pins).forEach((pin) => pin.draw(ctx));
         }
 
         /*Code to inject current date in #dateTime*/
