@@ -52,84 +52,7 @@
                         <!--Items-->
                         <h2>Items</h2>
                         <div id="itemContainer">
-                            <div class="item">
-                                <div>
-                                    <div class="form-floating mb-3">
-                                         <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
-                                        <label for="itemName">Name</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand" readonly/>
-                                        <label for="itemBrand">Brand</label>
-                                    </div>
-                                </div>                  
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link" readonly/>
-                                    <label for="itemLink">Link</label>
-                                </div>
-                                <div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price" readonly/>
-                                        <label for="itemPrice">Price</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size" readonly/>
-                                        <label for="itemSize">Size</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div>
-                                    <div class="form-floating mb-3">
-                                         <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
-                                        <label for="itemName">Name</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand" readonly/>
-                                        <label for="itemBrand">Brand</label>
-                                    </div>
-                                </div>                  
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link" readonly/>
-                                    <label for="itemLink">Link</label>
-                                </div>
-                                <div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price" readonly/>
-                                        <label for="itemPrice">Price</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size" readonly/>
-                                        <label for="itemSize">Size</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div>
-                                    <div class="form-floating mb-3">
-                                         <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
-                                        <label for="itemName">Name</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand" readonly/>
-                                        <label for="itemBrand">Brand</label>
-                                    </div>
-                                </div>                  
-                                <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link" readonly/>
-                                    <label for="itemLink">Link</label>
-                                </div>
-                                <div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price" readonly/>
-                                        <label for="itemPrice">Price</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size" readonly/>
-                                        <label for="itemSize">Size</label>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </main><aside id="createAside">
@@ -247,6 +170,7 @@
         const items = [];
         const pins = [];
         const itemContainer = document.querySelector("#itemContainer");
+        let itemDivs = itemContainer.querySelectorAll(".item");
         const imgInput = document.getElementById('selectedFile');
         const image = document.createElement('img');
         const canvas = document.createElement('canvas');
@@ -271,20 +195,6 @@
                 document.querySelector("main#createMain  section:first-of-type input[type='button']").style="display:none;"
             }
             
-        }
-
-        /*Function to create and draw the pins on the selected image.*/
-        function addCircle(x, y, offsetX, offsetY) {
-            let ctx = canvas.getContext("2d");
-            ctx.beginPath();
-            ctx.arc(x-offsetX, y-offsetY, 5, 0 , 2*Math.PI);
-            ctx.strokeStyle="red";
-            ctx.fillStyle="blue";
-            ctx.stroke();
-            ctx.fill();
-            let pin = new Pin(x,y);
-            pins.push(pin);
-            setOffset();
         }
         
 
@@ -311,38 +221,59 @@
             <div class="item">
                                 <div>
                                     <div class="form-floating mb-3">
-                                         <input class="form-control" value="${iName}" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
+                                         <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
                                         <label for="itemName">Name</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemBrand" value="${iBrand}" type="text"  name="link" placeholder="Brand" readonly/>
+                                        <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand" readonly/>
                                         <label for="itemBrand">Brand</label>
                                     </div>
                                 </div>                  
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemLink" value="${iLink}" type="text"  name="link" placeholder="Link" readonly/>
+                                    <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link" readonly/>
                                     <label for="itemLink">Link</label>
                                 </div>
                                 <div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemSize" value="${iSize}" type="text"  name="link" placeholder="Price" readonly/>
-                                        <label for="itemPrice">Size</label>
+                                        <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price" readonly/>
+                                        <label for="itemPrice">Price</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemPrice" value="${iPrice}" type="text" name="link" placeholder="Size" readonly/>
-                                        <label for="itemSize">Price</label>
+                                        <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size" readonly/>
+                                        <label for="itemSize">Size</label>
                                     </div>
                                 </div>
-                            </div>`
+                                <div>
+                                    <button class="eyeBtn">
+                                        <i class="bi-eye"></i>
+                                    </button>
+                                    <button class="trashBtn">
+                                        <i class="bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>`;
             itemContainer.innerHTML = itemContainer.innerHTML + item;
+            itemDivs = itemContainer.querySelectorAll(".item");
+
+            let latestItem = itemDivs[itemDivs.length - 1];
+            latestItem.querySelector(".trashBtn").addEventListener("click", ()=>removeItem(latestItem, Array.from(itemDivs).indexOf(latestItem)))
             items.push(new Item(iName, iBrand, iLink, iSize, iPrice, clientX - offsetX, clientY - offsetY));
+            console.log(items);
             createPin();
         }
 
         //Function to create a Pin object and draw it on the canvas.
         function createPin() {
+            setOffset();
             pins.push(new Pin(clientX - offsetX, clientY - offsetY));
             pins[pins.length - 1].draw(ctx);
+        }
+
+        //Function to remove an item from the DOM and the list.
+        function removeItem(item, index) {
+            itemContainer.removeChild(item);
+            
         }
 
         /*Code to inject current date in #dateTime*/
@@ -351,6 +282,7 @@
         document.getElementById("dateTime").innerHTML = date;
 
         setOffset();
+        
         </script>
 </body>
 </html>
