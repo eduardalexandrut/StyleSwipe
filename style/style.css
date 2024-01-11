@@ -1146,6 +1146,12 @@ aside#createAside form>input:last-child {
         font-size: 20px;
     }
     
+    /**Home View*/
+    main#homeMain {
+        width: 80%;
+        border-right: none;
+    }
+
     /*Create View*/
     #createMain {
         width: 80%;

@@ -132,28 +132,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--Items Table-->
-                   <!-- <h3>Items</h3>
-                    <div class="container-fluid table-responsive">
-                        <table class="table table-striped table-hover">
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Brand</th>
-                                <th scope="col">Link</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Price</th>
-                                <th scope="col"></th>
-                            </tr>
-                            <tr>
-                                <td>Lorem</td>
-                                <td>Lorem</td>
-                                <td>Lorem</td>
-                                <td>Lorem</td>
-                                <td>Lorem</td>
-                                <td><i class="bi-trash"></i></td>
-                            </tr>
-                        </table>
-                    </div>-->
                 </main><aside id="createAside">
                     <section>
                         <img src="../img/outfit.jpeg" alt=""/>
@@ -292,6 +270,7 @@
                 document.querySelector("main#createMain section:first-of-type").appendChild(canvas);
                 document.querySelector("main#createMain  section:first-of-type input[type='button']").style="display:none;"
             }
+            
         }
 
         /*Function to create and draw the pins on the selected image.*/
@@ -305,6 +284,7 @@
             ctx.fill();
             let pin = new Pin(x,y);
             pins.push(pin);
+            setOffset();
         }
         
 
@@ -376,11 +356,10 @@
 </html>
 <!--
     .Create:
-    - swap table for item-posts.
-        - style for items
-        - style for items desktop
-        - change js to add items element.
-    - Add js to delete pins and tables--1/2
+    - Add js to delete pins and items--1/2
+    - visualize item
+    - resize Bug
+    - canvas size on small phones.
     - controls on post creation.
     - Add php tp create post instance
 
