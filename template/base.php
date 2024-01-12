@@ -25,7 +25,7 @@
             </li>
             <li>
                 <i class="bi-plus-circle"></i>
-                <a href="create.html">New Outfit</a>
+                <a href="..create.php">New Outfit</a>
             </li>
             <li data-name="hidden">
                 <i class="bi-bell"></i>
