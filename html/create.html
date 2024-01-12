@@ -221,25 +221,25 @@
             <div class="item">
                                 <div>
                                     <div class="form-floating mb-3">
-                                         <input class="form-control" value="Jeans" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
+                                         <input class="form-control" value="${iName}" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
                                         <label for="itemName">Name</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand" readonly/>
+                                        <input class="form-control" id="itemBrand" value="${iPrice}" type="text"  name="link" placeholder="Brand" readonly/>
                                         <label for="itemBrand">Brand</label>
                                     </div>
                                 </div>                  
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link" readonly/>
+                                    <input class="form-control" id="Link" type="text" value="${iLink}"  name="link" placeholder="Link" readonly/>
                                     <label for="itemLink">Link</label>
                                 </div>
                                 <div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price" readonly/>
+                                        <input class="form-control" id="Price" type="text" value="${iPrice}"  name="link" placeholder="Price" readonly/>
                                         <label for="itemPrice">Price</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size" readonly/>
+                                        <input class="form-control" id="Size" type="text" value="${iSize}" name="link" placeholder="Size" readonly/>
                                         <label for="itemSize">Size</label>
                                     </div>
                                 </div>
@@ -256,8 +256,7 @@
             itemContainer.innerHTML = itemContainer.innerHTML + item;
             itemDivs = itemContainer.querySelectorAll(".item");
 
-            let latestItem = itemDivs[itemDivs.length - 1];
-            latestItem.querySelector(".trashBtn").addEventListener("click", ()=>removeItem(latestItem, Array.from(itemDivs).indexOf(latestItem)))
+            Array.from(itemDivs).forEach((item) => item.querySelector(".trashBtn").addEventListener("click", ()=>removeItem(item, Array.from(itemDivs).indexOf(item))))
             items.push(new Item(iName, iBrand, iLink, iSize, iPrice, clientX - offsetX, clientY - offsetY));
             console.log(items);
             createPin();
@@ -272,8 +271,27 @@
 
         //Function to remove an item from the DOM and the list.
         function removeItem(item, index) {
+            let xToRemove = items[index].getX();
+            let yToRemove = items[index].getY();
+            //remove item div.
             itemContainer.removeChild(item);
+
+            //Remove pin.
+            let pinToRemove = Array.from(pins).filter((pin) => pin.x === xToRemove && pin.y === yToRemove);
+            let indexPin = Array.from(pins).indexOf(pinToRemove);
+
+            //remove item object an pin.
+            if (index > -1) {
+                items.splice(index, 1);
+                pins.splice(indexPin, 1);
+            }
+            console.log(pins);
             
+            //redraw canvas.
+            ctx.clearRect(0,0, canvas.width, canvas.height);
+
+            //redraw pins.
+            Array.from(pins).forEach((pin) => pin.draw(ctx));
         }
 
         /*Code to inject current date in #dateTime*/
