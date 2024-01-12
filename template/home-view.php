@@ -2,11 +2,11 @@
         <!--Post Structure-->
         <div class="post">
             <header>
-                <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                <img alt="User Profile Pic" src="img/outfit.jpeg" />
                 <a href="profile.html">@username</a>
                 <p>22 Jul 2024</p>
             </header>
-            <img alt="Outfit Pic" src="../img/outfit.jpeg" />
+            <img alt="Outfit Pic" src="img/outfit.jpeg" />
             <canvas></canvas>
             <section>
                 <div>
@@ -38,11 +38,11 @@
         <!--Post Structure-->
         <div class="post">
             <header>
-                <img alt="User Profile pic" src="../img/outfit.jpeg" />
+                <img alt="User Profile pic" src="img/outfit.jpeg" />
                 <a href="profile.html">@username</a>
                 <p>22 Jul 2024</p>
             </header>
-            <img alt="Outfit Pic" src="../img/outfit.jpeg" />
+            <img alt="Outfit Pic" src="img/outfit.jpeg" />
             <canvas></canvas>
             <section>
                 <div>
@@ -75,20 +75,20 @@
         <h3>Notifications:</h3>
         <!--New Notification element.-->
         <div class="notification">
-            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+            <img alt="User Profile Pic" src="img/outfit.jpeg" />
             <span class="notify-badge badge rounded-pill bg-primary">New</span>
             <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
         </div>
 
         <!--Notification element.-->
         <div class="notification">
-            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+            <img alt="User Profile Pic" src="img/outfit.jpeg" />
             <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
         </div>
 
         <!--Notification element.-->
         <div class="notification">
-            <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+            <img alt="User Profile Pic" src="img/outfit.jpeg" />
             <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
         </div>
     </aside>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="comment">
-                        <img alt="User Profile Pic" src="../img/logo.png">
+                        <img alt="User Profile Pic" src="img/logo.png">
                         <section>
                             <header>
                                 <a href="profile.html">@username</a>
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="comment">
-                        <img alt="User Profile Pic" src="../img/logo.png">
+                        <img alt="User Profile Pic" src="img/logo.png">
                         <section>
                             <header>
                                 <a href="profile.html">@username</a>
@@ -148,20 +148,20 @@
                 <div class="modal-body">
                     <!--New Notification element.-->
                     <div class="notification">
-                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
                         <span class="notify-badge badge rounded-pill bg-primary">New</span>
                         <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
                     </div>
 
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
                         <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
                     </div>
 
                     <!--Notification element.-->
                     <div class="notification">
-                        <img alt="User Profile Pic" src="../img/outfit.jpeg" />
+                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
                         <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
                     </div>
                 </div>
@@ -185,8 +185,8 @@
             </div>
         </div>
     </div>
-    <script src="../js/Item.js"></script>
-    <script src="../js/Pin.js"></script>
+    <script src="js/Item.js"></script>
+    <script src="js/Pin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
         const postCanvas = document.querySelectorAll(".post > canvas");
