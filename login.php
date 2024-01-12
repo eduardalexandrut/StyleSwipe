@@ -1,14 +1,14 @@
 <?php
 require_once 'bootstrap.php';
 
-/*if(isset($_POST["username"]) && isset($_POST["password"])){
+if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
-    if(count($login_result)==0){
-        //Login fallito
+    if($login_result !== null){
+        // Login riuscito, $login_result contiene i dati dell'utente
+        registerLoggedUser($login_result);
+    } else {
+        // Login fallito
         $templateParams["errorelogin"] = "Errore! Username e/o password errati.";
-    }
-    else{
-        registerLoggedUser($login_result[0]);
     }
 }
 
@@ -19,9 +19,7 @@ if(isUserLoggedIn()){
 else{
     $templateParams["titolo"] = "Login";
     $templateParams["nome"] = "login-form.php";
-}*/
-    $templateParams["title"] = "Login";
-    $templateParams["name"] = "login-form.php";
+}
 
     require "template/login-form.php";
 ?>
