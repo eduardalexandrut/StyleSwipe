@@ -17,7 +17,7 @@
         <ul>
             <li>
                 <i data-name="active" class="bi-house"></i>
-                <a data-name="active" href="home.html">Home</a>
+                <a data-name="active" href="home.php">Home</a>
             </li>
             <li >
                 <i class="bi-search"></i>
@@ -25,7 +25,7 @@
             </li>
             <li>
                 <i class="bi-plus-circle"></i>
-                <a href="..create.php">New Outfit</a>
+                <a href="create.php">New Outfit</a>
             </li>
             <li data-name="hidden">
                 <i class="bi-bell"></i>
@@ -33,7 +33,7 @@
             </li>
             <li>
                 <i class="bi-person"></i>
-                <a href="profile.html">Profile</a>
+                <a href="profile.php">Profile</a>
             </li>
         </ul>
     </nav>
