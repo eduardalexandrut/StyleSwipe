@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
-$templateParams["name"] = "Home";
+$templateParams["name"] = "home-view.php";
 $templateParams["title"] = "Home";
 
-require_once("template/home-view.php");
+require "template/base.php";
 ?>
