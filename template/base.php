@@ -12,7 +12,7 @@
 <body>
     <header>
         <h2>Style Swipe</h2>
-        <a href="login.html">Log Out</a>
+        <a href="login.php">Log Out</a>
     </header>
     <nav>
         <ul>
