@@ -7,11 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="../style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
 </head>
 <body id="login">
     <div class="wrapper">
-        <img src="../img/logo.png" alt="logo" class="logo">
+        <img src="img/logo.png" alt="logo" class="logo">
         <form action="">
             <h1>Login</h1>
             <div class="input-box">
@@ -28,7 +28,7 @@
                         <input type="submit" value="Sign In" class="button"/>
                     </li>
                     <li>
-                        <button class="button" onclick='window.location.href="register.html"'>Sign Up</button>
+                        <button class="button" onclick='window.location.href="/StyleSwipe/register.php"'>Sign Up</button>
                     </li>
                 </ul>
             </div>
