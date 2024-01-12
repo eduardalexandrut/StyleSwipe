@@ -22,5 +22,6 @@ else{
 }*/
     $templateParams["titolo"] = "Login";
     $templateParams["nome"] = "login-form.php";
-    
+
+    require_once("template/login-form.php");
 ?>
