@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-    $templateParams["titolo"] = "Register";
+    $templateParams["title"] = "Register";
 
-    require_once("template/register-form.php");
+    require("template/register-form.php");
 ?>
