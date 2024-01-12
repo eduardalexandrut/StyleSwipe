@@ -20,8 +20,8 @@ else{
     $templateParams["titolo"] = "Login";
     $templateParams["nome"] = "login-form.php";
 }*/
-    $templateParams["titolo"] = "Login";
-    $templateParams["nome"] = "login-form.php";
+    $templateParams["title"] = "Login";
+    $templateParams["name"] = "login-form.php";
 
     require "template/login-form.php";
 ?>
