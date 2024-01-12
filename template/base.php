@@ -39,7 +39,7 @@
     </nav>
     <?php
     if(isset($templateParams["name"])) {
-        require($templateParams["nome"]);
+        require($templateParams["name"]);
     }
     ?>
     
