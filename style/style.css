@@ -219,6 +219,24 @@ main {
     width: 90% !important;
 }
 
+#createMain .item > div:last-child {
+    padding: 0 2% 0 2%;
+}
+
+#createMain .item > div:last-child button {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+}
+
+#createMain .item > div:last-child button:first-child {
+    border: 2px solid #6C10F4;
+}
+
+#createMain .item > div:last-child button:last-child {
+    border: 2px solid tomato;
+}
 .form-control{
     border: none;
     border-radius: 0;
