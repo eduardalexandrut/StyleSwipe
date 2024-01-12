@@ -37,6 +37,11 @@
             </li>
         </ul>
     </nav>
+    <?php
+    if(isset($templateParams["name"])) {
+        require($templateParams["nome"]);
+    }
+    ?>
     
 </body>
 </html>
