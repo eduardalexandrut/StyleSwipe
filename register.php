@@ -8,14 +8,31 @@ require_once 'bootstrap.php';
         $password = $_POST["password"];
         $dateOfBirth = $_POST["dateOfBirth"];
         $gender = $_POST["gender"];
+        $profilepic = $_POST["profilepic"];
 
-        $registration_result = $dbh->registerUser($name, $surname, $username, $password, $dateOfBirth, $gender);
+        if (isset($_FILES["profilepic"]) && !empty($_FILES["profilepic"]["name"])) {
+            // $_FILES["profilepic"] è definito e contiene un nome di file non vuoto
+            list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["profilepic"]);
+        
+            if ($result != 0) {
+                $profilepic = $msg;
 
-        if (!$registration_result) {
-            $templateParams["erroreRegistrazione"] = "Errore durante la registrazione. Riprova!";
+                $registration_result = $dbh->registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $profilepic);
+
+                if (!$registration_result) {
+                    $templateParams["erroreRegistrazione"] = "Errore durante la registrazione. Riprova!";
+                } else {
+                    registerLoggedUser($registration_result);
+                }
+        
+            } else {
+                header("location: register.php?formmsg=" . $msg);
+            }
         } else {
-            registerLoggedUser($registration_result);
+            $msg = "Errore: Nessun file caricato o file non valido.";
+            header("location: register.php?formmsg=" . $msg);
         }
+
     }
 
     if(isUserLoggedIn()){
