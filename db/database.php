@@ -31,47 +31,47 @@ class DatabaseHelper {
         }
     }   
 
-    public function registerUser($name, $surname, $username, $password, $dateOfBirth, $gender){
-        // Controlla se esiste già un utente con lo stesso username
-        $existingUserQuery = "SELECT * FROM user WHERE username = ?";
-        $existingUserStmt = $this->db->prepare($existingUserQuery);
-        $existingUserStmt->bind_param('s', $username);
-        $existingUserStmt->execute();
-        $existingUserResult = $existingUserStmt->get_result();
-    
-        if ($existingUserResult->num_rows > 0) {
-            // L'utente con questo username esiste già, registrazione fallita
-            return false;
-        }
-    
-        // Hash della password
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
-        // Preparazione della query
-        $insertUserQuery = "INSERT INTO user (name, surname, username, password, date_of_birth, gender) VALUES (?, ?, ?, ?, ?, ?)";
-        $insertUserStmt = $this->db->prepare($insertUserQuery);
-    
-        // Bind dei parametri
-        $insertUserStmt->bind_param('ssssss', $name, $surname, $username, $hashedPassword, $dateOfBirth, $gender);
-    
-        // Esecuzione della query
-        if ($insertUserStmt->execute()) {
-            // Registrazione completata con successo, restituisci i dati dell'utente
-            $userId = $insertUserStmt->insert_id;
-            $userData = array(
-                "name" => $name,
-                "surname" => $surname,
-                "username" => $username,
-                "date_of_birth" => $dateOfBirth,
-                "gender" => $gender
-            );
-    
-            return $userData;
-        } else {
-            // Registrazione fallita
-            return false;
-        }
-    }
+    public function registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $profilepic){
+     // Controlla se esiste già un utente con lo stesso username
+     $existingUserQuery = "SELECT * FROM user WHERE username = ?";
+     $existingUserStmt = $this->db->prepare($existingUserQuery);
+     $existingUserStmt->bind_param('s', $username);
+     $existingUserStmt->execute();
+     $existingUserResult = $existingUserStmt->get_result();
+ 
+     if ($existingUserResult->num_rows > 0) {
+         // L'utente con questo username esiste già, registrazione fallita
+         return false;
+     }
+ 
+     // Hash della password
+     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+ 
+     // Preparazione della query
+     $insertUserQuery = "INSERT INTO user (name, surname, username, password, date_of_birth, gender, profile_image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+     $insertUserStmt = $this->db->prepare($insertUserQuery);
+ 
+     // Bind dei parametri
+     $insertUserStmt->bind_param('sssssss', $name, $surname, $username, $hashedPassword, $dateOfBirth, $gender, $profilepic);
+ 
+     // Esecuzione della query
+     if ($insertUserStmt->execute()) {
+         // Registrazione completata con successo, restituisci i dati dell'utente
+         $userData = array(
+             "name" => $name,
+             "surname" => $surname,
+             "username" => $username,
+             "date_of_birth" => $dateOfBirth,
+             "gender" => $gender,
+             "profilepic" => $profilepic
+         );
+ 
+         return $userData;
+     } else {
+         // Registrazione fallita
+         return false;
+     }
+ }
 
     //Method to get the posts of a user.
     public function getPostsOfFollowing($user) {
@@ -125,6 +125,7 @@ class DatabaseHelper {
         }
         $stmt->close();
     }
+
 }
 
 ?>

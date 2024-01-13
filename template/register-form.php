@@ -12,7 +12,7 @@
 </head>
 <body id="registration">
     <div class="wrapper">
-        <form action="#" method="POST">
+        <form action="#" method="POST" enctype="multipart/form-data">
             <h1>Create Account</h1>
             <div class="input-box">
                 <ul>
@@ -23,34 +23,35 @@
                                 <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4"/>
                             </svg>
                         </label>
-                        <input type="file" id="profile-pic" accept="image/*" required/>
+                        <input type="file" name="profilepic" id="profile-pic" required/>
                     </li>
                     <li>
-                        <input type="text" id="username" value="" placeholder="Username" required/>
+                        <input type="text" id="username" name="username" value="" placeholder="Username" required/>
                         <i class="bi bi-person-fill"></i>
                     </li>
                     <li>
-                        <input type="email" value="" id="email" placeholder="E-mail" required/>
+                        <input type="email" name="email" value="" id="email" placeholder="E-mail" required/>
                         <i class="bi bi-envelope"></i>
                     </li>
                     <li>
-                        <input type="password" value="" id="password" placeholder="Password" required/>
+                        <input type="password" name="password" value="" id="password" placeholder="Password" required/>
                         <i class="bi bi-lock"></i>
                     </li>
                     <li>
-                        <input type="text" value="" id="name" placeholder="Name" required />
+                        <input type="text" name="name" value="" id="name" placeholder="Name" required />
                         <i class="bi bi-person-fill"></i>
                     </li>
                     <li>
-                        <input type="text" value="" id="surname" placeholder="Surname" required/>
+                        <input type="text" name="surname" value="" id="surname" placeholder="Surname" required/>
                         <i class="bi bi-person-fill"></i>
                     </li>
                     <li>
-                        <input type="text" placeholder="Birth Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        <i class="bi bi-calendar-event-fill"></i>
+                        <!--<input type="text" placeholder="Birth Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <i class="bi bi-calendar-event-fill"></i>-->
+                        <input type="date" name="dateOfBirth" id="dateOfBirth"/>
                     </li>
                     <li id = "gender-wrapper">
-                        <select class="select" id="gender" required aria-label="Gender">
+                        <select class="select" name="gender" id="gender" required aria-label="Gender">
                             <option value="" disabled selected hidden>Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
