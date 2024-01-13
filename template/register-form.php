@@ -34,12 +34,8 @@
                         <i class="bi bi-envelope"></i>
                     </li>
                     <li>
-                        <input type="password" value="" id="password1" placeholder="Password" required/>
+                        <input type="password" value="" id="password" placeholder="Password" required/>
                         <i class="bi bi-lock"></i>
-                    </li>
-                    <li>
-                        <input type="password" value="" id="password2" placeholder="Repeat Password" required/>
-                        <i class="bi bi-lock-fill"></i>
                     </li>
                     <li>
                         <input type="text" value="" id="name" placeholder="Name" required />
@@ -53,8 +49,8 @@
                         <input type="text" placeholder="Birth Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         <i class="bi bi-calendar-event-fill"></i>
                     </li>
-                    <li>
-                        <select class="select" id="gender" required>
+                    <li id = "gender-wrapper">
+                        <select class="select" id="gender" required aria-label="Gender">
                             <option value="" disabled selected hidden>Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>

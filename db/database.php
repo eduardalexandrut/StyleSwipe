@@ -33,7 +33,7 @@ class DatabaseHelper {
 
     public function registerUser($name, $surname, $username, $password, $dateOfBirth, $gender){
         // Controlla se esiste già un utente con lo stesso username
-        $existingUserQuery = "SELECT id FROM user WHERE username = ?";
+        $existingUserQuery = "SELECT * FROM user WHERE username = ?";
         $existingUserStmt = $this->db->prepare($existingUserQuery);
         $existingUserStmt->bind_param('s', $username);
         $existingUserStmt->execute();
@@ -59,7 +59,6 @@ class DatabaseHelper {
             // Registrazione completata con successo, restituisci i dati dell'utente
             $userId = $insertUserStmt->insert_id;
             $userData = array(
-                "id" => $userId,
                 "name" => $name,
                 "surname" => $surname,
                 "username" => $username,
