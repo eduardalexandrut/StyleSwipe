@@ -73,6 +73,25 @@ class DatabaseHelper {
         }
     }
 
+    //Method to get the posts of a user.
+    public function getPosts($user) {
+        $query = "SELECT p.* FROM post p
+        JOIN follow f ON p.user_username = f.following_username
+        WHERE f.follower_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $user);
+        try {
+            $result = $stmt->execute();
+            $posts = $result->fetch_all(MYSQLI_ASSOC);
+            return $posts;
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        } finally {
+            $stmt->close();
+        }
+    }
+
     //Method to add a new post.
     public function createPost($user, $comment) {
         $query = "INSERT INTO Post (user_username,comment) VALUES (?, ?)";
