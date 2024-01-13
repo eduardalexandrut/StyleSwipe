@@ -13,12 +13,12 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 }
 
 if(isUserLoggedIn()){
-    $templateParams["titolo"] = "Home";
-    $templateParams["nome"] = "home.php";
+    $templateParams["title"] = "Home";
+    $templateParams["name"] = "home.php";
 }
 else{
-    $templateParams["titolo"] = "Login";
-    $templateParams["nome"] = "login-form.php";
+    $templateParams["title"] = "Login";
+    $templateParams["name"] = "login-form.php";
 }
 
     require "template/login-form.php";
