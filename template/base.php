@@ -17,24 +17,24 @@
     <nav>
         <ul>
             <li>
-                <i data-name="active" class="bi-house"></i>
-                <a data-name="active" href="home.php">Home</a>
+                <i <?php isActive("home.php");?> class="bi-house"></i>
+                <a <?php isActive("home.php");?> href="home.php">Home</a>
             </li>
             <li >
                 <i class="bi-search" onclick="openNav()"></i>
                 <a href="#" onclick="openNav()">Search</a>
             </li>
             <li>
-                <i class="bi-plus-circle"></i>
-                <a href="create.php">New Outfit</a>
+                <i <?php isActive("create.php");?> class="bi-plus-circle"></i>
+                <a <?php isActive("create.php");?> href="create.php">New Outfit</a>
             </li>
             <li data-name="hidden">
                 <i class="bi-bell"></i>
                 <a data-bs-toggle="modal" data-bs-target="#notifyModal" href="#">Notifications</a>
             </li>
             <li>
-                <i class="bi-person"></i>
-                <a href="profile.php">Profile</a>
+                <i <?php isActive("profile.php");?> class="bi-person"></i>
+                <a <?php isActive("profile.php");?> href="profile.php">Profile</a>
             </li>
         </ul>
     </nav>

@@ -21,10 +21,11 @@ require_once 'bootstrap.php';
     if(isUserLoggedIn()){
         $templateParams["title"] = "Home";
         $templateParams["name"] = "home.php";
+        require("template/base.php");
     }
     else{
         $templateParams["title"] = "Register";
-        $templateParams["name"] = "register-form.php";
+        require("template/register-form.php");
     }
-    require("template/register-form.php");
+
 ?>
