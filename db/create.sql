@@ -11,7 +11,7 @@ CREATE TABLE `User` (
 CREATE TABLE `Post` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_username` VARCHAR(50) NOT NULL,
-    `image` VARCHAR(100) NOT NULL,
+    `image` VARCHAR(100) /*NOT NULL,*/,
     `posted` DATETIME NOT NULL,
     `comment` TEXT,
     FOREIGN KEY (`user_username`) REFERENCES `User`(`username`)

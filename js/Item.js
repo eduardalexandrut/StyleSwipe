@@ -39,3 +39,5 @@ class Item {
         return this.y;
     }
 }
+
+export default Item;

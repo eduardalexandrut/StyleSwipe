@@ -1,6 +1,70 @@
-    import './Item.js';
-    import './Pin.js';
-    let offsetX;
+//Item class.
+class Item {
+    constructor(name, brand, link, price, size, x, y) {
+        this.name = name;
+        this.brand = brand;
+        this.link = link;
+        this.price = price;
+        this.size = size;
+        this.x = x;
+        this.y = y;
+    }
+
+    // Getters
+    getName() {
+        return this.name;
+    }
+
+    getBrand() {
+        return this.brand;
+    }
+
+    getLink() {
+        return this.link;
+    }
+
+    getPrice() {
+        return this.price;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    getX() {
+        return this.x;
+    }
+
+    getY() {
+        return this.y;
+    }
+}
+
+//Pin class.
+class Pin {
+    x;
+    y;
+    strokeStyle = "white";
+    fillStyle = "#9013FE";
+    lineWidth =6;
+    radius = 8;
+    
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    };
+    
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0 , 2*Math.PI);
+        ctx.strokeStyle=this.strokeStyle;
+        ctx.fillStyle = this.fillStyle;
+        ctx.lineWidth = this.lineWidth;
+        ctx.stroke();
+        ctx.fill();
+    }
+};
+        let offsetX;
         let offsetY;
         let clientX;
         let clientY;
@@ -16,7 +80,22 @@
         //reset offest when the window gets resized.
         window.addEventListener("resize", ()=>setOffset(), false);
 
+        //Image picker.
         document.querySelector("section:first-of-type > input:first-of-type").addEventListener("change", ()=>previewImg(), false);
+
+        //document.querySelector("input[type='submit']:first-of-type").addEventListener("click", ()=>sendItemsToDB, false);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Find the addPinBtn element
+            let addPinBtn = document.getElementById('addPinBtn');
+        
+            // Check if the element exists
+            if (addPinBtn) {
+                // Add the event listener
+                addPinBtn.addEventListener('click', createItem);
+            }
+        });
+
         
         /*Function to create a displayable image selected by the user.*/
         function previewImg() {
@@ -137,5 +216,20 @@
         let now = new Date();
         let date = now.toLocaleString();
         document.getElementById("dateTime").innerHTML = date;
+
+        //Function to send the json representation of the items to the db and create them.
+        function sendItemsToDB() {
+            fetch('../create.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(items),
+            }
+            )
+            .then(response=>response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
 
         setOffset();

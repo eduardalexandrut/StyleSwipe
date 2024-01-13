@@ -73,6 +73,15 @@ class DatabaseHelper {
             return false;
         }
     }
+
+    //Method to add a new post.
+    public function createPost($user, $comment) {
+        $query = "INSERT INTO Post (user_username,comment) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$user, $comment);
+        return $stmt->execute();
+        
+    }
 }
 
 ?>
