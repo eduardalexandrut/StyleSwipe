@@ -219,6 +219,24 @@ main {
     width: 90% !important;
 }
 
+#createMain .item > div:last-child {
+    padding: 0 2% 0 2%;
+}
+
+#createMain .item > div:last-child button {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+}
+
+#createMain .item > div:last-child button:first-child {
+    border: 2px solid #6C10F4;
+}
+
+#createMain .item > div:last-child button:last-child {
+    border: 2px solid tomato;
+}
 .form-control{
     border: none;
     border-radius: 0;
@@ -240,7 +258,9 @@ aside#createAside > section img {
     display: inline;
     height: 70px;
     width: 70px;
-    border-radius: 50px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.25), 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
 }
 aside#createAside > section > ul li:first-of-type {
     font-size: 22px;
@@ -1118,7 +1138,6 @@ aside#createAside form>input:last-child {
         width: 100%;
         margin: 0;
     }
-    
     aside#createAside form textarea, aside form input {
         width: 90%;
     }
@@ -1145,6 +1164,12 @@ aside#createAside form>input:last-child {
         font-size: 20px;
     }
     
+    /**Home View*/
+    main#homeMain {
+        width: 80%;
+        border-right: none;
+    }
+
     /*Create View*/
     #createMain {
         width: 80%;
@@ -1173,9 +1198,9 @@ aside#createAside form>input:last-child {
     #createAside > section:first-of-type > img {
         width: 155px;
         height: 155px;
+        border-radius: 50%;
         border: 5px solid white;
         box-shadow: -2px -2px 5px 0px rgba(0, 0, 0, 0.25), 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
-        border-radius: 50%;
     } 
     #createAside > section:first-of-type ul {
        margin: 0;
