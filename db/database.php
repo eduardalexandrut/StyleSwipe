@@ -72,7 +72,58 @@ class DatabaseHelper {
             return false;
         }
     }
-   
+
+    //Method to get the posts of a user.
+    public function getPosts($user) {
+        $query = "SELECT p.* FROM post p
+        JOIN follow f ON p.user_username = f.following_username
+        WHERE f.follower_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $user);
+        try {
+            $result = $stmt->execute();
+            $posts = $result->fetch_all(MYSQLI_ASSOC);
+            return $posts;
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        } finally {
+            $stmt->close();
+        }
+    }
+
+    //Method to add a new post.
+    public function createPost($user, $comment) {
+        $query = "INSERT INTO Post (user_username,comment) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$user, $comment);
+        try {
+            $stmt->execute();
+            
+            // Return the auto-generated ID of the new post
+            $postId = $stmt->insert_id;
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return $postId;
+    }
+
+    //Method to add an item.
+    public function createItem($post, $name, $brand, $link, $price, $size, $x, $y) {
+        $query = "INSERT INTO Item (post_id, name, brand, link, price, size, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isssdsdd", $post_id, $name, $brand, $link, $price, $size, $x, $y);
+
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+    }
 }
 
 ?>

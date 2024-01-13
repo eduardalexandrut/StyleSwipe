@@ -22,8 +22,8 @@
                             <li><p id="dateTime"></p></li>
                         </ul> 
                     </section>
-                    <form action="#" method="post" >
-                        <textarea placeholder="Add a description of your outfit..." maxlength="250"></textarea>
+                    <form id = "createForm"action="create.php" method="post" >
+                        <textarea name="comment" placeholder="Add a description of your outfit..." maxlength="250"></textarea>
                         <input  type="submit" value="Add Post"/>
                         <input  type="button" value="Discard"/>
                     </form>
@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal" onclick="createItem()"  value="Add"/>
+                                    <input id="addPinBtn" type="button" data-bs-dismiss="modal"   value="Add"/>
                                     <input type="button" data-bs-dismiss="modal" value="Discard">
                                 </div>
                             </div>
@@ -119,5 +119,5 @@
 
                 <?php require("template/search.php"); ?>
                 
-<script type="module" src="js/create-view.js"></script>
+<script  src="js/create-view.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
