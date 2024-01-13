@@ -7,10 +7,9 @@ function isActive($pagename){
 }
 
 function isUserLoggedIn(){
-    return !empty($_SESSION['id']);
+    return !empty($_SESSION['username']);
 }
 function registerLoggedUser($user){
-    $_SESSION["id"] = $user["id"];
     $_SESSION["name"] = $user["name"];
     $_SESSION["surname"] = $user["surname"];
     $_SESSION["username"] = $user["username"];
