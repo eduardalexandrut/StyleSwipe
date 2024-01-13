@@ -985,12 +985,16 @@ aside#createAside form>input:last-child {
         padding: 5px; 
     }
 
-    .input-box #add-profile-pic {
+    .input-box #add-profile-pic, .input-box #gender-wrapper {
         flex: 0 0 100% !important;
     }
 
-    #registration .wrapper .input-box #add-profile-pic input {
+    #registration .wrapper .input-box #add-profile-pic input{
         width: 100%;
+    }
+
+    #registration .wrapper .input-box #gender {
+        width: 50%;
     }
     
     .wrapper .logo {
