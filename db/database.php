@@ -74,14 +74,15 @@ class DatabaseHelper {
     }
 
     //Method to get the posts of a user.
-    public function getPosts($user) {
+    public function getPostsOfFollowing($user) {
         $query = "SELECT p.* FROM post p
         JOIN follow f ON p.user_username = f.following_username
         WHERE f.follower_username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
         try {
-            $result = $stmt->execute();
+            $stmt->execute();
+            $result = $stmt->get_result();
             $posts = $result->fetch_all(MYSQLI_ASSOC);
             return $posts;
         } catch (Exception $e) {
