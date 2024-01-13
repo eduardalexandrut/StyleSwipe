@@ -12,7 +12,7 @@
 </head>
 <body id="registration">
     <div class="wrapper">
-        <form action="" method="POST">
+        <form action="#" method="POST">
             <h1>Create Account</h1>
             <div class="input-box">
                 <ul>

@@ -12,7 +12,7 @@
 <body id="login">
     <div class="wrapper">
         <img src="img/logo.png" alt="logo" class="logo">
-        <form action="">
+        <form action="#" method="POST">
             <h1>Login</h1>
             <div class="input-box">
                 <ul>
