@@ -83,7 +83,7 @@ class Pin {
         //Image picker.
         document.querySelector("section:first-of-type > input:first-of-type").addEventListener("change", ()=>previewImg(), false);
 
-        //document.querySelector("input[type='submit']:first-of-type").addEventListener("click", ()=>sendItemsToDB, false);
+        document.querySelector("input[type='submit']:first-of-type").addEventListener("click", ()=>sendItemsToDB, false);
 
         document.addEventListener('DOMContentLoaded', function () {
             // Find the addPinBtn element
@@ -219,7 +219,7 @@ class Pin {
 
         //Function to send the json representation of the items to the db and create them.
         function sendItemsToDB() {
-            fetch('../create.php', {
+            /*fetch('../create.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -230,6 +230,7 @@ class Pin {
             .then(response=>response.text())
             .then(data => console.log(data))
             .catch(error => console.error('Error:', error));
+            */
         }
 
         setOffset();

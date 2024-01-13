@@ -10,8 +10,13 @@ if($_SERVER["REQUEST_METHOD"] == 'POST') {
 
     $user = "Eduard";
 
-    $success = $dbh->createPost($user, $comment);
-    echo $success;
+    //Decode all the Items from JSON.
+    $items = json_decode($_POST['items'], true);
+    $postId = $dbh->createPost($user, $comment);
+
+    if ($postId) {
+
+    }
 }
 
 require 'template/base.php';

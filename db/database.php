@@ -78,8 +78,32 @@ class DatabaseHelper {
         $query = "INSERT INTO Post (user_username,comment) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$user, $comment);
-        return $stmt->execute();
+        try {
+            $stmt->execute();
+            
+            // Return the auto-generated ID of the new post
+            $postId = $stmt->insert_id;
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return $postId;
+    }
+
+    //Method to add an item.
+    public function createItem($post, $name, $brand, $link, $price, $size, $x, $y) {
+        $query = "INSERT INTO Item (post_id, name, brand, link, price, size, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("issssdsdd", $post_id, $name, $brand, $link, $price, $size, $x, $y);
         
+        try {
+            $stmt->execute();
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
     }
 }
 
