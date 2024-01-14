@@ -1206,7 +1206,7 @@ aside#createAside form>input:last-child {
         border-left: 1px solid black !important;
         flex-direction: row;
         align-items: center;
-
+        min-height: 100vh;
     }
 
     #createAside > section:first-of-type {
