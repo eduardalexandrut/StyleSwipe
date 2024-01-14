@@ -2,9 +2,9 @@
         <div id="profile-container">
             <div id="profile-info">
                 <div class="profile-pic-container">
-                    <img src="img/outfit.jpeg" alt="Profile Picture" />
+                    <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt="Profile Picture" />
                 </div>
-                <p>@username</p>
+                <p>@<?php echo $templateParams["username"]; ?></p>
                 <div id="profile-stats">
                     <span class="stat-item">
                         <span>21</span><br>
