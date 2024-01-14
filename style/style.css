@@ -748,7 +748,7 @@ aside#createAside form>input:last-child {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
 #profile-info img, .profile-pic-container img {
     width: 100%;
@@ -821,12 +821,20 @@ aside#createAside form>input:last-child {
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    margin-top: 1%;
+    margin-top: 2%;
+    padding-left: 3%;
+    padding-top: 2%;
 }
 
 .userContainer p {
     text-align: center;
     font-weight: bold;
+    margin-top: 4%;
+    margin-left: 2%;
+}
+
+.userContainer .profile-pic-container{
+    width: 15%;
 }
 
 #modalFollow .modalTitle {
