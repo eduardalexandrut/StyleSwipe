@@ -46,7 +46,7 @@ class Pin {
     y;
     strokeStyle = "white";
     fillStyle = "#9013FE";
-    lineWidth =6;
+    lineWidth = 6;
     radius = 8;
     
     constructor(x, y) {
@@ -83,7 +83,11 @@ class Pin {
         //Image picker.
         document.querySelector("section:first-of-type > input:first-of-type").addEventListener("change", ()=>previewImg(), false);
 
+        //Event when the forme gets submitted.
         document.getElementById("createForm").addEventListener("submit", (e)=>sendItemsToDB(e), false);
+
+        //Discard button event.
+        document.querySelector("#createForm > input[value='Discard']").addEventListener("click", ()=>window.location.href = 'home.php', false);
 
         document.addEventListener('DOMContentLoaded', function () {
             // Find the addPinBtn element
@@ -229,8 +233,10 @@ class Pin {
                 method: 'POST',
                 body: formData,
             })
-            .then(response => response.text())
-          //  .then(data => console.log(data))
+            .then(
+                //redirect to home.php.
+                window.location.href="home.php"
+            )
             .catch(error => console.error('Error:', error));
         
             event.preventDefault();

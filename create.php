@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if ($items === null) {
             echo "Error decoding JSON data.";
         } else {
-            $user = "Eduard";
+            $user = $_SESSION["username"];
             $postId = $dbh->createPost($user, $comment);
 
             if ($postId) {
