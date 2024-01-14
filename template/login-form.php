@@ -14,14 +14,17 @@
         <img src="img/logo.png" alt="logo" class="logo">
         <form action="#" method="POST">
             <h1>Login</h1>
+            <?php if(isset($templateParams["errorelogin"])): ?>
+            <p><?php echo $templateParams["errorelogin"]; ?></p>
+            <?php endif; ?>
             <div class="input-box">
                 <ul>
                     <li>
-                        <input type="email" value="" id="email" placeholder="E-mail" required/>
+                        <input type="email" name="email" value="" id="email" placeholder="E-mail" required/>
                         <i class="bi bi-envelope"></i>
                     </li>
                     <li>
-                        <input type="password" value="" id="password1" placeholder="Password" required/>
+                        <input type="password" name="password" value="" id="password1" placeholder="Password" required/>
                         <i class="bi bi-lock"></i>
                     </li>
                     <li>

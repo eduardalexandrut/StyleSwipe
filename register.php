@@ -8,6 +8,7 @@ require_once 'bootstrap.php';
         $password = $_POST["password"];
         $dateOfBirth = $_POST["dateOfBirth"];
         $gender = $_POST["gender"];
+        $email = $_POST["email"];
         $profilepic = $_POST["profilepic"];
 
         if (isset($_FILES["profilepic"]) && !empty($_FILES["profilepic"]["name"])) {
@@ -17,7 +18,7 @@ require_once 'bootstrap.php';
             if ($result != 0) {
                 $profilepic = $msg;
 
-                $registration_result = $dbh->registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $profilepic);
+                $registration_result = $dbh->registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $email, $profilepic);
 
                 if (!$registration_result) {
                     $templateParams["erroreRegistrazione"] = "Errore durante la registrazione. Riprova!";

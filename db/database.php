@@ -9,10 +9,10 @@ class DatabaseHelper {
         }        
     }
 
-    public function checkLogin($username, $password){
-        $query = "SELECT * FROM user WHERE username = ?";
+    public function checkLogin($email, $password){
+        $query = "SELECT * FROM user WHERE email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $username);
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -31,7 +31,7 @@ class DatabaseHelper {
         }
     }   
 
-    public function registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $profilepic){
+    public function registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $email, $profilepic){
      // Controlla se esiste già un utente con lo stesso username
      $existingUserQuery = "SELECT * FROM user WHERE username = ?";
      $existingUserStmt = $this->db->prepare($existingUserQuery);
@@ -48,11 +48,11 @@ class DatabaseHelper {
      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
  
      // Preparazione della query
-     $insertUserQuery = "INSERT INTO user (name, surname, username, password, date_of_birth, gender, profile_image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+     $insertUserQuery = "INSERT INTO user (name, surname, username, password, date_of_birth, gender, profile_image, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
      $insertUserStmt = $this->db->prepare($insertUserQuery);
  
      // Bind dei parametri
-     $insertUserStmt->bind_param('sssssss', $name, $surname, $username, $hashedPassword, $dateOfBirth, $gender, $profilepic);
+     $insertUserStmt->bind_param('ssssssss', $name, $surname, $username, $hashedPassword, $dateOfBirth, $gender, $profilepic, $email);
  
      // Esecuzione della query
      if ($insertUserStmt->execute()) {
@@ -63,7 +63,8 @@ class DatabaseHelper {
              "username" => $username,
              "date_of_birth" => $dateOfBirth,
              "gender" => $gender,
-             "profilepic" => $profilepic
+             "profilepic" => $profilepic,
+             "email" => $email
          );
  
          return $userData;

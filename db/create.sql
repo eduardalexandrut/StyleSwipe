@@ -5,8 +5,10 @@ CREATE TABLE `User` (
     `password` VARCHAR(255) NOT NULL, 
     `date_of_birth` DATE NOT NULL,
     `gender` ENUM('Male', 'Female', 'Neutral'),
+    `email` VARCHAR(255) UNIQUE NOT NULL,
     `profile_image` VARCHAR(255) NOT NULL 
 );
+
 /* Post Table */
 CREATE TABLE `Post` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
