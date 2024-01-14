@@ -140,8 +140,9 @@ main {
     float: initial;
     margin-top: 80px;
     border: none;
-    min-height: fit-content;
+    height: fit-content;
     padding-bottom: 20%;
+    min-height: 100vh;
 }
 
 
