@@ -139,6 +139,14 @@ public function createPost($user, $comment, $image) {
         $stmt->close();
     }
 
+    public function searchUser($query) {
+        $stmt = $this->db->prepare("SELECT * FROM User WHERE username LIKE ?");
+        $param = "%".$query."%";
+        $stmt->bind_param("s", $param);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+
 }
 
 ?>
