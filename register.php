@@ -39,7 +39,8 @@ require_once 'bootstrap.php';
     if(isUserLoggedIn()){
         $templateParams["title"] = "Home";
         $templateParams["name"] = "home.php";
-        require("template/base.php");
+        header("Location: home.php");
+        exit();
     }
     else{
         $templateParams["title"] = "Register";

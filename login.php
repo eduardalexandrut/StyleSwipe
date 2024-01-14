@@ -15,7 +15,8 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 if(isUserLoggedIn()){
     $templateParams["title"] = "Home";
     $templateParams["name"] = "home.php";
-    require("template/base.php");
+    header("Location: home.php");
+    exit();
 }
 else{
     $templateParams["title"] = "Login";
