@@ -104,11 +104,14 @@ class DatabaseHelper {
 
    // Method to add a new post.
 public function createPost($user, $comment, $image) {
-    $query = "INSERT INTO Post (user_username, comment, image) VALUES (?, ?, ?)";
+    $query = "INSERT INTO Post (user_username, comment, image, posted) VALUES (?, ?, ?, ?)";
     $stmt = $this->db->prepare($query);
+
+    // Get the current datetime
+    $posted = date("Y-m-d");
     
     // Bind parameters in the correct order
-    $stmt->bind_param('sss', $user, $comment, $image);
+    $stmt->bind_param('ssss', $user, $comment, $image, $posted);
     
     try {
         $stmt->execute();
