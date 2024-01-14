@@ -226,16 +226,23 @@ class Pin {
             // Append the items to the post data.
             let formData = new FormData(event.target);
             formData.append('items', JSON.stringify(items));
-        
-            console.log(formData);
+
+            // Append the image file from the input field
+            formData.append('image', imgInput.files[0]);
         
             fetch('./create.php', {
                 method: 'POST',
                 body: formData,
             })
             .then(
-                //redirect to home.php.
-                window.location.href="home.php"
+                response =>{
+                    if (response.ok) {
+                        //If ok, redirect to home.php
+                        window.location.href="home.php"
+                    } else {
+                        console.error('Error:', response.status);
+                    }
+                }
             )
             .catch(error => console.error('Error:', error));
         

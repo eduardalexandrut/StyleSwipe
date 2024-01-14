@@ -94,29 +94,33 @@ class DatabaseHelper {
         }
     }
 
-    //Method to add a new post.
-    public function createPost($user, $comment) {
-        $query = "INSERT INTO Post (user_username,comment) VALUES (?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$user, $comment);
-        try {
-            $stmt->execute();
-            
-            // Return the auto-generated ID of the new post
-            $postId = $stmt->insert_id;
-        } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-            return false;
-        }
-        $stmt->close();
-        return $postId;
+   // Method to add a new post.
+public function createPost($user, $comment, $image) {
+    $query = "INSERT INTO Post (user_username, comment, image) VALUES (?, ?, ?)";
+    $stmt = $this->db->prepare($query);
+    
+    // Bind parameters in the correct order
+    $stmt->bind_param('sss', $user, $comment, $image);
+    
+    try {
+        $stmt->execute();
+        
+        // Return the auto-generated ID of the new post
+        $postId = $stmt->insert_id;
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+        return false;
     }
+    
+    $stmt->close();
+    return $postId;
+}
 
     //Method to add an item.
     public function createItem($post, $name, $brand, $link, $price, $size, $x, $y) {
         $query = "INSERT INTO Item (post_id, name, brand, link, price, size, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("isssdsdd", $post_id, $name, $brand, $link, $price, $size, $x, $y);
+        $stmt->bind_param("isssdsdd", $post, $name, $brand, $link, $price, $size, $x, $y);
 
         try {
             $stmt->execute();
