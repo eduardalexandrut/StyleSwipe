@@ -22,7 +22,7 @@
                             <li><p id="dateTime"></p></li>
                         </ul> 
                     </section>
-                    <form id = "createForm"action="create.php" method="post" >
+                    <form id = "createForm" action="create.php" method="post" >
                         <textarea name="comment" placeholder="Add a description of your outfit..." maxlength="250"></textarea>
                         <input  type="submit" value="Add Post"/>
                         <input  type="button" value="Discard"/>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <input id="addPinBtn" type="button" data-bs-dismiss="modal"   value="Add"/>
-                                    <input type="button" data-bs-dismiss="modal" value="Discard">
+                                    <input type="button" data-bs-dismiss="modal"  value="Discard">
                                 </div>
                             </div>
                         </div>

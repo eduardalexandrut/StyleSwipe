@@ -22,5 +22,3 @@ class Pin {
         ctx.fill();
     }
 };
-
-export default Pin;
