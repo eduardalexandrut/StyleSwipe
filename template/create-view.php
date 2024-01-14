@@ -16,7 +16,7 @@
                     </div>
                 </main><aside id="createAside">
                     <section>
-                        <img src="img/outfit.jpeg" alt=""/>
+                        <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt=""/>
                         <ul>
                             <li><h4>@username</h4></li>
                             <li><p id="dateTime"></p></li>

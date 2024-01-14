@@ -3,6 +3,7 @@ require_once 'bootstrap.php';
 
 $templateParams["title"] = "New Outfit";
 $templateParams["name"] = "create-view.php";
+$templateParams["profilepic"] = $_SESSION["profilepic"];
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     // Check if comment and items are set in $_POST

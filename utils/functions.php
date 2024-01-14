@@ -16,6 +16,7 @@ function registerLoggedUser($user){
     $_SESSION["date_of_birth"] = $user["date_of_birth"];
     $_SESSION["gender"] = $user["gender"];
     $_SESSION["email"] = $user["email"];
+    $_SESSION["profilepic"] = $user["profilepic"];
 }
 
 function uploadImage($path, $image){
