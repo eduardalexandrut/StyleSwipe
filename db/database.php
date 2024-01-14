@@ -120,7 +120,7 @@ public function createPost($user, $comment, $image) {
     public function createItem($post, $name, $brand, $link, $price, $size, $x, $y) {
         $query = "INSERT INTO Item (post_id, name, brand, link, price, size, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("isssdsdd", $post_id, $name, $brand, $link, $price, $size, $x, $y);
+        $stmt->bind_param("isssdsdd", $post, $name, $brand, $link, $price, $size, $x, $y);
 
         try {
             $stmt->execute();

@@ -223,18 +223,12 @@ class Pin {
 
         //Function to send the json representation of the items to the db and create them.
         function sendItemsToDB(event) {
-            //Get the selected image's path.
-            //let imageSrc = image.src;
-
             // Append the items to the post data.
             let formData = new FormData(event.target);
             formData.append('items', JSON.stringify(items));
-            //formData.append('image', imageSrc);
 
             // Append the image file from the input field
             formData.append('image', imgInput.files[0]);
-        
-            
         
             fetch('./create.php', {
                 method: 'POST',
@@ -243,9 +237,10 @@ class Pin {
             .then(
                 response =>{
                     if (response.ok) {
+                        //If ok, redirect to home.php
                         window.location.href="home.php"
                     } else {
-                        response=>console.log(response)
+                        console.error('Error:', response.status);
                     }
                 }
             )
