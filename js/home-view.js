@@ -172,11 +172,13 @@ function likeUnlike(btn) {
         // If button was a like, now set action to unlike.
         if (action == "LIKE") {
             btn.setAttribute("data-action", "UNLIKE");
-            btn.classList.remove("bi-hand-thumbs-up");
-            btn.classList.add("class", "bi-hand-thumbs-down");
+            btn.querySelector("i").classList.remove("bi-hand-thumbs-up");
+            btn.querySelector("i").classList.add("class", "bi-hand-thumbs-down");
             
         } else {
             btn.setAttribute("data-action", "LIKE");
+            btn.querySelector("i").classList.remove("bi-hand-thumbs-down");
+            btn.querySelector("i").classList.add("class", "bi-hand-thumbs-up");
         }
     })
     .catch(error => console.error('Error:', error));
