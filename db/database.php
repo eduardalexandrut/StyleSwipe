@@ -158,6 +158,22 @@ public function createPost($user, $comment, $image) {
         return $stmt->get_result();
     }
 
+    /**Method to add a like to a post. */
+    public function addLike($post, $user) {
+        $query = "INSERT INTO `Like` (`user_username`, `post_id`, `date_liked`) VALUES (?, ?, ?)";
+        // Get the current datetime
+        $date_posted = date("Y-m-d H:i:s");
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iss", $post, $user, $date_posted);
+        try {
+            $stmt->execute();
+        }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
 }
 
 ?>
