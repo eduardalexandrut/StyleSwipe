@@ -2,7 +2,7 @@
         <div id="profile-container">
             <div id="profile-info">
                 <div class="profile-pic-container">
-                    <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt="Profile Picture" />
+                    <img src="<?php echo UPLOAD_DIR.$_SESSION["profilepic"]; ?>" alt="Profile Picture" />
                 </div>
                 <p>@<?php echo $templateParams["username"]; ?></p>
                 <div id="profile-stats">
