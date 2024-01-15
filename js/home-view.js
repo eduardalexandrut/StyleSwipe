@@ -172,6 +172,8 @@ function likeUnlike(btn) {
         // If button was a like, now set action to unlike.
         if (action == "LIKE") {
             btn.setAttribute("data-action", "UNLIKE");
+            btn.classList.remove("bi-hand-thumbs-up");
+            btn.classList.add("class", "bi-hand-thumbs-down");
             
         } else {
             btn.setAttribute("data-action", "LIKE");

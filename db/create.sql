@@ -33,34 +33,33 @@ CREATE TABLE `Item` (
     `y` FLOAT NOT NULL,
     FOREIGN KEY (`post_id`) REFERENCES `Post`(`id`)
 );
-
 /* Like Table */
 CREATE TABLE `Like` (
-    `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_username` VARCHAR(50) NOT NULL,
     `post_id` INT NOT NULL,
     `date_liked` DATETIME NOT NULL,
+    PRIMARY KEY (`post_id`, `user_username`),
     FOREIGN KEY (`user_username`) REFERENCES `User`(`username`),
     FOREIGN KEY (`post_id`) REFERENCES `Post`(`id`)
 );
 
 /* Comment Table */
 CREATE TABLE `Comment` (
-    `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_username` VARCHAR(50) NOT NULL,
     `post_id` INT NOT NULL,
     `comment_text` TEXT NOT NULL,
     `date_posted` DATETIME NOT NULL,
+    PRIMARY KEY (`post_id`, `user_username`),
     FOREIGN KEY (`user_username`) REFERENCES `User`(`username`),
     FOREIGN KEY (`post_id`) REFERENCES `Post`(`id`)
 );
 
 /* Star Table */
 CREATE TABLE `Star` (
-    `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_username` VARCHAR(50) NOT NULL,
     `post_id` INT NOT NULL,
     `date_starred` DATETIME NOT NULL,
+    PRIMARY KEY (`post_id`, `user_username`),
     FOREIGN KEY (`user_username`) REFERENCES `User`(`username`),
     FOREIGN KEY (`post_id`) REFERENCES `Post`(`id`)
 );
