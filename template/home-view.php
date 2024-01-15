@@ -1,9 +1,9 @@
 <main id="homeMain">
         <!--Post Structure-->
         
-        <?php 
-       // var_dump($templateParams["post"]);
-        foreach ($templateParams["post"] as $post): ?>
+        <?php if (count($templateParams["post"])): ?>
+            <p>No following.</p>
+        <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post">
         <header>
             <img alt="User Profile Pic" src="./upload/be.jpeg" />
@@ -39,6 +39,7 @@
         </footer>
     </div>
      <?php endforeach; ?>
+     <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
         <!--New Notification element.-->

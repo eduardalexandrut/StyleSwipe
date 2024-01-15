@@ -108,7 +108,7 @@ public function createPost($user, $comment, $image) {
     $stmt = $this->db->prepare($query);
 
     // Get the current datetime
-    $posted = date("Y-m-d");
+    $posted = date("Y-m-d H:i:s");
     
     // Bind parameters in the correct order
     $stmt->bind_param('ssss', $user, $comment, $image, $posted);
