@@ -178,11 +178,13 @@ function likeUnlike(btn) {
             btn.setAttribute("data-action", "UNLIKE");
             btn.querySelector("i").classList.remove("bi-hand-thumbs-up");
             btn.querySelector("i").classList.add("class", "bi-hand-thumbs-down");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
             
         } else {
             btn.setAttribute("data-action", "LIKE");
             btn.querySelector("i").classList.remove("bi-hand-thumbs-down");
             btn.querySelector("i").classList.add("class", "bi-hand-thumbs-up");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) - 1;
         }
     })
     .catch(error => console.error('Error:', error));
@@ -217,9 +219,11 @@ function starUnstar(btn) {
         // If button was a like, now set action to unlike.
         if (action == "STAR") {
             btn.setAttribute("data-action", "UNSTAR");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
             
         } else {
             btn.setAttribute("data-action", "STAR");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) - 1;
         }
     })
     .catch(error => console.error('Error:', error));

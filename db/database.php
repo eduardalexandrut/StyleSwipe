@@ -275,6 +275,23 @@ public function createPost($user, $comment, $image) {
         $stmt->close();
         return true;
     }
+
+    /**Method to add a comment. */
+    public function addComment($post, $user, $body) {
+        $query = "INSERT INTO `Comment` (user_username, post_id, comment_text, date_posted)  VALUES (?,?,?,?)";
+        $date_posted = date("Y-m-d");
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("siss", $user, $post,$body, $date_posted);
+
+        try {
+            $stmt->execute();
+        } catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
 }
 
 ?>

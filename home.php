@@ -18,14 +18,19 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         //Check type of action.
         if ($action == "LIKE") {
             $dbh->addLike($postId, $_SESSION["username"]);
+            //Generate notification.
         } else if ($action == "UNLIKE") {
             $dbh->removeLike($postId, $_SESSION["username"]);
+            //Generate notification.
         } else if ($action == "STAR") {
             $dbh->addStar($postId, $_SESSION["username"]);
+            //Generate notification.
         } else if ($action == "UNSTAR") {
             $dbh->removeStar($postId, $_SESSION["username"]);
+            //Generate notification.
         } else if ($action == "COMMENT") {
-            
+            //Generate notification.
+
         }
     } else {
         // Missing action or post_id.
