@@ -167,7 +167,7 @@ function likeUnlike(btn) {
     })
     .then(data => {
         // Handle the JSON response.
-        console.log(data); // Log the response for debugging.
+        //console.log(data); // Log the response for debugging.
 
         // If button was a like, now set action to unlike.
         if (action == "LIKE") {

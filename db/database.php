@@ -228,10 +228,10 @@ public function createPost($user, $comment, $image) {
     /**Method to  unlike a post. */
     public function removeLike($post, $user) {
         $query = "DELETE FROM `Like`
-        WHERE `user_username` = '?' AND `post_id` = ?;";
+              WHERE `user_username` = ? AND `post_id` = ?";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("si", $user, $post,);
+        $stmt->bind_param("si", $user, $post);
         try {
             $stmt->execute();
         } catch(Exception $e){

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         //Check type of action.
         if ($action == "LIKE") {
             $dbh->addLike($postId, $_SESSION["username"]);
-        } else if ($action == "DELETE") {
+        } else if ($action == "UNLIKE") {
             $dbh->removeLike($postId, $_SESSION["username"]);
         }
     } else {
