@@ -212,12 +212,29 @@ public function createPost($user, $comment, $image) {
     public function addLike($post, $user) {
         $query = "INSERT INTO `Like` (`user_username`, `post_id`, `date_liked`) VALUES (?, ?, ?)";
         // Get the current datetime
-        $date_posted = date("Y-m-d H:i:s");
+        $date_posted = date("Y-m-d");
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iss", $post, $user, $date_posted);
+        $stmt->bind_param("sis", $user, $post, $date_posted);
         try {
             $stmt->execute();
         }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    /**Method to  unlike a post. */
+    public function removeLike($post, $user) {
+        $query = "DELETE FROM `Like`
+        WHERE `user_username` = '?' AND `post_id` = ?;";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $user, $post,);
+        try {
+            $stmt->execute();
+        } catch(Exception $e){
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return false;
         }
