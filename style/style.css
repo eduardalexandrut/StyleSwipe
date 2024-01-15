@@ -921,6 +921,10 @@ aside#createAside form>input:last-child {
         top:0
     }
 
+    .initially-hidden {
+        display: none;
+    }
+
 /*Desktop view*/
 @media screen and (min-width: 769px) {
     

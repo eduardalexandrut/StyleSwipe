@@ -13,11 +13,23 @@ document.getElementById('saved-icon').addEventListener('click', function() {
 });
 
 document.getElementById('showFollowers').addEventListener('click', function() {
-    document.getElementsByClassName('modalTitle')[0].textContent = 'Followers';
+    $('#modalFollow .modal-body').addClass('initially-hidden');
+    $('#modalFollow').on('shown.bs.modal', function () {
+        document.getElementById('followings').style.display = 'none';
+        document.getElementById('followers').style.display = 'block';
+        document.getElementsByClassName('modalTitle')[0].textContent = 'Followers';
+        $('#modalFollow .modal-body').removeClass('initially-hidden');
+    }).modal('show');
 });
 
 document.getElementById('showFollowings').addEventListener('click', function() {
-    document.getElementsByClassName('modalTitle')[0].textContent = 'Followings';
+    $('#modalFollow .modal-body').addClass('initially-hidden');
+    $('#modalFollow').on('shown.bs.modal', function () {
+        document.getElementById('followings').style.display = 'block';
+        document.getElementById('followers').style.display = 'none';
+        document.getElementsByClassName('modalTitle')[0].textContent = 'Followings';
+        $('#modalFollow .modal-body').removeClass('initially-hidden');
+    }).modal('show');
 });
 
 function showPost(post) {

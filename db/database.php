@@ -158,6 +158,56 @@ public function createPost($user, $comment, $image) {
         return $stmt->get_result();
     }
 
+    public function getUserByUsername($username) {
+        $query = "SELECT * FROM user WHERE username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows == 0) {
+            return null;
+        }
+    
+        return $result->fetch_assoc();
+    }
+
+    public function getFollowers($username) {
+        $query = "SELECT follower_username FROM Follow WHERE following_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $followers = array();
+
+        while ($row = $result->fetch_assoc()) {
+            $follower = $this->getUserByUsername($row['follower_username']);
+            if ($follower) {
+                $followers[] = $follower;
+            }
+        }
+
+        return $followers;
+    }
+
+    public function getFollowings($username) {
+        $query = "SELECT following_username FROM Follow WHERE follower_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $followings = array();
+
+        while ($row = $result->fetch_assoc()) {
+            $following = $this->getUserByUsername($row['following_username']);
+            if ($following) {
+                $followings[] = $following;
+            }
+        }
+
+        return $followings;
+    }
+
     /**Method to add a like to a post. */
     public function addLike($post, $user) {
         $query = "INSERT INTO `Like` (`user_username`, `post_id`, `date_liked`) VALUES (?, ?, ?)";

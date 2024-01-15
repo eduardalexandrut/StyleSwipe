@@ -39,6 +39,8 @@ require_once 'bootstrap.php';
     if(isUserLoggedIn()){
         $templateParams["title"] = "Home";
         $templateParams["name"] = "home.php";
+        $templateParams["username"] = $_SESSION["username"];
+        $templateParams["profilepic"] = $_SESSION["profilepic"];
         header("Location: home.php");
         exit();
     }
