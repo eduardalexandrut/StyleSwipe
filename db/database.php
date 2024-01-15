@@ -241,6 +241,40 @@ public function createPost($user, $comment, $image) {
         $stmt->close();
         return true;
     }
+
+    /**Method to star a post */
+    public function addStar($post, $user) {
+        $query = "INSERT INTO `Star` (`user_username`, `post_id`, `date_starred`) VALUES (?, ?, ?)";
+        // Get the current datetime
+        $date_posted = date("Y-m-d");
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sis", $user, $post, $date_posted);
+        try {
+            $stmt->execute();
+        }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    /**Method to remove a starred post. */
+    public function removeStar($post, $user) {
+        $query = "DELETE FROM `Star`
+              WHERE `user_username` = ? AND `post_id` = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $user, $post);
+        try {
+            $stmt->execute();
+        } catch(Exception $e){
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
 }
 
 ?>

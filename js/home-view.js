@@ -78,6 +78,10 @@ window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
 //Event listener for buttons of class .like-btn.
 document.querySelectorAll("button.like-btn").forEach((btn) => btn.addEventListener("click", ()=>likeUnlike(btn), false));
+
+//Event listener for buttons of class .star-btn.
+document.querySelectorAll("button.star-btn").forEach((btn) => btn.addEventListener("click", ()=>starUnstar(btn), false));
+
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
     let ctx = canvas.getContext("2d");
@@ -142,7 +146,7 @@ function generateRandomPins() {
     return pins;
 }
 
-//Function to add a like.
+//Function to add/remove a like.
 function likeUnlike(btn) {
     let postId = btn.getAttribute("data-post-id");
     let action = btn.getAttribute("data-action");
@@ -183,6 +187,44 @@ function likeUnlike(btn) {
     })
     .catch(error => console.error('Error:', error));
     }
+
+////Function to add/remove a star.
+function starUnstar(btn) {
+    let postId = btn.getAttribute("data-post-id");
+    let action = btn.getAttribute("data-action");
+    console.log(action , postId)
+    //Send data to home.php.
+    fetch('./home.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            action: action,
+            postId: postId
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Parse the JSON from the response.
+        } else {
+            throw new Error("Network response was not ok");
+        }
+    })
+    .then(data => {
+        //console.log(data); // Log the response for debugging.
+
+        // If button was a like, now set action to unlike.
+        if (action == "STAR") {
+            btn.setAttribute("data-action", "UNSTAR");
+            
+        } else {
+            btn.setAttribute("data-action", "STAR");
+        }
+    })
+    .catch(error => console.error('Error:', error));
+    }
+
 
 resizeCanvas();
 });

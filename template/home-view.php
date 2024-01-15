@@ -27,7 +27,7 @@
                     <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
-                    <button class="star-btn">
+                    <button data-action = "STAR" data-post-id="<?php echo $post['id'] ?>" class="star-btn">
                         <i class="bi-star"></i>
                     </button>
                     <p><?php echo $post["stars"] ?></p>

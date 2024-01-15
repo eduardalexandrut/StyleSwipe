@@ -20,6 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $dbh->addLike($postId, $_SESSION["username"]);
         } else if ($action == "UNLIKE") {
             $dbh->removeLike($postId, $_SESSION["username"]);
+        } else if ($action == "STAR") {
+            $dbh->addStar($postId, $_SESSION["username"]);
+        } else if ($action == "UNSTAR") {
+            $dbh->removeStar($postId, $_SESSION["username"]);
+        } else if ($action == "COMMENT") {
+            
         }
     } else {
         // Missing action or post_id.
