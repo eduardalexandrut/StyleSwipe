@@ -276,6 +276,42 @@ public function createPost($user, $comment, $image) {
         return true;
     }
 
+    /**Method to get all the comments of a specific post. */
+    public function getCommentsOfPost($post) {
+        $query = "SELECT
+            Comment.user_username,
+            Comment.post_id,
+            Comment.comment_text,
+            Comment.date_posted,
+            User.profile_image
+        FROM
+            Comment
+        JOIN
+            User ON Comment.user_username = User.username
+        WHERE
+            Comment.post_id = ?;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post);
+        try { 
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            //Check if there is any result.
+            if ($result->num_rows > 0) {
+                $comments = $result->fetch_all(MYSQLI_ASSOC);   
+                return $comments;
+            } else {
+                return [];
+            }
+        }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+        
+    }
+
     /**Method to add a comment. */
     public function addComment($post, $user, $body) {
         $query = "INSERT INTO `Comment` (user_username, post_id, comment_text, date_posted)  VALUES (?,?,?,?)";
