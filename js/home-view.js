@@ -75,6 +75,9 @@ postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 //Event listener to dynamically resize the canvas'.
 window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
+//Event listener for buttons of class .like-btn.
+document.querySelectorAll(".like-btn").forEach((btn)=> addLike(btn), false);
+
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
     let ctx = canvas.getContext("2d");

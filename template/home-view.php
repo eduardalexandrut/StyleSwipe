@@ -15,7 +15,7 @@
         <section>
             <div>
                 <div>
-                    <button>
+                    <button data-post-id="<?php echo $post['id'] ?>"  class="like-btn">
                         <i class="bi-hand-thumbs-up"></i>
                     </button>
                     <p><?php echo $post["likes"] ?></p>
@@ -27,7 +27,7 @@
                     <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
-                    <button>
+                    <button class="star-btn">
                         <i class="bi-star"></i>
                     </button>
                     <p><?php echo $post["stars"] ?></p>
