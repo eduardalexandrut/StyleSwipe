@@ -7,7 +7,6 @@ $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     //Get content from input.
     $json_data = file_get_contents('php://input');
-    
     // Decode JSON data
     $data = json_decode($json_data, true);
 
@@ -19,6 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         //Check type of action.
         if ($action == "LIKE") {
             $dbh->addLike($postId, $_SESSION["username"]);
+        } else if ($action == "DELETE") {
+            $dbh->removeLike($postId, $_SESSION["username"]);
         }
     } else {
         // Missing action or post_id.
