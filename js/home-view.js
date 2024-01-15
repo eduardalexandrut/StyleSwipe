@@ -76,7 +76,7 @@ postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
 //Event listener for buttons of class .like-btn.
-document.querySelectorAll(".like-btn").forEach((btn)=> addLike(btn), false);
+document.querySelectorAll(".like-btn").forEach((btn)=> likeUnlike(btn), false);
 
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
@@ -141,5 +141,36 @@ function generateRandomPins() {
 
     return pins;
 }
+
+//Function to add a like.
+function likeUnlike(btn) {
+    let postId = btn.getAttribute("data-post-id");
+    let action = btn.getAttribute("data-action");
+
+    //Send data to home.php.
+    fetch('./home.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            action: action,
+            postId: postId
+        })
+    })
+        .then(response => {
+            if (response.ok) {
+                //If button was a like, now set action to unlike.
+                if (action == "LIKE") {
+                    btn.setAttribute("data-action", "UNLIKE");
+                } else {
+                    btn.setAttribute("data-action", "LIKE");
+                }
+            } else {
+                console.log("Error:", response.status);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
 
 resizeCanvas();

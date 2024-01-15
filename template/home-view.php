@@ -15,7 +15,7 @@
         <section>
             <div>
                 <div>
-                    <button data-post-id="<?php echo $post['id'] ?>"  class="like-btn">
+                    <button data-action = "LIKE" data-post-id="<?php echo $post['id'] ?>"  class="like-btn">
                         <i class="bi-hand-thumbs-up"></i>
                     </button>
                     <p><?php echo $post["likes"] ?></p>
