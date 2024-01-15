@@ -64,7 +64,8 @@ class Pin {
         ctx.fill();
     }
 };
-const postCanvas = document.querySelectorAll(".post > canvas");
+
+document.addEventListener('DOMContentLoaded', function () {const postCanvas = document.querySelectorAll(".post > canvas");
 const randomPins = generateRandomPins();
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
@@ -76,8 +77,7 @@ postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
 //Event listener for buttons of class .like-btn.
-document.querySelectorAll(".like-btn").forEach((btn)=> likeUnlike(btn), false);
-
+document.querySelectorAll("button.like-btn").forEach((btn) => btn.addEventListener("click", ()=>likeUnlike(btn), false));
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
     let ctx = canvas.getContext("2d");
@@ -146,7 +146,7 @@ function generateRandomPins() {
 function likeUnlike(btn) {
     let postId = btn.getAttribute("data-post-id");
     let action = btn.getAttribute("data-action");
-
+    console.log(action , postId)
     //Send data to home.php.
     fetch('./home.php', {
         method: 'POST',
@@ -158,19 +158,27 @@ function likeUnlike(btn) {
             postId: postId
         })
     })
-        .then(response => {
-            if (response.ok) {
-                //If button was a like, now set action to unlike.
-                if (action == "LIKE") {
-                    btn.setAttribute("data-action", "UNLIKE");
-                } else {
-                    btn.setAttribute("data-action", "LIKE");
-                }
-            } else {
-                console.log("Error:", response.status);
-            }
-        })
-        .catch(error => console.error('Error:', error));
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Parse the JSON from the response.
+        } else {
+            throw new Error("Network response was not ok");
+        }
+    })
+    .then(data => {
+        // Handle the JSON response.
+        console.log(data); // Log the response for debugging.
+
+        // If button was a like, now set action to unlike.
+        if (action == "LIKE") {
+            btn.setAttribute("data-action", "UNLIKE");
+            
+        } else {
+            btn.setAttribute("data-action", "LIKE");
+        }
+    })
+    .catch(error => console.error('Error:', error));
     }
 
 resizeCanvas();
+});
