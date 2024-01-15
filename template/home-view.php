@@ -1,7 +1,7 @@
 <main id="homeMain">
         <!--Post Structure-->
         
-        <?php if (count($templateParams["post"])): ?>
+        <?php if (count($templateParams["post"]) == 0): ?>
             <p>No following.</p>
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post">
