@@ -18,19 +18,19 @@
                     <button>
                         <i class="bi-hand-thumbs-up"></i>
                     </button>
-                    <p>22</p>
+                    <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
                     <button data-bs-toggle="modal" data-bs-target="#commentsModal">
                         <i class="bi-cloud"></i>
                     </button>
-                    <p>11</p>
+                    <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
                     <button>
                         <i class="bi-star"></i>
                     </button>
-                    <p>12</p>
+                    <p><?php echo $post["stars"] ?></p>
                 </div>
             </div>
         </section>
