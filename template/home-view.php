@@ -1,9 +1,9 @@
 <main id="homeMain">
         <!--Post Structure-->
         
-        <?php 
-       // var_dump($templateParams["post"]);
-        foreach ($templateParams["post"] as $post): ?>
+        <?php if (count($templateParams["post"]) == 0): ?>
+            <p>No following.</p>
+        <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post">
         <header>
             <img alt="User Profile Pic" src="./upload/be.jpeg" />
@@ -15,22 +15,22 @@
         <section>
             <div>
                 <div>
-                    <button>
+                    <button data-action = "LIKE" data-post-id="<?php echo $post['id'] ?>"  class="like-btn">
                         <i class="bi-hand-thumbs-up"></i>
                     </button>
-                    <p>22</p>
+                    <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
                     <button data-bs-toggle="modal" data-bs-target="#commentsModal">
                         <i class="bi-cloud"></i>
                     </button>
-                    <p>11</p>
+                    <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
-                    <button>
+                    <button class="star-btn">
                         <i class="bi-star"></i>
                     </button>
-                    <p>12</p>
+                    <p><?php echo $post["stars"] ?></p>
                 </div>
             </div>
         </section>
@@ -39,6 +39,7 @@
         </footer>
     </div>
      <?php endforeach; ?>
+     <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
         <!--New Notification element.-->
