@@ -306,10 +306,9 @@ public function createPost($user, $comment, $image) {
         }catch(Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return false;
+        } finally {
+            $stmt->close();
         }
-        $stmt->close();
-        return true;
-        
     }
 
     /**Method to add a comment. */

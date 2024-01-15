@@ -82,6 +82,9 @@ document.querySelectorAll("button.like-btn").forEach((btn) => btn.addEventListen
 //Event listener for buttons of class .star-btn.
 document.querySelectorAll("button.star-btn").forEach((btn) => btn.addEventListener("click", ()=>starUnstar(btn), false));
 
+//Event listener for buttons of class .comment-btn.
+document.querySelectorAll("button.comment-btn").forEach((btn) => btn.addEventListener("click", ()=>showComments(btn), false));
+
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
     let ctx = canvas.getContext("2d");
@@ -227,6 +230,11 @@ function starUnstar(btn) {
         }
     })
     .catch(error => console.error('Error:', error));
+    }
+
+    //Function to show the comments of a specific post.
+    function showComments(btn) {
+        console.log(btn.getAttribute("data-post-id"));
     }
 
 
