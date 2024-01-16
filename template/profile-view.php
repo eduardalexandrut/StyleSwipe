@@ -15,16 +15,16 @@
 
                 <div id="profile-stats">
                     <span class="stat-item">
-                        <span><?php echo $templateParams["numPosts"]; ?></span><br>
-                        <span>Post</span>
+                        <span class="stat-item-num"><?php echo $templateParams["numPosts"]; ?></span><br>
+                        <span class="stat-item-desc">Post</span>
                       </span>
                     <span class="stat-item">
-                        <span><?php echo $templateParams["numFollowers"]; ?></span><br>
-                        <a data-bs-toggle="modal" data-bs-target="#modalFollow" id="showFollowers" href="#">Followers</a>
+                        <span class="stat-item-num"><?php echo $templateParams["numFollowers"]; ?></span><br>
+                        <a data-bs-toggle="modal" data-bs-target="#modalFollow" id="showFollowers" class="stat-item-desc" href="#">Followers</a>
                     </span>
                     <span class="stat-item">
-                        <span><?php echo $templateParams["numFollowings"]; ?></span><br>
-                        <a data-bs-toggle="modal" data-bs-target="#modalFollow" id="showFollowings" href="#">Followings</a>
+                        <span class="stat-item-num"><?php echo $templateParams["numFollowings"]; ?></span><br>
+                        <a data-bs-toggle="modal" data-bs-target="#modalFollow" id="showFollowings" class="stat-item-desc" href="#">Followings</a>
                     </span>
                 </div>
             </div>
