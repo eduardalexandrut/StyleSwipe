@@ -2,9 +2,17 @@
         <div id="profile-container">
             <div id="profile-info">
                 <div class="profile-pic-container">
-                    <img src="<?php echo UPLOAD_DIR.$_SESSION["profilepic"]; ?>" alt="Profile Picture" />
+                    <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt="Profile Picture" />
                 </div>
-                <p>@<?php echo $templateParams["username"]; ?></p>
+                <p><?php echo $templateParams["username"]; ?></p>
+                <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username'] !== $templateParams['username']) {
+                        $isFollowing = $templateParams["isFollowing"];
+                        $buttonText = $isFollowing ? 'Unfollow' : 'Follow';
+                ?>
+                <button id="followButton" onclick="toggleFollow('<?php echo $templateParams['username']; ?>')"><?php echo $buttonText; ?></button>
+                <?php } ?>
+
                 <div id="profile-stats">
                     <span class="stat-item">
                         <span>21</span><br>
@@ -122,38 +130,36 @@
                     <i class="bi-x-circle"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
+            <div class="modal-body initially-hidden">
+                <div id="followers">
+                <?php
+                    $users = $templateParams['followers'];
+                    if (empty($users)) {
+                        echo '<p>Nessun utente trovato.</p>';
+                    } else {
+                        foreach ($users as $user) : ?>
+                            <div class="userContainer">
+                                <span class="profile-pic-container"><img src="<?php echo UPLOAD_DIR.$user['profile_image']; ?>" alt="profile picture"></span>
+                                <p>@<?php echo $user['username']; ?></p>
+                            </div>
+                        <?php endforeach;
+                    } 
+                ?>
                 </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
-                </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
-                </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
-                </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
-                </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
-                </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
-                </div>
-                <div class="userContainer">
-                    <span class="profile-pic-container"><img src="img/logo.png" alt="profile picture"></span>
-                    <p>@username</p>
+                <div id="followings">
+                <?php
+                    $users = $templateParams['followings'];
+                    if (empty($users)) {
+                        echo '<p>Nessun utente trovato.</p>';
+                    } else {
+                        foreach ($users as $user) : ?>
+                            <div class="userContainer">
+                                <span class="profile-pic-container"><img src="<?php echo UPLOAD_DIR.$user['profile_image']; ?>" alt="profile picture"></span>
+                                <p>@<?php echo $user['username']; ?></p>
+                            </div>
+                        <?php endforeach;
+                    } 
+                ?>
                 </div>
             </div>
           </div>

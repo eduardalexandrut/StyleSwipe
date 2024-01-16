@@ -13,11 +13,23 @@ document.getElementById('saved-icon').addEventListener('click', function() {
 });
 
 document.getElementById('showFollowers').addEventListener('click', function() {
-    document.getElementsByClassName('modalTitle')[0].textContent = 'Followers';
+    $('#modalFollow .modal-body').addClass('initially-hidden');
+    $('#modalFollow').on('shown.bs.modal', function () {
+        document.getElementById('followings').style.display = 'none';
+        document.getElementById('followers').style.display = 'block';
+        document.getElementsByClassName('modalTitle')[0].textContent = 'Followers';
+        $('#modalFollow .modal-body').removeClass('initially-hidden');
+    }).modal('show');
 });
 
 document.getElementById('showFollowings').addEventListener('click', function() {
-    document.getElementsByClassName('modalTitle')[0].textContent = 'Followings';
+    $('#modalFollow .modal-body').addClass('initially-hidden');
+    $('#modalFollow').on('shown.bs.modal', function () {
+        document.getElementById('followings').style.display = 'block';
+        document.getElementById('followers').style.display = 'none';
+        document.getElementsByClassName('modalTitle')[0].textContent = 'Followings';
+        $('#modalFollow .modal-body').removeClass('initially-hidden');
+    }).modal('show');
 });
 
 function showPost(post) {
@@ -25,4 +37,17 @@ function showPost(post) {
     /*document.getElementById('postUsername').textContent = post.querySelector('.username').textContent;
     document.getElementById('postCaption').textContent = post.querySelector('.caption').textContent;*/
     new bootstrap.Modal(document.getElementById('postModal')).show();
+}
+
+function toggleFollow(profileUsername) {
+    // Esegui una richiesta AJAX per gestire il toggle di seguimento
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Aggiorna il testo del pulsante in base alla risposta del server
+            document.getElementById('followButton').innerText = this.responseText;
+        }
+    };
+    xhttp.open("GET", "toggle_follow.php?profile=" + profileUsername, true);
+    xhttp.send();
 }
