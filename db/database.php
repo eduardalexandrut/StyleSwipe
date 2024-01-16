@@ -446,6 +446,22 @@ public function createPost($user, $comment, $image) {
         $stmt->close();
         return true;
     }
+
+    /*Method to get the owner of a post.*/
+    public function getPostOwner($postId) {
+        $query = "SELECT user_username FROM `POST` WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $postId);
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }catch(Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+        $stmt->close();
+        return false;
+    }
 }
 
 ?>
