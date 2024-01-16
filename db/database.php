@@ -350,7 +350,8 @@ public function createPost($user, $comment, $image) {
         JOIN
             User ON Comment.user_username = User.username
         WHERE
-            Comment.post_id = ?;";
+            Comment.post_id = ?
+        ORDER BY Comment.date_posted DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $post);
         try { 
@@ -375,7 +376,7 @@ public function createPost($user, $comment, $image) {
     /**Method to add a comment. */
     public function addComment($post, $user, $body) {
         $query = "INSERT INTO `Comment` (user_username, post_id, comment_text, date_posted)  VALUES (?,?,?,?)";
-        $date_posted = date("Y-m-d");
+        $date_posted = date("Y-m-d H:i:s");
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("siss", $user, $post,$body, $date_posted);
 

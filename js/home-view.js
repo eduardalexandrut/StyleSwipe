@@ -285,8 +285,8 @@ function starUnstar(btn) {
             }
 
             //Create new comments-modal and display it.
-            let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
-            commentsModal.show();
+            /*let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
+            commentsModal.show();*/
             
         })
         .catch(error => console.error('Error:', error));
@@ -324,6 +324,8 @@ function starUnstar(btn) {
             //Increase number of comments displayed under the comments button.
             let prevNumComm = parseInt(document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML);
             document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML = prevNumComm + 1;
+
+            //showComments(btn);
         })
         .catch(error =>console.log('Error:', error));
         
