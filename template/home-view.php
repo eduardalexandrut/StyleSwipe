@@ -21,13 +21,13 @@
                     <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
-                    <button data-bs-toggle="modal" data-bs-target="#commentsModal">
+                    <button  data-post-id="<?php echo $post['id'] ?>" class = "comment-btn">
                         <i class="bi-cloud"></i>
                     </button>
                     <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
-                    <button class="star-btn">
+                    <button data-action = "STAR" data-post-id="<?php echo $post['id'] ?>" class="star-btn">
                         <i class="bi-star"></i>
                     </button>
                     <p><?php echo $post["stars"] ?></p>
@@ -72,27 +72,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="comment">
-                        <img alt="User Profile Pic" src="img/logo.png">
-                        <section>
-                            <header>
-                                <a href="profile.html">@username</a>
-                                <p>24/1/2012</p>
-                            </header>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
-                        </section>
-                    </div>
-
-                    <div class="comment">
-                        <img alt="User Profile Pic" src="img/logo.png">
-                        <section>
-                            <header>
-                                <a href="profile.html">@username</a>
-                                <p>24/1/2012</p>
-                            </header>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
-                        </section>
-                    </div>
+                   
                 </div>
                 <div class="modal-footer">
                     <div class="input-group">

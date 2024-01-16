@@ -64,7 +64,8 @@ class Pin {
         ctx.fill();
     }
 };
-const postCanvas = document.querySelectorAll(".post > canvas");
+
+document.addEventListener('DOMContentLoaded', function () {const postCanvas = document.querySelectorAll(".post > canvas");
 const randomPins = generateRandomPins();
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
@@ -76,7 +77,13 @@ postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
 //Event listener for buttons of class .like-btn.
-document.querySelectorAll(".like-btn").forEach((btn)=> likeUnlike(btn), false);
+document.querySelectorAll("button.like-btn").forEach((btn) => btn.addEventListener("click", ()=>likeUnlike(btn), false));
+
+//Event listener for buttons of class .star-btn.
+document.querySelectorAll("button.star-btn").forEach((btn) => btn.addEventListener("click", ()=>starUnstar(btn), false));
+
+//Event listener for buttons of class .comment-btn.
+document.querySelectorAll("button.comment-btn").forEach((btn) => btn.addEventListener("click", ()=>showComments(btn), false));
 
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
@@ -142,11 +149,11 @@ function generateRandomPins() {
     return pins;
 }
 
-//Function to add a like.
+//Function to add/remove a like.
 function likeUnlike(btn) {
     let postId = btn.getAttribute("data-post-id");
     let action = btn.getAttribute("data-action");
-
+    console.log(action , postId)
     //Send data to home.php.
     fetch('./home.php', {
         method: 'POST',
@@ -158,19 +165,127 @@ function likeUnlike(btn) {
             postId: postId
         })
     })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Parse the JSON from the response.
+        } else {
+            throw new Error("Network response was not ok");
+        }
+    })
+    .then(data => {
+        // Handle the JSON response.
+        //console.log(data); // Log the response for debugging.
+
+        // If button was a like, now set action to unlike.
+        if (action == "LIKE") {
+            btn.setAttribute("data-action", "UNLIKE");
+            btn.querySelector("i").classList.remove("bi-hand-thumbs-up");
+            btn.querySelector("i").classList.add("class", "bi-hand-thumbs-down");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
+            
+        } else {
+            btn.setAttribute("data-action", "LIKE");
+            btn.querySelector("i").classList.remove("bi-hand-thumbs-down");
+            btn.querySelector("i").classList.add("class", "bi-hand-thumbs-up");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) - 1;
+        }
+    })
+    .catch(error => console.error('Error:', error));
+    }
+
+//Function to add/remove a star.
+function starUnstar(btn) {
+    let postId = btn.getAttribute("data-post-id");
+    let action = btn.getAttribute("data-action");
+    console.log(action , postId)
+    //Send data to home.php.
+    fetch('./home.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            action: action,
+            postId: postId
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Parse the JSON from the response.
+        } else {
+            throw new Error("Network response was not ok");
+        }
+    })
+    .then(data => {
+
+        // If button was a like, now set action to unlike.
+        if (action == "STAR") {
+            btn.setAttribute("data-action", "UNSTAR");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
+            
+        } else {
+            btn.setAttribute("data-action", "STAR");
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) - 1;
+        }
+    })
+    .catch(error => console.error('Error:', error));
+    }
+
+    //Function to show the comments of a specific post.
+    function showComments(btn) {
+        let postId = btn.getAttribute("data-post-id");
+
+        //GET requests to get the comments of the specific post.
+        fetch(`./home.php?postId=${postId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(response => {
             if (response.ok) {
-                //If button was a like, now set action to unlike.
-                if (action == "LIKE") {
-                    btn.setAttribute("data-action", "UNLIKE");
-                } else {
-                    btn.setAttribute("data-action", "LIKE");
-                }
+                return response.body;
             } else {
-                console.log("Error:", response.status);
+                throw new Error("Network response was not ok");
             }
+        })
+        .then(data => {
+           console.log(data);
+            let modalBody = document.querySelector("#commentsModal .modal-body");
+            //Increase number of comments shown below the comment button.
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
+
+            //Remove all previous elements from the modal-body.
+            modalBody.innerHTML = '';
+
+            if (data.comments.length == 0) {
+                modalBody.innerHTML = '';
+            } else {
+                data.comments.forEach((comment) => {
+                    let commentDiv = document.createElement('div');
+                    commentDiv.classList.add("comment");
+                    commentDiv.innerHTML = `
+                    <img alt="User Profile Pic" src="${UPLOAD_DIR}${comment['profile_image']}"/>
+                        <section>
+                            <header>
+                                <a href="profile.html">${comment['user_username']}</a>
+                                <p>${comment['date_posted']}</p>
+                            </header>
+                            <p>${comment['comment_text']}</p>
+                        </section>
+                    `
+                });
+                modalBody.appendChild(commentDiv);
+            }
+
+            //Create new comments-modal and display it.
+            let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
+            commentsModal.show();
+            
         })
         .catch(error => console.error('Error:', error));
     }
 
+
 resizeCanvas();
+});
