@@ -292,7 +292,7 @@ function starUnstar(btn) {
                         <section>
                             <header>
                                 <a href="profile.html">${comment['user_username']}</a>
-                                <p>${comment['date_posted']}</p>
+                                <p>${calculate_days(comment['date_posted'])}</p>
                             </header>
                             <p>${comment['comment_text']}</p>
                         </section>
@@ -346,6 +346,27 @@ function starUnstar(btn) {
         })
         .catch(error =>console.log('Error:', error));
         
+    }
+
+    //Function to calculate days passed between 2 days.
+    function calculate_days(date) {
+        let startDate = new Date(date);
+
+        let currentDate = new Date();
+
+        //Number of milliseconds passed.
+        let timePassed = currentDate - startDate;
+
+        let numOfDays = Math.floor(timePassed/(1000 *60 * 60 * 24));
+
+        if (numOfDays < 1) {
+            return 'Today';
+        } else if (numOfDays == 1) {
+            return `${numOfDays} day ago.`;
+        } else {
+            return `${numOfDays} days ago.`;
+        }
+
     }
 
 resizeCanvas();
