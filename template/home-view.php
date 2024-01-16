@@ -21,7 +21,7 @@
                     <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
-                    <button data-bs-toggle="modal" data-bs-target="#commentsModal" data-post-id="<?php echo $post['id'] ?>" class = "comment-btn">
+                    <button  data-post-id="<?php echo $post['id'] ?>" class = "comment-btn">
                         <i class="bi-cloud"></i>
                     </button>
                     <p><?php echo $post["comments"] ?></p>
@@ -72,6 +72,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
+                   
+=======
                     <?php if (count($templateParams['comments']) == 0): ?>
                         <p>No comments yet.</p>
                     <?php else: foreach ($templateParams['comments'] as $comment): ?>
@@ -87,6 +90,7 @@
                     </div>
                     <?php endforeach;?>
                     <?php endif;?>
+>>>>>>> aa851eaf54093af70fedcefd9bbc4a51a7b2900b
                 </div>
                 <div class="modal-footer">
                     <div class="input-group">

@@ -193,7 +193,7 @@ function likeUnlike(btn) {
     .catch(error => console.error('Error:', error));
     }
 
-////Function to add/remove a star.
+//Function to add/remove a star.
 function starUnstar(btn) {
     let postId = btn.getAttribute("data-post-id");
     let action = btn.getAttribute("data-action");
@@ -217,7 +217,6 @@ function starUnstar(btn) {
         }
     })
     .then(data => {
-        //console.log(data); // Log the response for debugging.
 
         // If button was a like, now set action to unlike.
         if (action == "STAR") {
@@ -234,7 +233,57 @@ function starUnstar(btn) {
 
     //Function to show the comments of a specific post.
     function showComments(btn) {
-        console.log(btn.getAttribute("data-post-id"));
+        let postId = btn.getAttribute("data-post-id");
+
+        //GET requests to get the comments of the specific post.
+        fetch(`./home.php?postId=${postId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.body;
+            } else {
+                throw new Error("Network response was not ok");
+            }
+        })
+        .then(data => {
+           console.log(data);
+            let modalBody = document.querySelector("#commentsModal .modal-body");
+            //Increase number of comments shown below the comment button.
+            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
+
+            //Remove all previous elements from the modal-body.
+            modalBody.innerHTML = '';
+
+            if (data.comments.length == 0) {
+                modalBody.innerHTML = '';
+            } else {
+                /*data.comments.forEach((comment) => {
+                    let commentDiv = document.createElement('div');
+                    commentDiv.classList.add("comment");
+                    commentDiv.innerHTML = `
+                    <img alt="User Profile Pic" src="${UPLOAD_DIR}${comment['profile_image']}"/>
+                        <section>
+                            <header>
+                                <a href="profile.html">${comment['user_username']}</a>
+                                <p>${comment['date_posted']}</p>
+                            </header>
+                            <p>${comment['comment_text']}</p>
+                        </section>
+                    `
+                });
+                modalBody.appendChild(commentDiv);*/
+            }
+
+            //Create new comments-modal and display it.
+            let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
+            commentsModal.show();
+            
+        })
+        .catch(error => console.error('Error:', error));
     }
 
 

@@ -5,6 +5,27 @@ $templateParams["title"] = "Home";
 $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
 $templateParams["comments"] = $dbh->getCommentsOfPost(1);
 
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    //Check if post-id is provided.
+    if (isset($_GET["postId"])) {
+
+        //Get comments.
+        $comments = $dbh->getCommentsOfPost(1);
+
+        //Transform response into JSON.
+        $response = [
+            'comments' => $comments
+        ];
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    } else {
+        /*header('HTTP/1.1 400 Bad Request');
+        echo json_encode(['error' => 'postId not provided']);*/
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     //Get content from input.
     $json_data = file_get_contents('php://input');
