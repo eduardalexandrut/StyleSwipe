@@ -6,7 +6,7 @@
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
-            <img alt="User Profile Pic" src="./upload/be.jpeg" />
+            <img alt="User Profile Pic" src="<?php echo UPLOAD_DIR.$post['following_profile_image'] ?>" />
             <a href="profile.html"><?php echo $post['user_username']; ?></a>
             <p><?php echo calculate_days( $post['posted']); ?></p>
         </header>

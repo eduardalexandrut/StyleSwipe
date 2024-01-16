@@ -21,7 +21,7 @@ function displayNotifications($notifications) {
                         </a>
                     </span>
                     <a class="notify-liked" href="#">Liked</a> your post.
-                    <span class="notify-time"><?php echo $notification["date_posted"] ?></span>
+                    <span class="notify-time"><?php echo calculate_days($notification['date_posted']); ?></span>
                 </p>
             <!-- The notification is of type commented -->
             <?php elseif ($notification['notification_type'] == 'commented'): ?>

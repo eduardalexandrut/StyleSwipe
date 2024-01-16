@@ -81,11 +81,13 @@ function calculate_days($date) {
     // Get the total number of days
     $daysPassed = $dateInterval->format('%a');
     
-    if ($daysPassed > 1) {
-        return $daysPassed." days ago.";
+    if ($daysPassed < 1) {
+        return "Today.";
+    } else if ($daysPassed == 1) {
+        return $daysPassed." day ago.";
+    } else {
+        return $daysPassed." day ago.";
     }
-    return $daysPassed." day ago.";
-
 }
 
 ?>

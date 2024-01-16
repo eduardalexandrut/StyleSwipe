@@ -82,7 +82,9 @@ class DatabaseHelper {
                 COUNT(DISTINCT c.id) AS comments,
                 COUNT(DISTINCT s.id) AS stars,
                 GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
-                GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
+                GROUP_CONCAT(DISTINCT s.user_username) AS starred_by,
+                f.following_username AS following_username,
+                u.profile_image AS following_profile_image
             FROM 
                 post p
             LEFT JOIN 
@@ -93,13 +95,14 @@ class DatabaseHelper {
                 star s ON p.id = s.post_id
             JOIN 
                 follow f ON p.user_username = f.following_username
+            LEFT JOIN 
+                user u ON f.following_username = u.username
             WHERE 
                 f.follower_username = ?
             GROUP BY 
                 p.id
             ORDER BY 
-                p.posted DESC;
-        ;";
+                p.posted DESC;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
         try {
