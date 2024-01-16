@@ -6,7 +6,6 @@
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
-            <p><?php echo count(explode(',', $post["liked_by"]))?></p>
             <img alt="User Profile Pic" src="./upload/be.jpeg" />
             <a href="profile.html"><?php echo $post['user_username']; ?></a>
             <p><?php echo $post['posted']; ?></p>
@@ -36,9 +35,17 @@
                     <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
-                    <button data-action = "STAR" data-post-id="<?php echo $post['id'] ?>" class="star-btn">
-                        <i class="bi-star"></i>
-                    </button>
+                    <?php if (in_array($_SESSION["username"], explode(',', $post["starred_by"]))): ?>
+                        <!--User has starred the post-->
+                        <button data-action = "UNSTAR" data-post-id="<?php echo $post['id'] ?>" class="star-btn">
+                            <i class="bi-star-fill"></i>
+                        </button>
+                        <!-- User hasn't starred the post.-->
+                    <?php else:?>
+                        <button data-action = "STAR" data-post-id="<?php echo $post['id'] ?>" class="star-btn">
+                            <i class="bi-star"></i>
+                        </button>
+                    <?php endif; ?>
                     <p><?php echo $post["stars"] ?></p>
                 </div>
             </div>

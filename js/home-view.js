@@ -225,13 +225,17 @@ function starUnstar(btn) {
     })
     .then(data => {
 
-        // If button was a like, now set action to unlike.
+        // If button was a star, now set action to unstar.
         if (action == "STAR") {
             btn.setAttribute("data-action", "UNSTAR");
+            btn.querySelector("i").classList.remove("bi-star");
+            btn.querySelector("i").classList.add("class", "bi-star-fill");
             btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
             
         } else {
             btn.setAttribute("data-action", "STAR");
+            btn.querySelector("i").classList.remove("bi-star-fill");
+            btn.querySelector("i").classList.add("class", "bi-star");
             btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) - 1;
         }
     })
