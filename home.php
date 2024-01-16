@@ -42,28 +42,33 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     if (isset($data['action'], $data['postId'])) {
         $action = $data['action'];
         $postId = $data['postId'];
+        $to_user = $dbh->getPostOwner($postId);
         
         //Check type of action.
         if ($action == "LIKE") {
             $dbh->addLike($postId, $_SESSION["username"]);
             //Generate notification.
-            $to_user = $dbh->getPostOwner($postId);
             if ($to_user) {
-                $dbh->addNotification($postId,$_SESSION["username"], $to_user, "like");
+                $dbh->addNotification($postId,$_SESSION["username"], $to_user, 'liked');
             }
         } else if ($action == "UNLIKE") {
             $dbh->removeLike($postId, $_SESSION["username"]);
-            //Generate notification.
         } else if ($action == "STAR") {
             $dbh->addStar($postId, $_SESSION["username"]);
             //Generate notification.
+            if ($to_user) {
+                $dbh->addNotification($postId,$_SESSION["username"], $to_user, 'starred');
+            }
         } else if ($action == "UNSTAR") {
             $dbh->removeStar($postId, $_SESSION["username"]);
-            //Generate notification.
         } else if ($action == "COMMENT") {
             if(isset($data["comment_text"])) {
                 $body = $data["comment_text"];
                 $dbh->addComment($postId, $_SESSION["username"], $body);
+                //Generate notification.
+                if ($to_user) {
+                    $dbh->addNotification($postId,$_SESSION["username"], $to_user, 'commented');
+                }
             } else {
                 echo "Missing comment_text";
             }

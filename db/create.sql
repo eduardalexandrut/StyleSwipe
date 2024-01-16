@@ -67,7 +67,7 @@ CREATE TABLE `Star` (
 /* Notifications Table */
 CREATE TABLE `Notification` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
-    `notification_type` ENUM('liked', 'starred', 'commented'),
+    `notification_type` ENUM('liked', 'starred', 'commented') NOT NULL,
     `from_user_username` VARCHAR(50) NOT NULL,
     `to_user_username` VARCHAR(50) NOT NULL,
     `post_id` INT NOT NULL,
