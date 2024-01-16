@@ -296,10 +296,11 @@ function starUnstar(btn) {
     //Function to add a new comment.
     function addComment(btn) {
         let action = btn.getAttribute("data-action");
-        //let comment_text = btn.previousSiblingNode.value;
-        console.log(selectedPost);
+        let comment_text = document.querySelector("#commentsModal .modal-footer input").value;
+        let postId = selectedPost;
+        
 
-        /*fetch('./home.php', {
+        fetch('./home.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -317,7 +318,8 @@ function starUnstar(btn) {
                 throw new Error("Network response was not ok");
             }
         })
-        .catch(error =>console.log('Error:', error));*/
+        .then(data => {console.log(data)})
+        .catch(error =>console.log('Error:', error));
         
     }
 
