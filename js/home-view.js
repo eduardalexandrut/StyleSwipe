@@ -65,10 +65,13 @@ class Pin {
     }
 };
 
-document.addEventListener('DOMContentLoaded', function () {const postCanvas = document.querySelectorAll(".post > canvas");
+document.addEventListener('DOMContentLoaded', function () {
+
+const postCanvas = document.querySelectorAll(".post > canvas");
 const randomPins = generateRandomPins();
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
+let selectedPost;
 
 postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem), false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
@@ -84,6 +87,9 @@ document.querySelectorAll("button.star-btn").forEach((btn) => btn.addEventListen
 
 //Event listener for buttons of class .comment-btn.
 document.querySelectorAll("button.comment-btn").forEach((btn) => btn.addEventListener("click", ()=>showComments(btn), false));
+
+//Event listener for button to add a new comment.
+document.getElementById("button-addon2").addEventListener("click", (e)=>addComment(e.target), false);
 
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
@@ -234,6 +240,7 @@ function starUnstar(btn) {
     //Function to show the comments of a specific post.
     function showComments(btn) {
         let postId = btn.getAttribute("data-post-id");
+        selectedPost = postId;
 
         //GET requests to get the comments of the specific post.
         fetch(`./home.php?postId=${postId}`, {
@@ -250,18 +257,18 @@ function starUnstar(btn) {
             }
         })
         .then(data => {
-           console.log(data);
+            console.log(data);
             let modalBody = document.querySelector("#commentsModal .modal-body");
             //Increase number of comments shown below the comment button.
-            btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
+            //btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
 
             //Remove all previous elements from the modal-body.
             modalBody.innerHTML = '';
 
-            if (data.comments.length == 0) {
+            /*if (data.comments.length == 0) {
                 modalBody.innerHTML = '';
             } else {
-                /*data.comments.forEach((comment) => {
+                data.comments.forEach((comment) => {
                     let commentDiv = document.createElement('div');
                     commentDiv.classList.add("comment");
                     commentDiv.innerHTML = `
@@ -275,8 +282,8 @@ function starUnstar(btn) {
                         </section>
                     `
                 });
-                modalBody.appendChild(commentDiv);*/
-            }
+                modalBody.appendChild(commentDiv);
+            }*/
 
             //Create new comments-modal and display it.
             let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
@@ -286,6 +293,35 @@ function starUnstar(btn) {
         .catch(error => console.error('Error:', error));
     }
 
+    //Function to add a new comment.
+    function addComment(btn) {
+        let action = btn.getAttribute("data-action");
+        let comment_text = document.querySelector("#commentsModal .modal-footer input").value;
+        let postId = selectedPost;
+        
+
+        fetch('./home.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: action,
+                postId: postId,
+                comment_text: comment_text
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text(); // Parse the JSON from the response.
+            } else {
+                throw new Error("Network response was not ok");
+            }
+        })
+        .then(data => {console.log(data)})
+        .catch(error =>console.log('Error:', error));
+        
+    }
 
 resizeCanvas();
 });

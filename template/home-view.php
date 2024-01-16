@@ -72,30 +72,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-<<<<<<< HEAD
                    
-=======
-                    <?php if (count($templateParams['comments']) == 0): ?>
-                        <p>No comments yet.</p>
-                    <?php else: foreach ($templateParams['comments'] as $comment): ?>
-                    <div class="comment">
-                        <img alt="User Profile Pic" src= "<?php echo UPLOAD_DIR.$comment['profile_image']?>"/>
-                        <section>
-                            <header>
-                                <a href="profile.html"><?php echo $comment['user_username'] ?></a>
-                                <p><?php echo $comment['date_posted'] ?></p>
-                            </header>
-                            <p><?php echo $comment['comment_text'] ?></p>
-                        </section>
-                    </div>
-                    <?php endforeach;?>
-                    <?php endif;?>
->>>>>>> aa851eaf54093af70fedcefd9bbc4a51a7b2900b
                 </div>
                 <div class="modal-footer">
                     <div class="input-group">
                         <input type="text" name="comment" class="form-control" placeholder="Add a comment..." aria-label="Add a comment..." aria-describedby="button-addon2">
-                        <button class="btn" type="button" id="button-addon2">Add</button>
+                        <button class="btn" type="button" id="button-addon2" data-action = "COMMENT">Add</button>
                     </div>
                 </div>
             </div>

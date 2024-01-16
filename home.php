@@ -51,11 +51,18 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $dbh->removeStar($postId, $_SESSION["username"]);
             //Generate notification.
         } else if ($action == "COMMENT") {
+            if(isset($data["comment_text"])) {
+                $body = $data["comment_text"];
+                $dbh->addComment($postId, $_SESSION["username"], $body);
+            } else {
+                echo "Missing comment_text";
+            }
             //Generate notification.
 
         }
     } else {
         // Missing action or post_id.
+        echo "Missing argument";
     }
 
 }
