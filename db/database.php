@@ -428,6 +428,24 @@ public function createPost($user, $comment, $image) {
             echo "Error:", $e->getMessage(),"\n";
         }
     }
+
+    /**Method to create a new notification. */
+    public function addNotification($postId, $from_user, $to_user, $type) {
+        $query = "INSERT INTO `Notification` (notification_type, from_user_username, to_user_username, post_id, date_posted)
+                VALUES(?, ?, ?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+         // Get the current datetime
+        $posted = date("Y-m-d H:i:s");
+        $stmt->bind_param('sssis', $type, $from_user, $to_user, $postId, $posted);
+        try {
+            $stmt->execute();
+        } catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
 }
 
 ?>

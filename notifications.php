@@ -1,6 +1,7 @@
 <?php
 function displayNotifications($notifications) {
-?>
+?>  
+    <div>
     <button class="refresh-notify">
         <i class="bi-plus-circle "></i>
     </button>
