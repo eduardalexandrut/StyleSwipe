@@ -400,6 +400,21 @@ public function createPost($user, $comment, $image) {
         $stmt->close();
         return true;
     }
+
+    /**Method to retrive the notifications of a follower. */
+    public function getNotifications($user) {
+        $query = "SELECT * FROM `Notification` WHERE to_user_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $user);
+
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch(Exception $e) {
+            echo "Error:", $e->getMessage(),"\n";
+        }
+    }
 }
 
 ?>
