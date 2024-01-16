@@ -455,7 +455,12 @@ public function createPost($user, $comment, $image) {
         try {
             $stmt->execute();
             $result = $stmt->get_result();
-            return $result->fetch_all(MYSQLI_ASSOC);
+            $row = $result->fetch_assoc();
+            if ($row) {
+                return $row['user_username'];
+            } else {
+                return null;
+            }
         }catch(Exception $e) {
                 echo 'Caught exception: ',  $e->getMessage(), "\n";
         }

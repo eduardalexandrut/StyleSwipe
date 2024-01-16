@@ -47,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         if ($action == "LIKE") {
             $dbh->addLike($postId, $_SESSION["username"]);
             //Generate notification.
+            $to_user = $dbh->getPostOwner($postId);
+            if ($to_user) {
+                $dbh->addNotification($postId,$_SESSION["username"], $to_user, "like");
+            }
         } else if ($action == "UNLIKE") {
             $dbh->removeLike($postId, $_SESSION["username"]);
             //Generate notification.
