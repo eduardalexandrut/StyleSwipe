@@ -85,17 +85,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <?php
-                    // Check if the displayNotifications function is defined
-                    if (function_exists('displayNotifications')) {
-                        // Call the displayNotifications function with the notifications data
-                        displayNotifications($templateParams["notifications"]);
-                    }
+                    <?php
+                        // Check if the displayNotifications function is defined
+                        if (function_exists('displayNotifications')) {
+                            // Call the displayNotifications function with the notifications data
+                            displayNotifications($templateParams["notifications"]);
+                        }
                     ?>
-                </div>
             </div>
         </div>
     </div>
+     </div>
 
     <!--Followers/Followings Modal-->
     <div id="modalFollow" class="modal fade">
