@@ -15,15 +15,15 @@
 
                 <div id="profile-stats">
                     <span class="stat-item">
-                        <span>21</span><br>
+                        <span><?php echo $templateParams["numPosts"]; ?></span><br>
                         <span>Post</span>
                       </span>
                     <span class="stat-item">
-                        <span>1024</span><br>
+                        <span><?php echo $templateParams["numFollowers"]; ?></span><br>
                         <a data-bs-toggle="modal" data-bs-target="#modalFollow" id="showFollowers" href="#">Followers</a>
                     </span>
                     <span class="stat-item">
-                        <span>2k</span><br>
+                        <span><?php echo $templateParams["numFollowings"]; ?></span><br>
                         <a data-bs-toggle="modal" data-bs-target="#modalFollow" id="showFollowings" href="#">Followings</a>
                     </span>
                 </div>

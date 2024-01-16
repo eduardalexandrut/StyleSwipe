@@ -10,9 +10,11 @@ if (empty($username)) {
     $templateParams["username"] = $_SESSION["username"];
     $templateParams["followers"] = $dbh->getFollowers($_SESSION["username"]);
     $templateParams["followings"] = $dbh->getFollowings($_SESSION["username"]);
-}
+    $templateParams["numFollowers"] = $dbh->getFollowersCount($_SESSION["username"]);
+    $templateParams["numFollowings"] = $dbh->getFollowingsCount($_SESSION["username"]);
+    $templateParams["numPosts"] = $dbh->getPostsCount($_SESSION["username"]);
 // Altrimenti, visualizza il profilo dell'utente specificato
-else {
+} else {
     // Esempio di query per ottenere i dati dell'utente specifico dal database
     $userData = $dbh->getUserByUsername($username);
 
@@ -23,6 +25,9 @@ else {
         $templateParams["followers"] = $dbh->getFollowers($userData["username"]);
         $templateParams["followings"] = $dbh->getFollowings($userData["username"]);
         $templateParams["isFollowing"] = $dbh->isFollowing($_SESSION["username"], $userData["username"]);
+        $templateParams["numFollowers"] = $dbh->getFollowersCount($userData["username"]);
+        $templateParams["numFollowings"] = $dbh->getFollowingsCount($userData["username"]);
+        $templateParams["numPosts"] = $dbh->getPostsCount($userData["username"]);
     } else {
         echo "Utente non trovato";
         exit();
