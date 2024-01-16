@@ -8,7 +8,7 @@
         <header>
             <img alt="User Profile Pic" src="./upload/be.jpeg" />
             <a href="profile.html"><?php echo $post['user_username']; ?></a>
-            <p><?php echo $post['posted']; ?></p>
+            <p><?php echo calculate_days( $post['posted']); ?></p>
         </header>
         <img alt="Outfit Pic" src="<?php echo UPLOAD_DIR.$post['image']; ?>" />
         <canvas></canvas>
@@ -58,7 +58,6 @@
      <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
-        <button class="bi-plus-circle"></button>
             <?php
                 // Check if the displayNotifications function is defined
                 if (function_exists('displayNotifications')) {

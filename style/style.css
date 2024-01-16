@@ -4,6 +4,22 @@
 */
 /* width */
 
+button.refresh-notify{
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    position: relative !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+button.refresh-notify >i {
+    font-size: 25px;
+    opacity: .5;
+}
+button.refresh-notify:hover {
+    background-color: #c7c7c7 !important;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
   }

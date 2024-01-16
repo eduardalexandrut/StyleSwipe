@@ -1,6 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 require 'notifications.php';
+
 $templateParams["name"] = "home-view.php";
 $templateParams["title"] = "Home";
 $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
