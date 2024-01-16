@@ -1,5 +1,6 @@
 <?php
 require_once 'bootstrap.php';
+require 'notifications.php';
 
 // Controlla se è stato fornito un parametro 'user_id' nella query string
 $username = isset($_GET['username']) ? $_GET['username'] : null;
@@ -13,6 +14,7 @@ if (empty($username)) {
     $templateParams["numFollowers"] = $dbh->getFollowersCount($_SESSION["username"]);
     $templateParams["numFollowings"] = $dbh->getFollowingsCount($_SESSION["username"]);
     $templateParams["numPosts"] = $dbh->getPostsCount($_SESSION["username"]);
+    $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
 // Altrimenti, visualizza il profilo dell'utente specificato
 } else {
     // Esempio di query per ottenere i dati dell'utente specifico dal database
@@ -28,6 +30,7 @@ if (empty($username)) {
         $templateParams["numFollowers"] = $dbh->getFollowersCount($userData["username"]);
         $templateParams["numFollowings"] = $dbh->getFollowingsCount($userData["username"]);
         $templateParams["numPosts"] = $dbh->getPostsCount($userData["username"]);
+        $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
     } else {
         echo "Utente non trovato";
         exit();

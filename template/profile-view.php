@@ -64,24 +64,13 @@
         </div>
     </main><aside class="notificationAside">
         <h3>Notifications:</h3>
-        <!--New Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <span class="notify-badge badge rounded-pill bg-primary">New</span>
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
+            <?php
+                // Check if the displayNotifications function is defined
+                if (function_exists('displayNotifications')) {
+                    // Call the displayNotifications function with the notifications data
+                    displayNotifications($templateParams["notifications"]);
+                }
+            ?>
         
     </aside>
 
@@ -96,24 +85,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!--New Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <span class="notify-badge badge rounded-pill bg-primary">New</span>
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
+                <?php
+                    // Check if the displayNotifications function is defined
+                    if (function_exists('displayNotifications')) {
+                        // Call the displayNotifications function with the notifications data
+                        displayNotifications($templateParams["notifications"]);
+                    }
+                    ?>
                 </div>
             </div>
         </div>

@@ -13,10 +13,12 @@ function displayNotifications($notifications) {
             <?php if ($notification['notification_type'] == 'liked'): ?>
                 <p>
                     <span class="notify-user">
-                        <a href="profile.html"><?php echo $notification["from_user_username"] ?></a>
+                        <a href="<?php echo "profile.php?=".$notification['from_user_username']?>">
+                        <?php echo $notification['from_user_username']?>
+                        </a>
                     </span>
                     <a class="notify-liked" href="#">Liked</a> your post.
-                    <span class="notify-time">2h ago</span>
+                    <span class="notify-time"><?php echo $notification["date_posted"] ?></span>
                 </p>
             <!-- The notification is of type commented -->
             <?php elseif ($notification['notification_type'] == 'commented'): ?>
