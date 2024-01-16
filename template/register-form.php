@@ -12,6 +12,14 @@
 </head>
 <body id="registration">
     <div class="wrapper">
+    <?php
+        if (isset($templateParams["erroreRegistrazione"])) {
+            echo '<div class="alert alert-danger" role="alert">';
+            echo $templateParams["erroreRegistrazione"];
+            echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+            echo '</div>';
+        }    
+    ?>
         <form action="#" method="POST" enctype="multipart/form-data">
             <h1>Create Account</h1>
             <div class="input-box">
@@ -49,7 +57,7 @@
                     <li>
                         <!--<input type="text" placeholder="Birth Date" onfocus="(this.type='date')" onblur="(this.type='text')">
                         <i class="bi bi-calendar-event-fill"></i>-->
-                        <input type="date" name="dateOfBirth" id="dateOfBirth"/>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" required/>
                     </li>
                     <li id = "gender-wrapper">
                         <select class="select" name="gender" id="gender" required aria-label="Gender">
@@ -69,7 +77,6 @@
             </div>
         </form>
     </div>
-
     <script src="js/register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
