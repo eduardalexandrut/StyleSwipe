@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const postCanvas = document.querySelectorAll(".post > canvas");
 const randomPins = generateRandomPins();
+const UPLOAD_DIR = "upload/";
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
@@ -90,6 +91,19 @@ document.querySelectorAll("button.comment-btn").forEach((btn) => btn.addEventLis
 
 //Event listener for button to add a new comment.
 document.getElementById("button-addon2").addEventListener("click", (e)=>addComment(e.target), false);
+
+//Event listener for commentModal input, when text is written on it.
+// Event listener for commentModal input when text is written in it.
+document.querySelector("#commentsModal input[name='comment']").addEventListener("input", (e) => {
+    let text = e.target.value;
+    let addButton = document.querySelector("#commentsModal button#button-addon2");
+
+    if (text.length > 0) {
+        addButton.removeAttribute("disabled");
+    } else {
+        addButton.setAttribute("disabled", true);
+    }
+}, false);
 
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
@@ -224,13 +238,17 @@ function starUnstar(btn) {
     })
     .then(data => {
 
-        // If button was a like, now set action to unlike.
+        // If button was a star, now set action to unstar.
         if (action == "STAR") {
             btn.setAttribute("data-action", "UNSTAR");
+            btn.querySelector("i").classList.remove("bi-star");
+            btn.querySelector("i").classList.add("class", "bi-star-fill");
             btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
             
         } else {
             btn.setAttribute("data-action", "STAR");
+            btn.querySelector("i").classList.remove("bi-star-fill");
+            btn.querySelector("i").classList.add("class", "bi-star");
             btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) - 1;
         }
     })
@@ -251,7 +269,7 @@ function starUnstar(btn) {
         })
         .then(response => {
             if (response.ok) {
-                return response.body;
+                return response.json();
             } else {
                 throw new Error("Network response was not ok");
             }
@@ -259,14 +277,12 @@ function starUnstar(btn) {
         .then(data => {
             console.log(data);
             let modalBody = document.querySelector("#commentsModal .modal-body");
-            //Increase number of comments shown below the comment button.
-            //btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
 
             //Remove all previous elements from the modal-body.
             modalBody.innerHTML = '';
 
-            /*if (data.comments.length == 0) {
-                modalBody.innerHTML = '';
+            if (data.comments.length == 0) {
+                modalBody.innerHTML = '<p>No comments yet.</p>';
             } else {
                 data.comments.forEach((comment) => {
                     let commentDiv = document.createElement('div');
@@ -281,13 +297,13 @@ function starUnstar(btn) {
                             <p>${comment['comment_text']}</p>
                         </section>
                     `
+                    modalBody.appendChild(commentDiv);
                 });
-                modalBody.appendChild(commentDiv);
-            }*/
+            }
 
             //Create new comments-modal and display it.
-            let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
-            commentsModal.show();
+            /*let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
+            commentsModal.show();*/
             
         })
         .catch(error => console.error('Error:', error));
@@ -318,7 +334,16 @@ function starUnstar(btn) {
                 throw new Error("Network response was not ok");
             }
         })
-        .then(data => {console.log(data)})
+        .then(data => {
+            console.log(data);
+            //Erase input's content.
+            document.querySelector("#commentsModal .modal-footer input").value = '';
+            //Increase number of comments displayed under the comments button.
+            let prevNumComm = parseInt(document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML);
+            document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML = prevNumComm + 1;
+
+            //showComments(btn);
+        })
         .catch(error =>console.log('Error:', error));
         
     }

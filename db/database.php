@@ -76,19 +76,30 @@ class DatabaseHelper {
 
     //Method to get all the posts of all the users $user is following,along with the num of likes, num of comments and num of stars.
     public function getPostsOfFollowing($user) {
-        $query = "SELECT p.*,
-        COUNT(DISTINCT l.id) AS likes,
-        COUNT(DISTINCT c.id) AS comments,
-        COUNT(DISTINCT s.id) AS stars
-        FROM post p
-        LEFT JOIN `like` l ON p.id = l.post_id
-        LEFT JOIN comment c ON p.id = c.post_id
-        LEFT JOIN star s ON p.id = s.post_id
-        JOIN follow f ON p.user_username = f.following_username
-        WHERE f.follower_username = ?
-        GROUP BY p.id
-        ORDER BY p.posted DESC;";
-        //$query = "SELECT * FROM post WHERE user_username = ?";
+        $query = "SELECT 
+                p.*,
+                COUNT(DISTINCT l.id) AS likes,
+                COUNT(DISTINCT c.id) AS comments,
+                COUNT(DISTINCT s.id) AS stars,
+                GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
+                GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
+            FROM 
+                post p
+            LEFT JOIN 
+                `like` l ON p.id = l.post_id
+            LEFT JOIN 
+                comment c ON p.id = c.post_id
+            LEFT JOIN 
+                star s ON p.id = s.post_id
+            JOIN 
+                follow f ON p.user_username = f.following_username
+            WHERE 
+                f.follower_username = ?
+            GROUP BY 
+                p.id
+            ORDER BY 
+                p.posted DESC;
+        ;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
         try {
@@ -350,7 +361,8 @@ public function createPost($user, $comment, $image) {
         JOIN
             User ON Comment.user_username = User.username
         WHERE
-            Comment.post_id = ?;";
+            Comment.post_id = ?
+        ORDER BY Comment.date_posted DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $post);
         try { 
@@ -375,7 +387,7 @@ public function createPost($user, $comment, $image) {
     /**Method to add a comment. */
     public function addComment($post, $user, $body) {
         $query = "INSERT INTO `Comment` (user_username, post_id, comment_text, date_posted)  VALUES (?,?,?,?)";
-        $date_posted = date("Y-m-d");
+        $date_posted = date("Y-m-d H:i:s");
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("siss", $user, $post,$body, $date_posted);
 
@@ -387,6 +399,21 @@ public function createPost($user, $comment, $image) {
         }
         $stmt->close();
         return true;
+    }
+
+    /**Method to retrive the notifications of a follower. */
+    public function getNotifications($user) {
+        $query = "SELECT * FROM `Notification` WHERE to_user_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $user);
+
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch(Exception $e) {
+            echo "Error:", $e->getMessage(),"\n";
+        }
     }
 }
 
