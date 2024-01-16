@@ -129,6 +129,9 @@
             </div>
         </div>
     </div>
+    
+</div>
+
     <?php require("template/search.html"); ?>
 
     <script src="js/open-search.js"></script>

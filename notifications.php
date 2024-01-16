@@ -27,19 +27,23 @@ function displayNotifications($notifications) {
             <?php elseif ($notification['notification_type'] == 'commented'): ?>
                 <p>
                     <span class="notify-user">
-                        <a href="profile.html"><?php echo $notification["from_user_username"] ?></a>
+                        <a href="<?php echo "profile.php?=".$notification['from_user_username']?>">
+                            <?php echo $notification['from_user_username']?>
+                        </a>
                     </span>
                     <a class="notify-commented" href="#">Commented</a> your post.
-                    <span class="notify-time">2h ago</span>
+                    <span class="notify-time"><?php echo calculate_days($notification['date_posted']); ?></span>
                 </p>
             <!-- The notification is of type starred -->
             <?php else: ?>
                 <p>
                     <span class="notify-user">
-                        <a href="profile.html"><?php echo $notification["from_user_username"] ?></a>
+                        <a href="<?php echo "profile.php?=".$notification['from_user_username']?>">
+                            <?php echo $notification['from_user_username']?>
+                        </a>
                     </span>
                     <a class="notify-stared" href="#">Starred</a> your post.
-                    <span class="notify-time">2h ago</span>
+                    <span class="notify-time"><?php echo calculate_days($notification['date_posted']); ?></span>
                 </p>
             <?php endif; ?>
         </div>
