@@ -138,10 +138,12 @@
                         echo '<p>Nessun utente trovato.</p>';
                     } else {
                         foreach ($users as $user) : ?>
+                            <a href="profile.php?username=<?php echo $user['username']; ?>">
                             <div class="userContainer">
                                 <span class="profile-pic-container"><img src="<?php echo UPLOAD_DIR.$user['profile_image']; ?>" alt="profile picture"></span>
                                 <p>@<?php echo $user['username']; ?></p>
                             </div>
+                            </a>
                         <?php endforeach;
                     } 
                 ?>
@@ -153,10 +155,12 @@
                         echo '<p>Nessun utente trovato.</p>';
                     } else {
                         foreach ($users as $user) : ?>
+                        <a href="profile.php?username=<?php echo $user['username']; ?>">
                             <div class="userContainer">
                                 <span class="profile-pic-container"><img src="<?php echo UPLOAD_DIR.$user['profile_image']; ?>" alt="profile picture"></span>
                                 <p>@<?php echo $user['username']; ?></p>
                             </div>
+                        </a>
                         <?php endforeach;
                     } 
                 ?>
