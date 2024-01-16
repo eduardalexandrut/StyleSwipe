@@ -21,11 +21,7 @@
                     <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
-<<<<<<< HEAD
                     <button  data-post-id="<?php echo $post['id'] ?>" class = "comment-btn">
-=======
-                    <button data-bs-toggle="modal" data-bs-target="#commentsModal" data-post-id="<?php echo $post['id'] ?>" class = "comment-btn">
->>>>>>> aa851eaf54093af70fedcefd9bbc4a51a7b2900b
                         <i class="bi-cloud"></i>
                     </button>
                     <p><?php echo $post["comments"] ?></p>

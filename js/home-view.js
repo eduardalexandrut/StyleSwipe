@@ -261,7 +261,7 @@ function starUnstar(btn) {
             if (data.comments.length == 0) {
                 modalBody.innerHTML = '';
             } else {
-                data.comments.forEach((comment) => {
+                /*data.comments.forEach((comment) => {
                     let commentDiv = document.createElement('div');
                     commentDiv.classList.add("comment");
                     commentDiv.innerHTML = `
@@ -275,7 +275,7 @@ function starUnstar(btn) {
                         </section>
                     `
                 });
-                modalBody.appendChild(commentDiv);
+                modalBody.appendChild(commentDiv);*/
             }
 
             //Create new comments-modal and display it.
