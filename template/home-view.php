@@ -6,6 +6,7 @@
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
+            <p><?php echo count(explode(',', $post["liked_by"]))?></p>
             <img alt="User Profile Pic" src="./upload/be.jpeg" />
             <a href="profile.html"><?php echo $post['user_username']; ?></a>
             <p><?php echo $post['posted']; ?></p>
@@ -15,9 +16,17 @@
         <section>
             <div>
                 <div>
-                    <button data-action = "LIKE" data-post-id="<?php echo $post['id'] ?>"  class="like-btn">
-                        <i class="bi-hand-thumbs-up"></i>
-                    </button>
+                    <?php if (in_array($_SESSION["username"], explode(',', $post["liked_by"]))): ?>
+                        <!-- User has liked the post -->
+                        <button data-action="UNLIKE" data-post-id="<?php echo $post['id'] ?>" class="like-btn">
+                            <i class="bi-hand-thumbs-down"></i>
+                        </button>
+                    <?php else: ?>
+                        <!-- User has not liked the post -->
+                        <button data-action="LIKE" data-post-id="<?php echo $post['id'] ?>" class="like-btn">
+                            <i class="bi-hand-thumbs-up"></i>
+                        </button>
+                    <?php endif; ?>
                     <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
