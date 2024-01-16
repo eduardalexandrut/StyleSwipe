@@ -1,4 +1,3 @@
-<!-- notifications.php -->
 <?php
 function displayNotifications($notifications) {
 ?>

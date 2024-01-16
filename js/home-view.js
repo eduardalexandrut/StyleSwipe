@@ -87,7 +87,7 @@ document.querySelectorAll("button.like-btn").forEach((btn) => btn.addEventListen
 document.querySelectorAll("button.star-btn").forEach((btn) => btn.addEventListener("click", ()=>starUnstar(btn), false));
 
 //Event listener for buttons of class .comment-btn.
-document.querySelectorAll("button.comment-btn").forEach((btn) => btn.addEventListener("click", ()=>showComments(btn), false));
+document.querySelectorAll(".post button.comment-btn").forEach((btn) => btn.addEventListener("click", ()=>showComments(btn), false));
 
 //Event listener for button to add a new comment.
 document.getElementById("button-addon2").addEventListener("click", (e)=>addComment(e.target), false);
