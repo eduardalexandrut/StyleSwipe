@@ -21,13 +21,13 @@
                     <p><?php echo $post["likes"] ?></p>
                 </div>
                 <div>
-                    <button data-bs-toggle="modal" data-bs-target="#commentsModal">
+                    <button data-bs-toggle="modal" data-bs-target="#commentsModal" data-post-id="<?php echo $post['id'] ?>" class = "comment-btn">
                         <i class="bi-cloud"></i>
                     </button>
                     <p><?php echo $post["comments"] ?></p>
                 </div>
                 <div>
-                    <button class="star-btn">
+                    <button data-action = "STAR" data-post-id="<?php echo $post['id'] ?>" class="star-btn">
                         <i class="bi-star"></i>
                     </button>
                     <p><?php echo $post["stars"] ?></p>
@@ -72,27 +72,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <?php if (count($templateParams['comments']) == 0): ?>
+                        <p>No comments yet.</p>
+                    <?php else: foreach ($templateParams['comments'] as $comment): ?>
                     <div class="comment">
-                        <img alt="User Profile Pic" src="img/logo.png">
+                        <img alt="User Profile Pic" src= "<?php echo UPLOAD_DIR.$comment['profile_image']?>"/>
                         <section>
                             <header>
-                                <a href="profile.html">@username</a>
-                                <p>24/1/2012</p>
+                                <a href="profile.html"><?php echo $comment['user_username'] ?></a>
+                                <p><?php echo $comment['date_posted'] ?></p>
                             </header>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
+                            <p><?php echo $comment['comment_text'] ?></p>
                         </section>
                     </div>
-
-                    <div class="comment">
-                        <img alt="User Profile Pic" src="img/logo.png">
-                        <section>
-                            <header>
-                                <a href="profile.html">@username</a>
-                                <p>24/1/2012</p>
-                            </header>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores minima enim maiores dicta animi, voluptate blanditiis perferendis quo voluptates quam veritatis eveniet architecto corporis pariatur magni. Provident unde eaque hic.</p>
-                        </section>
-                    </div>
+                    <?php endforeach;?>
+                    <?php endif;?>
                 </div>
                 <div class="modal-footer">
                     <div class="input-group">

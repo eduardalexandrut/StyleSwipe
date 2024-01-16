@@ -259,13 +259,99 @@ public function createPost($user, $comment, $image) {
     /**Method to  unlike a post. */
     public function removeLike($post, $user) {
         $query = "DELETE FROM `Like`
-        WHERE `user_username` = '?' AND `post_id` = ?;";
+              WHERE `user_username` = ? AND `post_id` = ?";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("si", $user, $post,);
+        $stmt->bind_param("si", $user, $post);
         try {
             $stmt->execute();
         } catch(Exception $e){
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    /**Method to star a post */
+    public function addStar($post, $user) {
+        $query = "INSERT INTO `Star` (`user_username`, `post_id`, `date_starred`) VALUES (?, ?, ?)";
+        // Get the current datetime
+        $date_posted = date("Y-m-d");
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sis", $user, $post, $date_posted);
+        try {
+            $stmt->execute();
+        }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    /**Method to remove a starred post. */
+    public function removeStar($post, $user) {
+        $query = "DELETE FROM `Star`
+              WHERE `user_username` = ? AND `post_id` = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $user, $post);
+        try {
+            $stmt->execute();
+        } catch(Exception $e){
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    /**Method to get all the comments of a specific post. */
+    public function getCommentsOfPost($post) {
+        $query = "SELECT
+            Comment.user_username,
+            Comment.post_id,
+            Comment.comment_text,
+            Comment.date_posted,
+            User.profile_image
+        FROM
+            Comment
+        JOIN
+            User ON Comment.user_username = User.username
+        WHERE
+            Comment.post_id = ?;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $post);
+        try { 
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            //Check if there is any result.
+            if ($result->num_rows > 0) {
+                $comments = $result->fetch_all(MYSQLI_ASSOC);   
+                return $comments;
+            } else {
+                return [];
+            }
+        }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        } finally {
+            $stmt->close();
+        }
+    }
+
+    /**Method to add a comment. */
+    public function addComment($post, $user, $body) {
+        $query = "INSERT INTO `Comment` (user_username, post_id, comment_text, date_posted)  VALUES (?,?,?,?)";
+        $date_posted = date("Y-m-d");
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("siss", $user, $post,$body, $date_posted);
+
+        try {
+            $stmt->execute();
+        } catch(Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return false;
         }
