@@ -318,7 +318,14 @@ function starUnstar(btn) {
                 throw new Error("Network response was not ok");
             }
         })
-        .then(data => {console.log(data)})
+        .then(data => {
+            console.log(data);
+            //Erase input's content.
+            document.querySelector("#commentsModal .modal-footer input").value = '';
+            //Increase number of comments displayed under the comments button.
+            let prevNumComm = parseInt(document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML);
+            document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML = prevNumComm + 1;
+        })
         .catch(error =>console.log('Error:', error));
         
     }

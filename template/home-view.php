@@ -4,7 +4,7 @@
         <?php if (count($templateParams["post"]) == 0): ?>
             <p>No following.</p>
         <?php else: foreach ($templateParams["post"] as $post): ?>
-           <div class="post">
+           <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
             <img alt="User Profile Pic" src="./upload/be.jpeg" />
             <a href="profile.html"><?php echo $post['user_username']; ?></a>
@@ -77,7 +77,7 @@
                 <div class="modal-footer">
                     <div class="input-group">
                         <input type="text" name="comment" class="form-control" placeholder="Add a comment..." aria-label="Add a comment..." aria-describedby="button-addon2">
-                        <button class="btn" type="button" id="button-addon2" data-action = "COMMENT">Add</button>
+                        <button class="btn" type="button" id="button-addon2" data-action = "COMMENT" data-bs-dismiss="modal">Add</button>
                     </div>
                 </div>
             </div>
