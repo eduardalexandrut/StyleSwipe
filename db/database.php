@@ -74,6 +74,49 @@ class DatabaseHelper {
      }
  }
 
+    public function getPostsOfUser($user) {
+        $query = "SELECT 
+            p.*,
+            COUNT(DISTINCT l.id) AS likes,
+            COUNT(DISTINCT c.id) AS comments,
+            COUNT(DISTINCT s.id) AS stars,
+            GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
+            GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
+        FROM 
+            post p
+        LEFT JOIN 
+            `like` l ON p.id = l.post_id
+        LEFT JOIN 
+            comment c ON p.id = c.post_id
+        LEFT JOIN 
+            star s ON p.id = s.post_id
+        WHERE 
+            p.user_username = ?
+        GROUP BY 
+            p.id
+        ORDER BY 
+            p.posted DESC;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $user);
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            //Check if there is any result.
+            if ($result->num_rows > 0) {
+                $posts = $result->fetch_all(MYSQLI_ASSOC);
+                return $posts;
+            }else {
+                return [];
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        } finally {
+            $stmt->close();
+        }
+    }
+
     //Method to get all the posts of all the users $user is following,along with the num of likes, num of comments and num of stars.
     public function getPostsOfFollowing($user) {
         $query = "SELECT 
