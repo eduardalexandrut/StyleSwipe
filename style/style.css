@@ -499,13 +499,20 @@ aside#createAside form>input:last-child {
     cursor: pointer;
 }
 
+#add-profile-pic {
+    display: block !important;
+}
+
 .input-box #add-profile-pic {
     text-align: center;
     justify-content: center;
 }
 
 #profile-pic {
-    display: none;
+    display: block;
+    width: 35% !important;
+    margin: auto;
+    margin-top: 1%;
 }
 
 

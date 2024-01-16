@@ -9,7 +9,7 @@ require_once 'bootstrap.php';
         $dateOfBirth = $_POST["dateOfBirth"];
         $gender = $_POST["gender"];
         $email = $_POST["email"];
-        $profilepic = $_POST["profilepic"];
+        $profilepic = "";
 
         if (isset($_FILES["profilepic"]) && !empty($_FILES["profilepic"]["name"])) {
             // $_FILES["profilepic"] è definito e contiene un nome di file non vuoto
@@ -22,6 +22,8 @@ require_once 'bootstrap.php';
 
                 if (!$registration_result) {
                     $templateParams["erroreRegistrazione"] = "Errore durante la registrazione. Riprova!";
+                    /*header("Location: register.php");
+                    exit();*/
                 } else {
                     registerLoggedUser($registration_result);
                 }
@@ -30,8 +32,8 @@ require_once 'bootstrap.php';
                 header("location: register.php?formmsg=" . $msg);
             }
         } else {
-            $msg = "Errore: Nessun file caricato o file non valido.";
-            header("location: register.php?formmsg=" . $msg);
+            $templateParams["erroreRegistrazione"] = "Errore: Nessun file caricato o file non valido.";
+            header("location: register.php?formmsg=" . $templateParams["erroreRegistrazione"]);
         }
 
     }
