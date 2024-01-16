@@ -4,7 +4,15 @@
                 <div class="profile-pic-container">
                     <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt="Profile Picture" />
                 </div>
-                <p>@<?php echo $templateParams["username"]; ?></p>
+                <p><?php echo $templateParams["username"]; ?></p>
+                <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username'] !== $templateParams['username']) {
+                        $isFollowing = $templateParams["isFollowing"];
+                        $buttonText = $isFollowing ? 'Unfollow' : 'Follow';
+                ?>
+                <button id="followButton" onclick="toggleFollow('<?php echo $templateParams['username']; ?>')"><?php echo $buttonText; ?></button>
+                <?php } ?>
+
                 <div id="profile-stats">
                     <span class="stat-item">
                         <span>21</span><br>

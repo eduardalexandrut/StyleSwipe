@@ -22,6 +22,7 @@ else {
         $templateParams["username"] = $userData["username"];
         $templateParams["followers"] = $dbh->getFollowers($userData["username"]);
         $templateParams["followings"] = $dbh->getFollowings($userData["username"]);
+        $templateParams["isFollowing"] = $dbh->isFollowing($_SESSION["username"], $userData["username"]);
     } else {
         echo "Utente non trovato";
         exit();

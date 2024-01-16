@@ -446,7 +446,7 @@ aside#createAside form>input:last-child {
     display: inline;
 }
 
-.wrapper form .button {
+.wrapper form .button, #followButton{
     width: 100%;
     box-sizing: border-box;
     border-radius: 45px;
@@ -465,7 +465,7 @@ aside#createAside form>input:last-child {
     margin-top: 5%;
 }
 
-.wrapper form input[type="submit"] {
+.wrapper form input[type="submit"], #followButton {
     background: linear-gradient(to top, #6C10F4, #9013FE);
     color:white;
 }
@@ -741,6 +741,10 @@ aside#createAside form>input:last-child {
     align-items: center;
 }
 
+#profile-info p {
+    margin-bottom: 0.5%;
+}
+
 .profile-pic-container {
     width: 25%;
     aspect-ratio: 1 / 1; /* Crea un contenitore quadrato */
@@ -858,6 +862,13 @@ aside#createAside form>input:last-child {
 
 .profile-post {
     cursor: pointer;
+}
+
+#followButton {
+    margin-top: 0.5%;
+    width: 30%;
+    height: 30px;
+    margin-bottom: 1%;
 }
 
 /*
@@ -1126,6 +1137,13 @@ aside#createAside form>input:last-child {
     .icon.active {
         border-bottom: none;
         color: rgba(0, 0, 0, 0.80);
+    }
+
+    #followButton {
+        margin-top: 0.5%;
+        width: 20%;
+        height: 40px;
+        margin-bottom: 2%;
     }
 
     /*

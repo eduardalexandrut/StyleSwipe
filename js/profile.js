@@ -38,3 +38,16 @@ function showPost(post) {
     document.getElementById('postCaption').textContent = post.querySelector('.caption').textContent;*/
     new bootstrap.Modal(document.getElementById('postModal')).show();
 }
+
+function toggleFollow(profileUsername) {
+    // Esegui una richiesta AJAX per gestire il toggle di seguimento
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Aggiorna il testo del pulsante in base alla risposta del server
+            document.getElementById('followButton').innerText = this.responseText;
+        }
+    };
+    xhttp.open("GET", "toggle_follow.php?profile=" + profileUsername, true);
+    xhttp.send();
+}

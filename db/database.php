@@ -208,6 +208,37 @@ public function createPost($user, $comment, $image) {
         return $followings;
     }
 
+    public function isFollowing($followerUsername, $followingUsername) {
+        $query = "SELECT * FROM Follow WHERE follower_username = ? AND following_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $followerUsername, $followingUsername);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function follow($followerUsername, $followingUsername) {
+        $query = "INSERT INTO Follow (follower_username, following_username) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $followerUsername, $followingUsername);
+
+        return $stmt->execute();
+    }
+
+    public function unfollow($followerUsername, $followingUsername) {
+        $query = "DELETE FROM Follow WHERE follower_username = ? AND following_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $followerUsername, $followingUsername);
+
+        $stmt->execute();
+    }
+
     /**Method to add a like to a post. */
     public function addLike($post, $user) {
         $query = "INSERT INTO `Like` (`user_username`, `post_id`, `date_liked`) VALUES (?, ?, ?)";
