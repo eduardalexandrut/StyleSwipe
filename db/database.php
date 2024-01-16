@@ -239,6 +239,36 @@ public function createPost($user, $comment, $image) {
         $stmt->execute();
     }
 
+    public function getFollowersCount($username) {
+        $query = "SELECT COUNT(*) as num_followers FROM Follow WHERE following_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['num_followers'];
+    }
+
+    public function getFollowingsCount($username) {
+        $query = "SELECT COUNT(*) as num_followings FROM Follow WHERE follower_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['num_followings'];
+    }
+
+    public function getPostsCount($username) {
+        $query = "SELECT COUNT(*) as num_posts FROM Post WHERE user_username = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['num_posts'];
+    }
+
     /**Method to add a like to a post. */
     public function addLike($post, $user) {
         $query = "INSERT INTO `Like` (`user_username`, `post_id`, `date_liked`) VALUES (?, ?, ?)";
