@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const postCanvas = document.querySelectorAll(".post > canvas");
 const randomPins = generateRandomPins();
+const UPLOAD_DIR = "upload/";
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
@@ -251,7 +252,7 @@ function starUnstar(btn) {
         })
         .then(response => {
             if (response.ok) {
-                return response.body;
+                return response.json();
             } else {
                 throw new Error("Network response was not ok");
             }
@@ -259,14 +260,12 @@ function starUnstar(btn) {
         .then(data => {
             console.log(data);
             let modalBody = document.querySelector("#commentsModal .modal-body");
-            //Increase number of comments shown below the comment button.
-            //btn.nextElementSibling.textContent = parseInt(btn.nextElementSibling.textContent) + 1;
 
             //Remove all previous elements from the modal-body.
             modalBody.innerHTML = '';
 
-            /*if (data.comments.length == 0) {
-                modalBody.innerHTML = '';
+            if (data.comments.length == 0) {
+                modalBody.innerHTML = '<p>No comments yet.</p>';
             } else {
                 data.comments.forEach((comment) => {
                     let commentDiv = document.createElement('div');
@@ -281,9 +280,9 @@ function starUnstar(btn) {
                             <p>${comment['comment_text']}</p>
                         </section>
                     `
+                    modalBody.appendChild(commentDiv);
                 });
-                modalBody.appendChild(commentDiv);
-            }*/
+            }
 
             //Create new comments-modal and display it.
             let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));

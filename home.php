@@ -3,15 +3,15 @@ require_once 'bootstrap.php';
 $templateParams["name"] = "home-view.php";
 $templateParams["title"] = "Home";
 $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
-$templateParams["comments"] = $dbh->getCommentsOfPost(1);
+//$templateParams["comments"] = $dbh->getCommentsOfPost(1);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //Check if post-id is provided.
     if (isset($_GET["postId"])) {
-
+        $postId = $_GET["postId"];
         //Get comments.
-        $comments = $dbh->getCommentsOfPost(1);
+        $comments = $dbh->getCommentsOfPost($postId);
 
         //Transform response into JSON.
         $response = [
@@ -20,9 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         header('Content-Type: application/json');
         echo json_encode($response);
+        exit;
     } else {
         /*header('HTTP/1.1 400 Bad Request');
-        echo json_encode(['error' => 'postId not provided']);*/
+        echo json_encode(['error' => 'postId not provided']);
+        exit;*/
     }
 }
 
