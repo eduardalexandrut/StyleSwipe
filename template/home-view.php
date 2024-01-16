@@ -93,7 +93,7 @@
                 <div class="modal-footer">
                     <div class="input-group">
                         <input type="text" name="comment" class="form-control" placeholder="Add a comment..." aria-label="Add a comment..." aria-describedby="button-addon2">
-                        <button class="btn" type="button" id="button-addon2" data-action = "COMMENT" data-bs-dismiss="modal">Add</button>
+                        <button class="btn" type="button" id="button-addon2" data-action = "COMMENT" data-bs-dismiss="modal" disabled>Add</button>
                     </div>
                 </div>
             </div>

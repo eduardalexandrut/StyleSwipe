@@ -92,6 +92,19 @@ document.querySelectorAll("button.comment-btn").forEach((btn) => btn.addEventLis
 //Event listener for button to add a new comment.
 document.getElementById("button-addon2").addEventListener("click", (e)=>addComment(e.target), false);
 
+//Event listener for commentModal input, when text is written on it.
+// Event listener for commentModal input when text is written in it.
+document.querySelector("#commentsModal input[name='comment']").addEventListener("input", (e) => {
+    let text = e.target.value;
+    let addButton = document.querySelector("#commentsModal button#button-addon2");
+
+    if (text.length > 0) {
+        addButton.removeAttribute("disabled");
+    } else {
+        addButton.setAttribute("disabled", true);
+    }
+}, false);
+
 //Function to draw the pins relative to a post image(or hide them).
 function drawPins(canvas) {
     let ctx = canvas.getContext("2d");
