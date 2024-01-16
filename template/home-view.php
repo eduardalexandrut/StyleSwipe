@@ -58,24 +58,27 @@
      <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
-        <!--New Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <span class="notify-badge badge rounded-pill bg-primary">New</span>
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
+        <button class="bi-plus-circle"></button>
+        <?php foreach ($templateParams['notifications'] as $notification): ?>
+            <!--New Notification element.-->
+            <div class="notification">
+                <img alt="User Profile Pic" src="img/outfit.jpeg" />
+                <!--The notification hasn't been seen-->
+                <?php if ($notification['seen'] == 0): ?>
+                    <span class="notify-badge badge rounded-pill bg-primary">New</span>
+                <?php endif;?>
+                <!--The notificiation is of type liked-->
+                <?php if ($notification['notification_type'] == 'liked'): ?>
+                    <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
+                <!-- The notification is of type commented-->
+                <?php elseif ($notification['notification_type'] == 'commented'): ?>
+                    <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
+                <!-- The notification is of type starred-->
+                <? else: ?>
+                    <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
+                 <?php endif;?>
+             </div>
+        <?php endforeach; ?>
     </aside>
     <!--Comments Modal-->
     <div class="modal fade" id="commentsModal">

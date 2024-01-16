@@ -403,7 +403,17 @@ public function createPost($user, $comment, $image) {
 
     /**Method to retrive the notifications of a follower. */
     public function getNotifications($user) {
-        $query = "SELECT * FROM `Notification` WHERE to_user_username = ?";
+        $query = "SELECT 
+        Notification.*, 
+        User.profile_image AS from_user_profile_pic 
+     FROM 
+        `Notification` 
+     JOIN 
+        `User` 
+     ON 
+        Notification.from_user_username = User.username 
+     WHERE 
+        to_user_username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
 
