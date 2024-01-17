@@ -358,7 +358,6 @@ function starUnstar(btn) {
         .then(data => {
             console.log(data);
             const notifyContainer = document.querySelectorAll('.notifyContainer');
-            console.log(notifyContainer)
             notifyContainer.forEach(e=>e.innerHTML="");
 
             if (data.notifications.length == 0) {
