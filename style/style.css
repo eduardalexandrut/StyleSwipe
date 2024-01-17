@@ -549,7 +549,7 @@ aside#createAside form>input:last-child {
     border-top: 1px solid rgb(209, 209, 209);
     border-bottom: 1px solid rgb(209, 209, 209);
 }
-.post header {
+.post header, #postModal .modal-header{
     order: 0;
     z-index: 0;
     display: flex;
@@ -564,7 +564,7 @@ aside#createAside form>input:last-child {
     opacity: 1;
     font-weight: 600;
 }
-.post header p {
+.post header p, #postDate{
     margin-left: auto;
     font-size: small;
     opacity: .5;
@@ -874,18 +874,33 @@ aside#createAside form>input:last-child {
 }
 
 #postModal .modal-header {
-    justify-content: right;
+    align-items: center;
+}
+
+#postModal .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#postModal .modal-body img {
+    border-radius: 5%;
 }
 
 #postModal .modal-footer {
-    justify-content: left;
+    display: block;
+}
+
+#postCaption {
+    margin-left: 4%;
 }
 
 #profilePicPost {
-    width: 10%;
+    width: 15%;
     height: auto;
     aspect-ratio: 1/1;
     border-radius: 100%;
+    margin-right: 2%;
 }
 
 #postUsername {
