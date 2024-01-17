@@ -275,7 +275,6 @@ function starUnstar(btn) {
             }
         })
         .then(data => {
-            console.log(data);
             let modalBody = document.querySelector("#commentsModal .modal-body");
 
             //Remove all previous elements from the modal-body.
@@ -309,7 +308,6 @@ function starUnstar(btn) {
         let action = btn.getAttribute("data-action");
         let comment_text = document.querySelector("#commentsModal .modal-footer input").value;
         let postId = selectedPost;
-        
 
         fetch('./home.php', {
             method: 'POST',
@@ -324,7 +322,7 @@ function starUnstar(btn) {
         })
         .then(response => {
             if (response.ok) {
-                return response.json(); // Parse the JSON from the response.
+                return response.text(); 
             } else {
                 throw new Error("Network response was not ok");
             }
@@ -337,13 +335,12 @@ function starUnstar(btn) {
             let prevNumComm = parseInt(document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML);
             document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML = prevNumComm + 1;
         })
-        .catch(error =>console.log('Error:', error));
+        //.catch(error =>console.log('Error:', error));
         
     }
 
     //Function to update notifications.
     function updateNotifications() {
-        let action = "update-notify";
         //GET requests to get the comments of the specific post.
         fetch(`./home.php?update=True`, {
             method: 'GET',
@@ -358,7 +355,47 @@ function starUnstar(btn) {
                 throw new Error("Network response was not ok");
             }
         })
-    
+        .then(data => {
+            console.log(data);
+            const notifyContainer = document.querySelectorAll('.notifyContainer');
+            notifyContainer.forEach(e=>e.innerHTML="");
+
+            if (data.notifications.length == 0) {
+                notifyContainer.forEach(e=>e.innerHTML="<p>No notifications yet.</p>");
+               
+            } else {
+                data.notifications.forEach((notification) => {
+                    let notificationDiv = document.createElement('div');
+                    notificationDiv.classList.add("notification");
+                    notificationDiv.innerHTML =`
+                    <img alt="User Profile Pic" src="${UPLOAD_DIR}${notification['from_user_profile_pic']}"/>
+                    <!-- The notification hasn't been seen -->
+                    ${notification['seen'] == 0 ? `<span class="notify-badge badge rounded-pill bg-primary">New</span>` : ''}
+                
+                    <p class="notification-text">
+                        <span class="notify-user">
+                            <a href="profile.php?=${notification['from_user_username']}">
+                                ${notification['from_user_username']}
+                            </a>
+                        </span>
+                
+                        <!-- Conditional rendering based on notification type -->
+                        ${
+                            notification['notification_type'] === 'liked'
+                                ? `<a class="notify-liked" href="#">Liked</a> your post.`
+                                : notification['notification_type'] === 'commented'
+                                ? `<a class="notify-commented" href="#">Commented</a> your post.`
+                                : `<a class="notify-stared" href="#">Starred</a> your post.`
+                        }
+                
+                        <span class="notify-time">${calculate_days(notification['date_posted'])}</span>
+                    </p>
+            `;
+                    //notifyContainer[0].appendChild(notificationDiv);
+                    notifyContainer.forEach(e => e.appendChild(notificationDiv.cloneNode(true)));
+                });
+            }
+        })
         .catch(error => console.error('Error:', error));
     }
         
@@ -386,4 +423,5 @@ function starUnstar(btn) {
     }
 
 resizeCanvas();
+updateNotifications();
 });

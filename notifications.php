@@ -2,9 +2,7 @@
 function displayNotifications($notifications) {
 ?>  
     <div>
-    <button class="refresh-notify">
-        <i class="bi-plus-circle "></i>
-    </button>
+    
     <?php foreach ($notifications as $notification): ?>
         <!-- New Notification element. -->
         <div class="notification">

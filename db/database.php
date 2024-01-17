@@ -478,7 +478,7 @@ public function createPost($user, $comment, $image) {
 
     /**Method to retrive the notifications of a follower. */
     public function getNotifications($user) {
-        $query = "SELECT 
+        $query =  "SELECT 
         Notification.*, 
         User.profile_image AS from_user_profile_pic 
      FROM 
@@ -488,7 +488,8 @@ public function createPost($user, $comment, $image) {
      ON 
         Notification.from_user_username = User.username 
      WHERE 
-        to_user_username = ?";
+        to_user_username = ?
+    ORDER BY NotificatioN.date_posted DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
 

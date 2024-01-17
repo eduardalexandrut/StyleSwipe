@@ -58,13 +58,11 @@
      <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
-            <?php
-                // Check if the displayNotifications function is defined
-                if (function_exists('displayNotifications')) {
-                    // Call the displayNotifications function with the notifications data
-                    displayNotifications($templateParams["notifications"]);
-                }
-            ?>
+        <button class="refresh-notify">
+                        <i class="bi-plus-circle "></i>
+                    </button>
+        <div class="notifyContainer">
+        </div>
         
     </aside>
     <!--Comments Modal-->
@@ -101,13 +99,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <?php
-                    // Check if the displayNotifications function is defined
-                    if (function_exists('displayNotifications')) {
-                        // Call the displayNotifications function with the notifications data
-                        displayNotifications($templateParams["notifications"]);
-                    }
-                    ?>
+                    <button class="refresh-notify">
+                        <i class="bi-plus-circle "></i>
+                    </button>
+                <div class="notifyContainer">
+               
+                    </div>
                 </div>
             </div>
         </div>

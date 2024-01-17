@@ -3,7 +3,9 @@
 *
 */
 /* width */
-
+.notifyContainer {
+    min-height: fit-content;
+}
 button.refresh-notify{
     background-color: #ffffff;
     border-radius: 50%;
