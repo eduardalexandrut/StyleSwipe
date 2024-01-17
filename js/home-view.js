@@ -92,7 +92,8 @@ document.querySelectorAll(".post button.comment-btn").forEach((btn) => btn.addEv
 //Event listener for button to add a new comment.
 document.getElementById("button-addon2").addEventListener("click", (e)=>addComment(e.target), false);
 
-//Event listener for commentModal input, when text is written on it.
+//Event listener for refresh notify button.
+document.querySelectorAll("button.refresh-notify").forEach((btn) => btn.addEventListener("click", ()=>updateNotifications(), false));
 // Event listener for commentModal input when text is written in it.
 document.querySelector("#commentsModal input[name='comment']").addEventListener("input", (e) => {
     let text = e.target.value;
@@ -237,7 +238,6 @@ function starUnstar(btn) {
         }
     })
     .then(data => {
-
         // If button was a star, now set action to unstar.
         if (action == "STAR") {
             btn.setAttribute("data-action", "UNSTAR");
@@ -290,7 +290,7 @@ function starUnstar(btn) {
                     commentDiv.innerHTML = `
                     <img alt="User Profile Pic" src="${UPLOAD_DIR}${comment['profile_image']}"/>
                         <section>
-                            <header>
+                            <header> 
                                 <a href="profile.html">${comment['user_username']}</a>
                                 <p>${calculate_days(comment['date_posted'])}</p>
                             </header>
@@ -300,11 +300,6 @@ function starUnstar(btn) {
                     modalBody.appendChild(commentDiv);
                 });
             }
-
-            //Create new comments-modal and display it.
-            /*let commentsModal = new bootstrap.Modal(document.getElementById('commentsModal'));
-            commentsModal.show();*/
-            
         })
         .catch(error => console.error('Error:', error));
     }
@@ -329,7 +324,7 @@ function starUnstar(btn) {
         })
         .then(response => {
             if (response.ok) {
-                return response.text(); // Parse the JSON from the response.
+                return response.json(); // Parse the JSON from the response.
             } else {
                 throw new Error("Network response was not ok");
             }
@@ -341,12 +336,33 @@ function starUnstar(btn) {
             //Increase number of comments displayed under the comments button.
             let prevNumComm = parseInt(document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML);
             document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML = prevNumComm + 1;
-
-            //showComments(btn);
         })
         .catch(error =>console.log('Error:', error));
         
     }
+
+    //Function to update notifications.
+    function updateNotifications() {
+        let action = "update-notify";
+        //GET requests to get the comments of the specific post.
+        fetch(`./home.php?update=True`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Network response was not ok");
+            }
+        })
+    
+        .catch(error => console.error('Error:', error));
+    }
+        
+    
 
     //Function to calculate days passed between 2 days.
     function calculate_days(date) {

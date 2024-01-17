@@ -467,6 +467,23 @@ public function createPost($user, $comment, $image) {
         $stmt->close();
         return false;
     }
+
+    /*Method to set a notification to seen.*/
+    public function setNotificationToSeen($notify_id) {
+        $query = "UPDATE `Notification` SET seen = 1 WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $notify_id);
+
+        try {
+            $stmt->execute();
+        } catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
 }
 
 ?>
