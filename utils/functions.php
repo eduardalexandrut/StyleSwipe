@@ -86,7 +86,7 @@ function calculate_days($date) {
     } else if ($daysPassed == 1) {
         return $daysPassed." day ago.";
     } else {
-        return $daysPassed." day ago.";
+        return $daysPassed." days ago.";
     }
 }
 

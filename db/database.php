@@ -421,8 +421,8 @@ public function createPost($user, $comment, $image) {
             }
         }catch(Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
-        }
-        $stmt->close();
+        } finally{$stmt->close();}
+        
     } 
 
     /**Method to add a like to a post. */

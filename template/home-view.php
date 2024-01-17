@@ -10,7 +10,7 @@
             <p><?php echo calculate_days( $post['posted']); ?></p>
         </header>
         <img alt="Outfit Pic" src="<?php echo UPLOAD_DIR.$post['image']; ?>" />
-        <canvas></canvas>
+        <canvas data-post-id = "<?php echo $post['id'] ?>"></canvas>
         <section>
             <div>
                 <div>

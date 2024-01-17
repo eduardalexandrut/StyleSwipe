@@ -68,13 +68,14 @@ class Pin {
 document.addEventListener('DOMContentLoaded', function () {
 
 const postCanvas = document.querySelectorAll(".post > canvas");
+const pinItem = new Map();
 const randomPins = generateRandomPins();
 const UPLOAD_DIR = "upload/";
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
 
-postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem), false));
+postCanvas.forEach(elem => elem.addEventListener("click",(e)=>getItems(elem)/*clickPost(elem)*/, false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 
 //Event listener to dynamically resize the canvas'.
@@ -107,12 +108,13 @@ document.querySelector("#commentsModal input[name='comment']").addEventListener(
 }, false);
 
 //Function to draw the pins relative to a post image(or hide them).
-function drawPins(canvas) {
+function drawPins(canvas, pin) {
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (canvas.getAttribute("data-selected") == "true"){
-        randomPins.forEach((elem) => elem.draw(ctx));
-    } 
+    /*if (canvas.getAttribute("data-selected") == "true"){
+        //randomPins.forEach((elem) => elem.draw(ctx));
+    } */
+    pin.draw(ctx);
 }
 
 //Function that draws the pins of an image and sets the selected state of the canvas.
@@ -261,7 +263,7 @@ function starUnstar(btn) {
         selectedPost = postId;
 
         //GET requests to get the comments of the specific post.
-        fetch(`./home.php?postId=${postId}`, {
+        fetch(`./home.php?postId=${postId}&action=COMMENTS`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -356,13 +358,11 @@ function starUnstar(btn) {
             }
         })
         .then(data => {
-            console.log(data);
             const notifyContainer = document.querySelectorAll('.notifyContainer');
             notifyContainer.forEach(e=>e.innerHTML="");
 
             if (data.notifications.length == 0) {
                 notifyContainer.forEach(e=>e.innerHTML="<p>No notifications yet.</p>");
-               
             } else {
                 data.notifications.forEach((notification) => {
                     let notificationDiv = document.createElement('div');
@@ -374,7 +374,7 @@ function starUnstar(btn) {
                 
                     <p class="notification-text">
                         <span class="notify-user">
-                            <a href="profile.php?=${notification['from_user_username']}">
+                            <a href="profile.php?username=${notification['from_user_username']}">
                                 ${notification['from_user_username']}
                             </a>
                         </span>
@@ -399,6 +399,47 @@ function starUnstar(btn) {
         .catch(error => console.error('Error:', error));
     }
         
+    //Function to get the items of a post.
+    function getItems(canvas) {
+        let postId = canvas.getAttribute("data-post-id");
+        let action = "ITEMS";
+        pinItem.clear();//Clear pinItem.
+
+        fetch(`./home.php?postId=${postId}&action=${action}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) =>{
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Network response was not ok");
+            }
+        })
+        .then(data => {
+            //Add to the map an entry (pin, item).
+            data.items.forEach(item => {
+                const newItem = new Item(
+                        item.name,
+                        item.brand,
+                        item.link,
+                        item.price,
+                        item.size,
+                        item.x,
+                        item.y
+                );
+        
+                const newPin = new Pin(item.x, item.y, newItem);
+                pinItem.set(newPin, newItem);
+            });
+            console.log(pinItem);
+            //Draw pins.
+            pinItem.forEach((v,k) => drawPins(canvas, k));
+        })
+        .catch(error => console.error('Error:', error));
+    }
     
     //Function to calculate days passed between 2 days.
     function calculate_days(date) {

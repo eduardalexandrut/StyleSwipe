@@ -6,7 +6,7 @@ $templateParams["name"] = "home-view.php";
 $templateParams["title"] = "Home";
 $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
 $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
-
+$templateParams["items"] = $dbh->getItemsOfPost(1);
 //displayNotifications($templateParams["notifications"]);
 // Initialize $count to 0 if it doesn't exist in the session
 if (!isset($_SESSION['count'])) {
@@ -41,19 +41,35 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         echo json_encode($response);
         exit;
     }
-    else if (isset($_GET["postId"])) {
+    else if (isset($_GET["postId"]) && isset($_GET["action"])) {
         $postId = $_GET["postId"];
-        //Get comments.
-        $comments = $dbh->getCommentsOfPost($postId);
+        //Retrieve comments.
+        if ($_GET["action"] == "COMMENTS") {
+            //Get comments.
+            $comments = $dbh->getCommentsOfPost($postId);
+            
+            //Transform response into JSON.
+            $response = [
+                'comments' => $comments
+            ];
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
+            
+        } else if ($_GET["action"] == "ITEMS") {
+            // Get items.
+            $items = $dbh->getItemsOfPost($postId);
         
-        //Transform response into JSON.
-        $response = [
-            'comments' => $comments
-        ];
+            $response = [
+                'items' => $items
+            ];
         
-        header('Content-Type: application/json');
-        echo json_encode($response);
-        exit;
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
+        }
+        
+       
     } else {
         /*header('HTTP/1.1 400 Bad Request');
         echo json_encode(['error' => 'postId not provided']);
