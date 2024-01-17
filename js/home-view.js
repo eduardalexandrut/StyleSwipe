@@ -75,7 +75,7 @@ let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
 
-postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem), false));
+postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem, e.clientX, e.clientY), false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 
 //Event listener to dynamically resize the canvas'.
@@ -119,9 +119,23 @@ function drawPins(canvas) {
 }
 
 //Function that draws the pins of an image and sets the selected state of the canvas.
-function clickPost(canvas) {
-    setSelected(canvas);
-    getItems(canvas);
+function clickPost(canvas, x, y) {
+    if(canvas.getAttribute("data-selected") == "false") {
+        setSelected(canvas);
+        getItems(canvas);
+    } else {
+        let clickedItem = detectCollision(canvas, x, y);
+        if (clickedItem != null) {
+            console.log("yes");
+            console.log(clickedItem);
+        } else {
+            console.log("no");
+            setSelected(canvas);
+            getItems(canvas);
+        }
+    }
+    /*setSelected(canvas);
+    getItems(canvas);*/
 }
 
 //Function to open an itemo info modal when a certain item gets clicked on the image of a post.
@@ -435,7 +449,7 @@ function starUnstar(btn) {
                 const newPin = new Pin(item.x, item.y, newItem);
                 pinItem.set(newPin, newItem);
             });
-            console.log(pinItem);
+            //console.log(pinItem);
             drawPins(canvas);
         })
         .catch(error => console.error('Error:', error));
@@ -460,6 +474,38 @@ function starUnstar(btn) {
             return `${numOfDays} days ago.`;
         }
 
+    }
+
+    //Function to detect if a user clicked on a pin.
+    function detectCollision(canvas, x, y) {
+        let clickX = x - canvas.getBoundingClientRect().x;
+        let clickY = y - canvas.getBoundingClientRect().y;
+
+        //Loop trough pins and check if the click is within the boundaries of a pin.
+        for (const [pin, item] of pinItem.entries()) {
+            if (inBoundaries(pin, clickX, clickY)) {
+                return item;
+            }
+        }
+        return null;
+
+    }
+
+    //Function to check if a click is within the boundaries of a pin.
+    function inBoundaries(pin, x, y) {
+        let pinX = pin.x;
+        let pinY = pin.y;
+
+        //Get the distance between the click and the center of the pin.
+        distance = Math.sqrt(Math.pow(x - pinX, 2) + Math.pow(y - pinY, 2));
+        console.log(distance, pin.radius);
+
+        //Check distance.
+        if (distance <= pin.radius * 1.8) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 resizeCanvas();
