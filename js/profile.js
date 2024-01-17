@@ -77,6 +77,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('postDate').textContent = postDate;
         document.getElementById('profilePicPost').src = postProfilePic;
 
+        document.getElementById('viewPostDetailLink').addEventListener('click', function() {
+            let postId = postElement.dataset.postId;
+            let detailPageUrl = 'post-detail.php?postId=' + encodeURIComponent(postId);
+            window.location.href = detailPageUrl;
+        })
+
         // Mostra il modal
         new bootstrap.Modal(document.getElementById('postModal')).show();
     }

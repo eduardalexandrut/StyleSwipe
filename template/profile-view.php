@@ -37,6 +37,7 @@
                 <?php if (!empty($templateParams["publishedPosts"])) : ?>
                     <?php foreach ($templateParams["publishedPosts"] as $post) : ?>
                         <div class="profile-post" 
+                            data-post-id = "<?php echo $post['id']; ?>"
                             data-post-username="<?php echo $post['user_username']; ?>"
                             data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
                             data-post-comment="<?php echo $post['comment']; ?>"
@@ -56,6 +57,7 @@
                     <?php if (!empty($templateParams["starredPosts"])) : ?>
                         <?php foreach ($templateParams["starredPosts"] as $post) : ?>
                             <div class="profile-post" 
+                                data-post-id = "<?php echo $post['id']; ?>"
                                 data-post-username="<?php echo $post['user_username']; ?>"
                                 data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
                                 data-post-comment="<?php echo $post['comment']; ?>"
@@ -178,10 +180,8 @@
                 <img id="postImage" src="" alt="Post Image" class="img-fluid"/>
             </div>
             <div class="modal-footer">
-                <div class="modal-footer-header" >
-
-                </div>
                 <p id="postCaption"></p>
+                <a href="#" id="viewPostDetailLink" class="btn btn-primary">View Details</a>
             </div>
           </div>
         </div>
