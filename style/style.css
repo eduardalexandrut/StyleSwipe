@@ -202,7 +202,7 @@ main {
     width: 60%;
 }
 #createMain  section:first-of-type img , #createMain  section:first-of-type canvas{
-    width: 380px;
+    width: 100%;
     height: auto;
     border-radius: 30px;
     grid-row: 1/ span 1;

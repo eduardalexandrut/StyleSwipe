@@ -81,7 +81,9 @@ class Pin {
         window.addEventListener("resize", ()=>setOffset(), false);
 
         //Image picker.
-        document.querySelector("section:first-of-type > input:first-of-type").addEventListener("change", ()=>previewImg(), false);
+        //document.querySelector("section:first-of-type > input:first-of-type").addEventListener("change", ()=>previewImg(), false);
+        document.getElementById('selectedFile').addEventListener("change", () => previewImg(), false);
+
 
         //Event when the forme gets submitted.
         document.getElementById("createForm").addEventListener("submit", (e)=>sendItemsToDB(e), false);
@@ -104,8 +106,10 @@ class Pin {
         /*Function to create a displayable image selected by the user.*/
         function previewImg() {
             let [file] = imgInput.files;
+            console.log("uei");
             if (file) {
                 image.src = URL.createObjectURL(file);
+                console.log("ciao");
                 document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%; border:none !important";
                 document.querySelector("main#createMain  section:first-of-type").appendChild(image);
                 canvas.addEventListener("click", (e)=>{setClientCo(e);}/*addCircle(e.clientX, e.clientY, offsetX, offsetY)*/, false);
