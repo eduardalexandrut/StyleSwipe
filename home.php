@@ -12,16 +12,25 @@ $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"])
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //Check if post-id is provided.
-    if(isset($_GET["update"])) {
+    if(isset($_GET["update"]) && $_GET["update"] == "True") {
         foreach($templateParams["notifications"] as $notify) {
             if ($notify["seen"] == 0) {
                 //set to seen.
                 $dbh->setNotificationToSeen($notify["id"]);
             }
         }
+        $notifications = $dbh->getNotifications($_SESSION["username"]);
+        
+        //Transform response into JSON.
+        $response = [
+            "notifications" => $notifications
+        ];
+        //$templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
+        header('Content-Type: application/json');
+        echo json_encode($response);
         exit;
     }
-    if (isset($_GET["postId"])) {
+    else if (isset($_GET["postId"])) {
         $postId = $_GET["postId"];
         //Get comments.
         $comments = $dbh->getCommentsOfPost($postId);

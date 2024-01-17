@@ -58,6 +58,9 @@
      <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
+        <button class="refresh-notify">
+                        <i class="bi-plus-circle "></i>
+                    </button>
             <?php
                 // Check if the displayNotifications function is defined
                 if (function_exists('displayNotifications')) {
@@ -101,6 +104,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <button class="refresh-notify">
+                        <i class="bi-plus-circle "></i>
+                    </button>
                 <?php
                     // Check if the displayNotifications function is defined
                     if (function_exists('displayNotifications')) {
