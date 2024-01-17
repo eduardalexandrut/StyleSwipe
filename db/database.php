@@ -355,6 +355,28 @@ public function createPost($user, $comment, $image) {
         return $row['num_posts'];
     }
 
+    /**Method to get the items of a post. */
+    public function getItemsOfPost($postId) {
+        $query = 'SELECT * FROM Item WHERE post_id = ?';
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $postId);
+
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            //Check if there is any result.
+            if ($result->num_rows > 0) {
+                $items = $result->fetch_all(MYSQLI_ASSOC);   
+                return $items;
+            } else {
+                return [];
+            }
+        }catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+        $stmt->close();
+    } 
+
     /**Method to add a like to a post. */
     public function addLike($post, $user) {
         $query = "INSERT INTO `Like` (`user_username`, `post_id`, `date_liked`) VALUES (?, ?, ?)";

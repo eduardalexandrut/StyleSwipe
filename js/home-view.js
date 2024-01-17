@@ -400,7 +400,6 @@ function starUnstar(btn) {
     }
         
     
-
     //Function to calculate days passed between 2 days.
     function calculate_days(date) {
         let startDate = new Date(date);
