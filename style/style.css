@@ -268,7 +268,7 @@ aside#createAside {
     margin: 50px 0px;
 }
 aside#createAside > section {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     padding: 5%;
@@ -292,6 +292,7 @@ aside#createAside > section p {
 aside#createAside ul {
     float: inline-end;
     list-style: none;
+    padding-left: 3%;
 }
 aside#createAside form {
     width: 100%;
@@ -301,8 +302,8 @@ aside#createAside form {
     justify-content: center;
 }
 aside#createAside form textarea {
-    margin: 20px 0px 40px 0px;
-    height: 260px;
+    margin: 10% 0px 20% 0px;
+    height: 200px;
     width: 90%;
     padding:5% 10%;
     border: 1px solid black;
@@ -319,7 +320,7 @@ aside#createAside form input {
     justify-content: center;
     align-items: center;
     padding: 12px 0px;
-    margin-bottom: 30px;
+    margin-bottom: 3%;
 }
 aside#createAside form input:nth-child(2) {
     background: linear-gradient(91deg, #6C10F4, #9013FE);
@@ -823,7 +824,7 @@ aside#createAside form>input:last-child {
     border-bottom: 1.5px solid #e0e0e0;
 }
 
-.grid.hidden {
+.grid.hidden, .grid.no-posts-found.grid.hidden, .grid.hidden.no-posts-found {
     display: none;
 }
 
@@ -833,6 +834,20 @@ aside#createAside form>input:last-child {
     grid-auto-rows: minmax(0, 1fr);
     gap: 1px;
 }
+
+.grid.no-posts-found {
+    display: block;
+    text-align: center;
+    padding: 10% 0;
+}
+
+.no-posts {
+    font-size: 200%;
+    opacity: 0.7;
+    margin: auto;
+    align-self: center;
+}
+
 .profile-post {
     overflow: hidden;
     aspect-ratio: 1 / 1;
@@ -1043,8 +1058,7 @@ aside#createAside form>input:last-child {
     
     aside {
         float: right;
-        height: 100vh;
-        max-height: 100vh;
+        min-height: 100vh;
         overflow-y: scroll;
         width: 21% !important;
         position: fixed; 
@@ -1186,7 +1200,7 @@ aside#createAside form>input:last-child {
     }
 
     .grid {
-        margin-top: 1%;
+        margin-top: 0.1%;
     }
     
     .icon {
@@ -1238,12 +1252,15 @@ aside#createAside form>input:last-child {
     }
    
     aside#createAside {
-        margin: 100px 0;
+        margin: 70px 0;
         padding: 0;
     }
     aside#createAside section:first-of-type{
-        width: 100%;
+        width: 80%;
         margin: 0;
+    }
+    #createAside section ul li h4 {
+        font-size: 80%;
     }
     aside#createAside form textarea, aside form input {
         width: 90%;
@@ -1288,7 +1305,6 @@ aside#createAside form>input:last-child {
         display: flex;
         margin: 0px 0px 0px 20% !important;
         width: 80% !important;
-        height: fit-content;
         border-left: 1px solid black !important;
         flex-direction: row;
         align-items: center;
