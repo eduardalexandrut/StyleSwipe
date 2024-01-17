@@ -33,7 +33,7 @@
                 <i id="saved-icon" class="fas fa-star icon"></i>
             </div>
             <div>
-                <div id="posts-grid" class="grid">
+                <div id="posts-grid" class="grid <?php echo (empty($templateParams["publishedPosts"])) ? 'no-posts-found' : ''; ?>">
                 <?php if (!empty($templateParams["publishedPosts"])) : ?>
                     <?php foreach ($templateParams["publishedPosts"] as $post) : ?>
                         <div class="profile-post" 
@@ -52,7 +52,7 @@
                     </p>
                 <?php endif; ?>
                 </div>
-                <div id="saved-grid" class="grid hidden">
+                <div id="saved-grid" class="grid hidden <?php echo (empty($templateParams["starredPosts"])) ? 'no-posts-found' : ''; ?>">
                     <?php if (!empty($templateParams["starredPosts"])) : ?>
                         <?php foreach ($templateParams["starredPosts"] as $post) : ?>
                             <div class="profile-post" 
