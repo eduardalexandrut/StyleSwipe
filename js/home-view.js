@@ -358,16 +358,13 @@ function starUnstar(btn) {
         })
         .then(data => {
             console.log(data);
-            let modalBody = document.querySelector("#notifyModal .modal-body");
-            let notifyAside = document.querySelector("aside.notificationAside");
-
-            //Remove all previous elements from the modal-body.
-            modalBody.innerHTML = '';
-            notifyAside.innerHTML = '';
+            const notifyContainer = document.querySelectorAll('.notifyContainer');
+            console.log(notifyContainer)
+            notifyContainer.forEach(e=>e.innerHTML="");
 
             if (data.notifications.length == 0) {
-                modalBody.innerHTML = '<p>No notifications yet.</p>';
-                notifyAside.innerHTML = '<p>No notifications yet.</p>';
+                notifyContainer.forEach(e=>e.innerHTML="<p>No notifications yet.</p>");
+               
             } else {
                 data.notifications.forEach((notification) => {
                     let notificationDiv = document.createElement('div');
@@ -396,8 +393,8 @@ function starUnstar(btn) {
                         <span class="notify-time">${calculate_days(notification['date_posted'])}</span>
                     </p>
             `;
-                    modalBody.appendChild(notificationDiv);
-                    notifyAside.appendChild(notificationDiv);
+                    //notifyContainer[0].appendChild(notificationDiv);
+                    notifyContainer.forEach(e => e.appendChild(notificationDiv.cloneNode(true)));
                 });
             }
         })

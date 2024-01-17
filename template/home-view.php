@@ -61,13 +61,9 @@
         <button class="refresh-notify">
                         <i class="bi-plus-circle "></i>
                     </button>
-            <?php
-                // Check if the displayNotifications function is defined
-                if (function_exists('displayNotifications')) {
-                    // Call the displayNotifications function with the notifications data
-                    displayNotifications($templateParams["notifications"]);
-                }
-            ?>
+        <div class="notifyContainer">
+           <p>ciao</p>
+        </div>
         
     </aside>
     <!--Comments Modal-->
@@ -107,13 +103,9 @@
                     <button class="refresh-notify">
                         <i class="bi-plus-circle "></i>
                     </button>
-                <?php
-                    // Check if the displayNotifications function is defined
-                    if (function_exists('displayNotifications')) {
-                        // Call the displayNotifications function with the notifications data
-                        displayNotifications($templateParams["notifications"]);
-                    }
-                    ?>
+                <div class="notifyContainer">
+               
+                    </div>
                 </div>
             </div>
         </div>
