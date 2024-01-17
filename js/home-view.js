@@ -74,7 +74,7 @@ let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
 
-postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem), false));
+postCanvas.forEach(elem => elem.addEventListener("click",(e)=>getItems(elem)/*clickPost(elem)*/, false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 
 //Event listener to dynamically resize the canvas'.
@@ -261,7 +261,7 @@ function starUnstar(btn) {
         selectedPost = postId;
 
         //GET requests to get the comments of the specific post.
-        fetch(`./home.php?postId=${postId}`, {
+        fetch(`./home.php?postId=${postId}&action=COMMENTS`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -356,13 +356,12 @@ function starUnstar(btn) {
             }
         })
         .then(data => {
-            console.log(data);
+            //console.log(data);
             const notifyContainer = document.querySelectorAll('.notifyContainer');
             notifyContainer.forEach(e=>e.innerHTML="");
 
             if (data.notifications.length == 0) {
                 notifyContainer.forEach(e=>e.innerHTML="<p>No notifications yet.</p>");
-               
             } else {
                 data.notifications.forEach((notification) => {
                     let notificationDiv = document.createElement('div');
@@ -374,7 +373,7 @@ function starUnstar(btn) {
                 
                     <p class="notification-text">
                         <span class="notify-user">
-                            <a href="profile.php?=${notification['from_user_username']}">
+                            <a href="profile.php?username=${notification['from_user_username']}">
                                 ${notification['from_user_username']}
                             </a>
                         </span>
@@ -399,6 +398,30 @@ function starUnstar(btn) {
         .catch(error => console.error('Error:', error));
     }
         
+    //Function to get the items of a post.
+    function getItems(canvas) {
+        let postId = canvas.getAttribute("data-post-id");
+        let action = "ITEMS";
+
+        fetch(`./home.php?postId=${postId}&action=ITEMS`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) =>{
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Network response was not ok");
+            }
+        })
+        .then((data) => {
+            console.log(data);
+            //console.log(data.items);
+        })
+        .catch(error => console.error('Error:', error));
+    }
     
     //Function to calculate days passed between 2 days.
     function calculate_days(date) {
