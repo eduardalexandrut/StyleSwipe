@@ -881,6 +881,13 @@ aside#createAside form>input:last-child {
     justify-content: left;
 }
 
+#profilePicPost {
+    width: 10%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+}
+
 #postUsername {
     font-weight: bold;
 }

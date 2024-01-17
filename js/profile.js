@@ -51,3 +51,33 @@ function toggleFollow(profileUsername) {
     xhttp.open("GET", "toggle_follow.php?profile=" + profileUsername, true);
     xhttp.send();
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    let postElements = document.querySelectorAll('.profile-post');
+
+    postElements.forEach(function (post) {
+        post.addEventListener('click', function () {
+            showPostModal(post);
+        });
+    });
+
+    function showPostModal(postElement) {
+        // Recupera i dati relativi al post dal DOM
+        let postImage = postElement.dataset.postImage;
+        let postUsername = postElement.dataset.postUsername;
+        let postComment = postElement.dataset.postComment;
+        let postDate = postElement.dataset.postDate;
+        let postProfilePic = postElement.dataset.postProfilepic;
+
+        // Ora puoi utilizzare questi dati per popolare il modal
+        document.getElementById('postImage').src = postImage;
+        document.getElementById('postUsername').textContent = '@' + postUsername;
+        document.getElementById('postCaption').textContent = postComment;
+        document.getElementById('postDate').textContent = postDate;
+        document.getElementById('profilePicPost').src = postProfilePic;
+
+        // Mostra il modal
+        new bootstrap.Modal(document.getElementById('postModal')).show();
+    }
+});

@@ -34,31 +34,42 @@
             </div>
             <div>
                 <div id="posts-grid" class="grid">
-                    <!-- Griglia per post pubblicati-->
-                    <div class="profile-post" onclick="showPost(this)">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
-                    <div class="profile-post">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
-                    <div class="profile-post">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
-                    <div class="profile-post">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
-                    <div class="profile-post">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
-                    <div class="profile-post">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
-                    <div class="profile-post">
-                        <img src="img/outfit.jpeg" alt="Post Image">
-                    </div>
+                <?php if (!empty($templateParams["publishedPosts"])) : ?>
+                    <?php foreach ($templateParams["publishedPosts"] as $post) : ?>
+                        <div class="profile-post" 
+                            data-post-username="<?php echo $post['user_username']; ?>"
+                            data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
+                            data-post-comment="<?php echo $post['comment']; ?>"
+                            data-post-date="<?php echo $post['posted'] ?>"
+                            data-post-profilePic="<?php echo UPLOAD_DIR.$templateParams["profilepic"] ?>"
+                        >
+                            <img src="<?php echo UPLOAD_DIR.$post['image']; ?>" alt="Post Image">
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p class="no-posts">
+                    <i class="bi bi-card-image"></i> No posts found.
+                    </p>
+                <?php endif; ?>
                 </div>
                 <div id="saved-grid" class="grid hidden">
-                    <!-- Griglia per post salvati -->
+                    <?php if (!empty($templateParams["starredPosts"])) : ?>
+                        <?php foreach ($templateParams["starredPosts"] as $post) : ?>
+                            <div class="profile-post" 
+                                data-post-username="<?php echo $post['user_username']; ?>"
+                                data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
+                                data-post-comment="<?php echo $post['comment']; ?>"
+                                data-post-date="<?php echo $post['posted'] ?>"
+                                data-post-profilePic="<?php echo UPLOAD_DIR.$post["user_profile_image"] ?>"
+                            >
+                                <img src="<?php echo UPLOAD_DIR.$post['image']; ?>" alt="Post Image">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <p class="no-posts">
+                        <i class="bi bi-card-image"></i> No posts found.
+                        </p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -92,10 +103,11 @@
                             displayNotifications($templateParams["notifications"]);
                         }
                     ?>
+                </div>
             </div>
         </div>
     </div>
-     </div>
+    </div>
 
     <!--Followers/Followings Modal-->
     <div id="modalFollow" class="modal fade">
@@ -163,8 +175,10 @@
                 <img id="postImage" src="" alt="Post Image" class="img-fluid"/>
             </div>
             <div class="modal-footer">
-                <p id="postUsername">@username</p>
-                <p id="postCaption">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+                <img src="" alt="Profile Picture" id="profilePicPost"/>
+                <p id="postUsername"></p>
+                <p id="postDate"></p>
+                <p id="postCaption"></p>
             </div>
           </div>
         </div>
