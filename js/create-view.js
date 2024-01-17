@@ -106,7 +106,7 @@ class Pin {
             let [file] = imgInput.files;
             if (file) {
                 image.src = URL.createObjectURL(file);
-                document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%";
+                document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%; border:none";
                 document.querySelector("main#createMain  section:first-of-type").appendChild(image);
                 canvas.addEventListener("click", (e)=>{setClientCo(e);}/*addCircle(e.clientX, e.clientY, offsetX, offsetY)*/, false);
                 canvas.setAttribute("data-bs-toggle","modal");
