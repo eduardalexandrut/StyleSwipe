@@ -146,6 +146,54 @@ class DatabaseHelper {
         }
     }
 
+    public function getPostById($postId) {
+        $query = "SELECT 
+                    p.*,
+                    u.profile_image AS user_profile_image,
+                    COUNT(DISTINCT l.id) AS likes,
+                    COUNT(DISTINCT c.id) AS comments,
+                    COUNT(DISTINCT s.id) AS stars,
+                    GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
+                    GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
+                FROM 
+                    post p
+                LEFT JOIN 
+                    `like` l ON p.id = l.post_id
+                LEFT JOIN 
+                    comment c ON p.id = c.post_id
+                LEFT JOIN 
+                    star s ON p.id = s.post_id
+                JOIN 
+                    user u ON p.user_username = u.username
+                WHERE 
+                    p.id = ?
+                GROUP BY 
+                    p.id";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $postId);
+    
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            //Check if there is any result.
+            if ($result->num_rows > 0) {
+                $post = $result->fetch_assoc();
+                return $post;
+            } else {
+                return null; // Post non trovato
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ', $e->getMessage(), "\n";
+            return false;
+        } finally {
+            $stmt->close();
+        }
+    }
+    
+    
+
     //Method to get all the posts of all the users $user is following,along with the num of likes, num of comments and num of stars.
     public function getPostsOfFollowing($user) {
         $query = "SELECT 
