@@ -901,6 +901,7 @@ aside#createAside form>input:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: initial;
 }
 
 #postModal .modal-body img {
