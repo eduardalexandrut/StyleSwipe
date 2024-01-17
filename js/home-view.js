@@ -108,12 +108,13 @@ document.querySelector("#commentsModal input[name='comment']").addEventListener(
 }, false);
 
 //Function to draw the pins relative to a post image(or hide them).
-function drawPins(canvas) {
+function drawPins(canvas, pin) {
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (canvas.getAttribute("data-selected") == "true"){
-        randomPins.forEach((elem) => elem.draw(ctx));
-    } 
+    /*if (canvas.getAttribute("data-selected") == "true"){
+        //randomPins.forEach((elem) => elem.draw(ctx));
+    } */
+    pin.draw(ctx);
 }
 
 //Function that draws the pins of an image and sets the selected state of the canvas.
@@ -434,6 +435,8 @@ function starUnstar(btn) {
                 pinItem.set(newPin, newItem);
             });
             console.log(pinItem);
+            //Draw pins.
+            pinItem.forEach((v,k) => drawPins(canvas, k));
         })
         .catch(error => console.error('Error:', error));
     }
