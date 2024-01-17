@@ -40,28 +40,51 @@ class Item {
     }
 }
 
-//Pin class.
+// Pin class.
 class Pin {
     x;
     y;
     strokeStyle = "white";
     fillStyle = "#9013FE";
     lineWidth = 6;
-    radius = 8;
-    
+    radius = 10;
+    animationFrame;
+
     constructor(x, y) {
         this.x = x;
         this.y = y;
     };
-    
+
     draw(ctx) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0 , 2*Math.PI);
-        ctx.strokeStyle=this.strokeStyle;
-        ctx.fillStyle = this.fillStyle;
-        ctx.lineWidth = this.lineWidth;
-        ctx.stroke();
-        ctx.fill();
+        let startTime;
+        const duration = 200; // Animation duration in milliseconds
+        const targetRadius = this.radius;
+
+        const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const currentRadius = targetRadius * progress;
+
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, currentRadius, 0, 2 * Math.PI);
+            ctx.strokeStyle = this.strokeStyle;
+            ctx.fillStyle = this.fillStyle;
+            ctx.lineWidth = this.lineWidth;
+            ctx.stroke();
+            ctx.fill();
+
+            if (progress < 1 && currentRadius < targetRadius) {
+                this.animationFrame = requestAnimationFrame(animate);
+            }
+        };
+
+        this.animationFrame = requestAnimationFrame(animate);
+    }
+
+    stopAnimation() {
+        cancelAnimationFrame(this.animationFrame);
     }
 };
 
