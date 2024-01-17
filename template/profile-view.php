@@ -40,7 +40,7 @@
                             data-post-username="<?php echo $post['user_username']; ?>"
                             data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
                             data-post-comment="<?php echo $post['comment']; ?>"
-                            data-post-date="<?php echo $post['posted'] ?>"
+                            data-post-date="<?php echo calculate_days($post['posted']) ?>"
                             data-post-profilePic="<?php echo UPLOAD_DIR.$templateParams["profilepic"] ?>"
                         >
                             <img src="<?php echo UPLOAD_DIR.$post['image']; ?>" alt="Post Image">
@@ -59,7 +59,7 @@
                                 data-post-username="<?php echo $post['user_username']; ?>"
                                 data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
                                 data-post-comment="<?php echo $post['comment']; ?>"
-                                data-post-date="<?php echo $post['posted'] ?>"
+                                data-post-date="<?php echo calculate_days($post['posted']) ?>"
                                 data-post-profilePic="<?php echo UPLOAD_DIR.$post["user_profile_image"] ?>"
                             >
                                 <img src="<?php echo UPLOAD_DIR.$post['image']; ?>" alt="Post Image">
@@ -167,6 +167,9 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
+                <img src="" alt="Profile Picture" id="profilePicPost"/>
+                <p id="postUsername"></p>
+                <p id="postDate"></p>
                 <button data-bs-dismiss="modal">
                     <i class="bi-x-circle"></i>
                 </button>
@@ -175,9 +178,9 @@
                 <img id="postImage" src="" alt="Post Image" class="img-fluid"/>
             </div>
             <div class="modal-footer">
-                <img src="" alt="Profile Picture" id="profilePicPost"/>
-                <p id="postUsername"></p>
-                <p id="postDate"></p>
+                <div class="modal-footer-header" >
+
+                </div>
                 <p id="postCaption"></p>
             </div>
           </div>
