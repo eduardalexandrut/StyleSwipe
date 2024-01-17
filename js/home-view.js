@@ -126,8 +126,9 @@ function clickPost(canvas, x, y) {
     } else {
         let clickedItem = detectCollision(canvas, x, y);
         if (clickedItem != null) {
-            console.log("yes");
-            console.log(clickedItem);
+            //Set the input fields based on the clickedItem data.
+            setFields(clickedItem);
+            new bootstrap.Modal(document.getElementById('itemInfoModal')).show();
         } else {
             console.log("no");
             setSelected(canvas);
@@ -506,6 +507,15 @@ function starUnstar(btn) {
         } else {
             return false;
         }
+    }
+
+    //Function to set the input fields based on an intem's data.
+    function setFields(item) {
+        document.querySelector("input#itemName").value = item.getName();
+        document.querySelector("input#itemBrand").value = item.getBrand();
+        document.querySelector("input#itemLink").value = item.getLink();
+        document.querySelector("input#itemSize").value = item.getSize();
+        document.querySelector("input#itemPrice").value = item.getPrice();
     }
 
 resizeCanvas();
