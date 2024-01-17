@@ -75,7 +75,7 @@ let offsetX = document.querySelector(".post").getBoundingClientRect().x;
 let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
 
-postCanvas.forEach(elem => elem.addEventListener("click",(e)=>getItems(elem)/*clickPost(elem)*/, false));
+postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem), false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
 
 //Event listener to dynamically resize the canvas'.
@@ -108,19 +108,20 @@ document.querySelector("#commentsModal input[name='comment']").addEventListener(
 }, false);
 
 //Function to draw the pins relative to a post image(or hide them).
-function drawPins(canvas, pin) {
+function drawPins(canvas) {
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    /*if (canvas.getAttribute("data-selected") == "true"){
-        //randomPins.forEach((elem) => elem.draw(ctx));
-    } */
-    pin.draw(ctx);
+    if (canvas.getAttribute("data-selected") == "true"){
+        pinItem.forEach((v,k) => {
+            k.draw(ctx);
+        });
+    } 
 }
 
 //Function that draws the pins of an image and sets the selected state of the canvas.
 function clickPost(canvas) {
     setSelected(canvas);
-    drawPins(canvas);
+    getItems(canvas);
 }
 
 //Function to open an itemo info modal when a certain item gets clicked on the image of a post.
@@ -435,8 +436,7 @@ function starUnstar(btn) {
                 pinItem.set(newPin, newItem);
             });
             console.log(pinItem);
-            //Draw pins.
-            pinItem.forEach((v,k) => drawPins(canvas, k));
+            drawPins(canvas);
         })
         .catch(error => console.error('Error:', error));
     }
