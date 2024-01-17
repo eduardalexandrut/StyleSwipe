@@ -42,7 +42,7 @@ require_once 'bootstrap.php';
         $templateParams["title"] = "Home";
         $templateParams["name"] = "home.php";
         $templateParams["username"] = $_SESSION["username"];
-        $templateParams["profilepic"] = $_SESSION["profilepic"];
+        $templateParams["profilepic"] = $profilepic;
         header("Location: home.php");
         exit();
     }
