@@ -6,9 +6,9 @@
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
-            <img alt="User Profile Pic" src="./upload/be.jpeg" />
+            <img alt="User Profile Pic" src="<?php echo UPLOAD_DIR.$post['following_profile_image'] ?>" />
             <a href="profile.html"><?php echo $post['user_username']; ?></a>
-            <p><?php echo $post['posted']; ?></p>
+            <p><?php echo calculate_days( $post['posted']); ?></p>
         </header>
         <img alt="Outfit Pic" src="<?php echo UPLOAD_DIR.$post['image']; ?>" />
         <canvas></canvas>
@@ -58,24 +58,14 @@
      <?php endif; ?>
     </main><aside class="notificationAside"> 
         <h3>Notifications:</h3>
-        <!--New Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <span class="notify-badge badge rounded-pill bg-primary">New</span>
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
+            <?php
+                // Check if the displayNotifications function is defined
+                if (function_exists('displayNotifications')) {
+                    // Call the displayNotifications function with the notifications data
+                    displayNotifications($templateParams["notifications"]);
+                }
+            ?>
+        
     </aside>
     <!--Comments Modal-->
     <div class="modal fade" id="commentsModal">
@@ -111,24 +101,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!--New Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <span class="notify-badge badge rounded-pill bg-primary">New</span>
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
+                <?php
+                    // Check if the displayNotifications function is defined
+                    if (function_exists('displayNotifications')) {
+                        // Call the displayNotifications function with the notifications data
+                        displayNotifications($templateParams["notifications"]);
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -150,6 +129,9 @@
             </div>
         </div>
     </div>
+    
+</div>
+
     <?php require("template/search.html"); ?>
 
     <script src="js/open-search.js"></script>

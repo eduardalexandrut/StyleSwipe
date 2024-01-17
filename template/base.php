@@ -38,6 +38,7 @@
             </li>
         </ul>
     </nav>
+    
     <?php
     if(isset($templateParams["name"])) {
         require($templateParams["name"]);

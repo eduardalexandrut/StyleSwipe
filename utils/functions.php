@@ -67,4 +67,27 @@ function uploadImage($path, $image){
     return array($result, $msg);
 }
 
+//Function to calculate the difference between 2 dates in days.
+function calculate_days($date) {
+  
+    // Convert the input date string to a DateTime object
+    $startDate = new DateTime($date);
+
+    $currentDate = new DateTime();
+    
+    // Calculate the difference between two dates
+    $dateInterval = $currentDate->diff($startDate);
+    
+    // Get the total number of days
+    $daysPassed = $dateInterval->format('%a');
+    
+    if ($daysPassed < 1) {
+        return "Today.";
+    } else if ($daysPassed == 1) {
+        return $daysPassed." day ago.";
+    } else {
+        return $daysPassed." day ago.";
+    }
+}
+
 ?>

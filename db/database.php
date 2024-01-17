@@ -125,7 +125,9 @@ class DatabaseHelper {
                 COUNT(DISTINCT c.id) AS comments,
                 COUNT(DISTINCT s.id) AS stars,
                 GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
-                GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
+                GROUP_CONCAT(DISTINCT s.user_username) AS starred_by,
+                f.following_username AS following_username,
+                u.profile_image AS following_profile_image
             FROM 
                 post p
             LEFT JOIN 
@@ -136,13 +138,14 @@ class DatabaseHelper {
                 star s ON p.id = s.post_id
             JOIN 
                 follow f ON p.user_username = f.following_username
+            LEFT JOIN 
+                user u ON f.following_username = u.username
             WHERE 
                 f.follower_username = ?
             GROUP BY 
                 p.id
             ORDER BY 
-                p.posted DESC;
-        ;";
+                p.posted DESC;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
         try {
@@ -446,7 +449,17 @@ public function createPost($user, $comment, $image) {
 
     /**Method to retrive the notifications of a follower. */
     public function getNotifications($user) {
-        $query = "SELECT * FROM `Notification` WHERE to_user_username = ?";
+        $query = "SELECT 
+        Notification.*, 
+        User.profile_image AS from_user_profile_pic 
+     FROM 
+        `Notification` 
+     JOIN 
+        `User` 
+     ON 
+        Notification.from_user_username = User.username 
+     WHERE 
+        to_user_username = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
 
@@ -457,6 +470,40 @@ public function createPost($user, $comment, $image) {
         } catch(Exception $e) {
             echo "Error:", $e->getMessage(),"\n";
         }
+    }
+
+    /**Method to create a new notification. */
+    public function addNotification($postId, $from_user, $to_user, $type) {
+        $query = "INSERT INTO `Notification` (notification_type, from_user_username, to_user_username, post_id, date_posted)
+                VALUES(?, ?, ?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+         // Get the current datetime
+        $posted = date("Y-m-d H:i:s");
+        $stmt->bind_param('sssis', $type, $from_user, $to_user, $postId, $posted);
+        try {
+            $stmt->execute();
+        } catch(Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        }
+        $stmt->close();
+        return true;
+    }
+
+    /*Method to get the owner of a post.*/
+    public function getPostOwner($postId) {
+        $query = "SELECT user_username FROM `POST` WHERE id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $postId);
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }catch(Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+        $stmt->close();
+        return false;
     }
 }
 

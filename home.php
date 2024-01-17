@@ -1,10 +1,13 @@
 <?php
 require_once 'bootstrap.php';
+require 'notifications.php';
+
 $templateParams["name"] = "home-view.php";
 $templateParams["title"] = "Home";
 $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
+$templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
 
-//$templateParams["comments"] = $dbh->getCommentsOfPost(1);
+//displayNotifications($templateParams["notifications"]);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -13,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $postId = $_GET["postId"];
         //Get comments.
         $comments = $dbh->getCommentsOfPost($postId);
-
+        
         //Transform response into JSON.
         $response = [
             'comments' => $comments
         ];
-
+        
         header('Content-Type: application/json');
         echo json_encode($response);
         exit;
@@ -34,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $json_data = file_get_contents('php://input');
     // Decode JSON data
     $data = json_decode($json_data, true);
-
+    
     // Check if action and post_id are set.
     if (isset($data['action'], $data['postId'])) {
         $action = $data['action'];
@@ -61,13 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 echo "Missing comment_text";
             }
             //Generate notification.
-
+            
         }
     } else {
         // Missing action or post_id.
         echo "Missing argument";
     }
-
+    
 }
 
 require 'template/base.php';

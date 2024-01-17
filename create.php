@@ -1,10 +1,12 @@
 <?php
 require_once 'bootstrap.php';
+require 'notifications.php';
 
 $templateParams["title"] = "New Outfit";
 $templateParams["name"] = "create-view.php";
 $templateParams["profilepic"] = $_SESSION["profilepic"];
 $templateParams["username"] = $_SESSION["username"];
+$templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
 
 //Check if the request methos is of type POST.
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {

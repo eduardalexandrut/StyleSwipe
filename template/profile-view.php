@@ -58,59 +58,38 @@
         </div>
     </main><aside class="notificationAside">
         <h3>Notifications:</h3>
-        <!--New Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <span class="notify-badge badge rounded-pill bg-primary">New</span>
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
-
-        <!--Notification element.-->
-        <div class="notification">
-            <img alt="User Profile Pic" src="img/outfit.jpeg" />
-            <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-        </div>
+            <?php
+                // Check if the displayNotifications function is defined
+                if (function_exists('displayNotifications')) {
+                    // Call the displayNotifications function with the notifications data
+                    displayNotifications($templateParams["notifications"]);
+                }
+            ?>
         
     </aside>
 
     <!--Notifications Modal-->
     <div class="modal fade" id="notifyModal">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class=" modal-content">
-                <div class="modal-header">
-                    <h2>Notifications</h2>
-                    <button data-bs-dismiss="modal">
-                        <i class="bi-x-circle"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!--New Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <span class="notify-badge badge rounded-pill bg-primary">New</span>
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-liked" href="#">Liked</a> your post. <span class="notify-time">2h ago</span></p>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class=" modal-content">
+                    <div class="modal-header">
+                        <h2>Notifications</h2>
+                        <button data-bs-dismiss="modal">
+                            <i class="bi-x-circle"></i>
+                        </button>
                     </div>
-
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-stared" href="#">Starred</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
-
-                    <!--Notification element.-->
-                    <div class="notification">
-                        <img alt="User Profile Pic" src="img/outfit.jpeg" />
-                        <p><span class="notify-user"><a href="profile.html">@username</a></span> <a class="notify-commented" href="#">Commented</a> your post. <span class="notify-time">2h ago</span></p>
-                    </div>
+                    <div class="modal-body">
+                        <?php
+                            // Check if the displayNotifications function is defined
+                            if (function_exists('displayNotifications')) {
+                                // Call the displayNotifications function with the notifications data
+                                displayNotifications($templateParams["notifications"]);
+                            }
+                        ?>
                 </div>
             </div>
         </div>
+     </div>
     </div>
 
     <!--Followers/Followings Modal-->
