@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         foreach($templateParams["notifications"] as $notify) {
             if ($notify["seen"] == 0) {
                 //set to seen.
+                $dbh->setNotificationToSeen($notify["id"]);
             }
         }
         exit;
