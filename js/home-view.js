@@ -308,7 +308,6 @@ function starUnstar(btn) {
         let action = btn.getAttribute("data-action");
         let comment_text = document.querySelector("#commentsModal .modal-footer input").value;
         let postId = selectedPost;
-        
 
         fetch('./home.php', {
             method: 'POST',
@@ -425,4 +424,5 @@ function starUnstar(btn) {
     }
 
 resizeCanvas();
+updateNotifications();
 });

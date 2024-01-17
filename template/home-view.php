@@ -62,7 +62,6 @@
                         <i class="bi-plus-circle "></i>
                     </button>
         <div class="notifyContainer">
-           <p>ciao</p>
         </div>
         
     </aside>
