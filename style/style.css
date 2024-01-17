@@ -61,6 +61,10 @@ button.refresh-notify:hover {
     z-index: 1055; /* [2] */
 }
 
+.modal {
+    border-radius: 10%;
+}
+
 a {
     text-decoration: none;
 }
@@ -170,7 +174,7 @@ main {
 *
 */
 #createMain {
-    padding: 40px 0px 0px 0px;
+    padding: 5% 0px 0px 0px;
 }
 
 #createMain h1:first-of-type, #createMain h2:first-of-type {
@@ -179,7 +183,7 @@ main {
 }
 
 #createMain  section:first-of-type {
-    width: 380px;
+    width: 80%;
     height: 500px;
     border: 1px solid black;
     border-radius: 30px;
@@ -465,7 +469,7 @@ aside#createAside form>input:last-child {
     display: inline;
 }
 
-.wrapper form .button, #followButton{
+.wrapper form .button, #followButton {
     width: 100%;
     box-sizing: border-box;
     border-radius: 45px;
@@ -484,7 +488,7 @@ aside#createAside form>input:last-child {
     margin-top: 5%;
 }
 
-.wrapper form input[type="submit"], #followButton {
+.wrapper form input[type="submit"], #followButton, #viewPostDetailLink{
     background: linear-gradient(to top, #6C10F4, #9013FE);
     color:white;
 }
@@ -901,11 +905,23 @@ aside#createAside form>input:last-child {
 }
 
 #postModal .modal-body img {
-    border-radius: 5%;
+    border-radius: 2%;
 }
 
 #postModal .modal-footer {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+}
+
+#viewPostDetailLink {
+    border-radius: 45px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1.2px;
+    font-size: small;
+    font-weight: 500;
+    border: 1px solid #6C10F4;
+    color: white;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 #postCaption {
@@ -1229,7 +1245,7 @@ aside#createAside form>input:last-child {
     *
     */
     main#createMain {
-        padding:0 30px 0 30px;
+        padding: 5% 30px 0 30px;
     }
     
     main#createMain > div:first-of-type {
@@ -1238,6 +1254,10 @@ aside#createAside form>input:last-child {
         align-items: center;
         width: 100%;
         margin-bottom: 200px;
+    }
+
+    #createMain section:first-of-type {
+        width: 380px;
     }
    
     #createMain > div:first-of-type > div:last-child {
