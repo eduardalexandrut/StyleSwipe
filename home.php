@@ -57,17 +57,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             exit;
             
         } else if ($_GET["action"] == "ITEMS") {
-            //Get items.
-            $items = $dbh->getItemsOfPost(1);
-            
-
+            // Get items.
+            $items = $dbh->getItemsOfPost($postId);
+        
             $response = [
                 'items' => $items
             ];
+        
             header('Content-Type: application/json');
             echo json_encode($response);
             exit;
         }
+        
        
     } else {
         /*header('HTTP/1.1 400 Bad Request');

@@ -68,6 +68,7 @@ class Pin {
 document.addEventListener('DOMContentLoaded', function () {
 
 const postCanvas = document.querySelectorAll(".post > canvas");
+const pinItem = new Map();
 const randomPins = generateRandomPins();
 const UPLOAD_DIR = "upload/";
 let offsetX = document.querySelector(".post").getBoundingClientRect().x;
@@ -356,7 +357,6 @@ function starUnstar(btn) {
             }
         })
         .then(data => {
-            //console.log(data);
             const notifyContainer = document.querySelectorAll('.notifyContainer');
             notifyContainer.forEach(e=>e.innerHTML="");
 
@@ -402,8 +402,9 @@ function starUnstar(btn) {
     function getItems(canvas) {
         let postId = canvas.getAttribute("data-post-id");
         let action = "ITEMS";
+        pinItem.clear();//Clear pinItem.
 
-        fetch(`./home.php?postId=${postId}&action=ITEMS`, {
+        fetch(`./home.php?postId=${postId}&action=${action}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -416,9 +417,23 @@ function starUnstar(btn) {
                 throw new Error("Network response was not ok");
             }
         })
-        .then((data) => {
-            console.log(data);
-            //console.log(data.items);
+        .then(data => {
+            //Add to the map an entry (pin, item).
+            data.items.forEach(item => {
+                const newItem = new Item(
+                        item.name,
+                        item.brand,
+                        item.link,
+                        item.price,
+                        item.size,
+                        item.x,
+                        item.y
+                );
+        
+                const newPin = new Pin(item.x, item.y, newItem);
+                pinItem.set(newPin, newItem);
+            });
+            console.log(pinItem);
         })
         .catch(error => console.error('Error:', error));
     }

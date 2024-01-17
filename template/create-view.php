@@ -77,11 +77,7 @@
                             </div>
                             <div class="modal-body">
                             <?php
-                            // Check if the displayNotifications function is defined
-                                if (function_exists('displayNotifications')) {
-                                    // Call the displayNotifications function with the notifications data
-                                    displayNotifications($templateParams["notifications"]);
-                                }
+                            
                                 ?>
                             </div>
                         </div>
