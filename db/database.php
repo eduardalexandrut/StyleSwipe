@@ -117,6 +117,35 @@ class DatabaseHelper {
         }
     }
 
+    function getStarredPostsByUsername($username) {
+    
+        $query = "SELECT Post.*, User.profile_image AS user_profile_image
+                  FROM Post
+                  JOIN Star ON Post.id = Star.post_id
+                  JOIN User ON Post.user_username = User.username
+                  WHERE Star.user_username = ?";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        try {
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            //Check if there is any result.
+            if ($result->num_rows > 0) {
+                $posts = $result->fetch_all(MYSQLI_ASSOC);
+                return $posts;
+            }else {
+                return [];
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            return false;
+        } finally {
+            $stmt->close();
+        }
+    }
+
     //Method to get all the posts of all the users $user is following,along with the num of likes, num of comments and num of stars.
     public function getPostsOfFollowing($user) {
         $query = "SELECT 

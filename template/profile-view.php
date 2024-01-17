@@ -51,8 +51,25 @@
                     <i class="bi bi-card-image"></i> No posts found.
                     </p>
                 <?php endif; ?>
+                </div>
                 <div id="saved-grid" class="grid hidden">
-                    <!-- Griglia per post salvati -->
+                    <?php if (!empty($templateParams["starredPosts"])) : ?>
+                        <?php foreach ($templateParams["starredPosts"] as $post) : ?>
+                            <div class="profile-post" 
+                                data-post-username="<?php echo $post['user_username']; ?>"
+                                data-post-image="<?php echo UPLOAD_DIR.$post['image']; ?>"
+                                data-post-comment="<?php echo $post['comment']; ?>"
+                                data-post-date="<?php echo $post['posted'] ?>"
+                                data-post-profilePic="<?php echo UPLOAD_DIR.$post["user_profile_image"] ?>"
+                            >
+                                <img src="<?php echo UPLOAD_DIR.$post['image']; ?>" alt="Post Image">
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <p class="no-posts">
+                        <i class="bi bi-card-image"></i> No posts found.
+                        </p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

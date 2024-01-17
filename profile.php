@@ -34,6 +34,7 @@ $templateParams["numFollowers"] = $dbh->getFollowersCount($username);
 $templateParams["numFollowings"] = $dbh->getFollowingsCount($username);
 $templateParams["numPosts"] = $dbh->getPostsCount($username);
 $templateParams["publishedPosts"] = $dbh->getPostsOfUser($username);
+$templateParams["starredPosts"] = $dbh->getStarredPostsByUsername($username);
 $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
 
 $templateParams["name"] = "profile-view.php";
