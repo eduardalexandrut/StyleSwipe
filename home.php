@@ -12,6 +12,15 @@ $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"])
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     //Check if post-id is provided.
+    if(isset($_GET["update"])) {
+        foreach($templateParams["notifications"] as $notify) {
+            if ($notify["seen"] == 0) {
+                //set to seen.
+                $dbh->setNotificationToSeen($notify["id"]);
+            }
+        }
+        exit;
+    }
     if (isset($_GET["postId"])) {
         $postId = $_GET["postId"];
         //Get comments.
@@ -42,24 +51,33 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     if (isset($data['action'], $data['postId'])) {
         $action = $data['action'];
         $postId = $data['postId'];
+        $to_user = $dbh->getPostOwner($postId);
         
         //Check type of action.
         if ($action == "LIKE") {
             $dbh->addLike($postId, $_SESSION["username"]);
             //Generate notification.
+            if ($to_user) {
+                $dbh->addNotification($postId,$_SESSION["username"], $to_user, 'liked');
+            }
         } else if ($action == "UNLIKE") {
             $dbh->removeLike($postId, $_SESSION["username"]);
-            //Generate notification.
         } else if ($action == "STAR") {
             $dbh->addStar($postId, $_SESSION["username"]);
             //Generate notification.
+            if ($to_user) {
+                $dbh->addNotification($postId,$_SESSION["username"], $to_user, 'starred');
+            }
         } else if ($action == "UNSTAR") {
             $dbh->removeStar($postId, $_SESSION["username"]);
-            //Generate notification.
         } else if ($action == "COMMENT") {
             if(isset($data["comment_text"])) {
                 $body = $data["comment_text"];
                 $dbh->addComment($postId, $_SESSION["username"], $body);
+                //Generate notification.
+                if ($to_user) {
+                    $dbh->addNotification($postId,$_SESSION["username"], $to_user, 'commented');
+                }
             } else {
                 echo "Missing comment_text";
             }

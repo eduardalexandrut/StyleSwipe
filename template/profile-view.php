@@ -70,26 +70,26 @@
 
     <!--Notifications Modal-->
     <div class="modal fade" id="notifyModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class=" modal-content">
-                    <div class="modal-header">
-                        <h2>Notifications</h2>
-                        <button data-bs-dismiss="modal">
-                            <i class="bi-x-circle"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <?php
-                            // Check if the displayNotifications function is defined
-                            if (function_exists('displayNotifications')) {
-                                // Call the displayNotifications function with the notifications data
-                                displayNotifications($templateParams["notifications"]);
-                            }
-                        ?>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class=" modal-content">
+                <div class="modal-header">
+                    <h2>Notifications</h2>
+                    <button data-bs-dismiss="modal">
+                        <i class="bi-x-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?php
+                        // Check if the displayNotifications function is defined
+                        if (function_exists('displayNotifications')) {
+                            // Call the displayNotifications function with the notifications data
+                            displayNotifications($templateParams["notifications"]);
+                        }
+                    ?>
                 </div>
             </div>
         </div>
-     </div>
+    </div>
     </div>
 
     <!--Followers/Followings Modal-->
