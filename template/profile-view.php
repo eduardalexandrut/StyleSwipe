@@ -79,7 +79,7 @@
             <div class="notify-main-container">
                     <h3>Notifications:</h3>
                     <button class="refresh-notify">
-                                    <i class="bi-plus-circle "></i>
+                                    Refresh +
                                 </button>
                     <div class="notifyContainer">
                     </div>
