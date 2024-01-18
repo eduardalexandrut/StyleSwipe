@@ -58,13 +58,13 @@ let selectedPost;
 if ( document.querySelector(".post") != null) {
     let offsetX = document.querySelector(".post").getBoundingClientRect().x;
     let offsetY = document.querySelector(".post").getBoundingClientRect().y;
+    
+    //Event listener to dynamically resize the canvas'.
+    window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 }
 
 postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem, e.clientX, e.clientY), false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
-
-//Event listener to dynamically resize the canvas'.
-window.addEventListener("resize", ()=>{resizeCanvas()}, false);
 
 //Event listener for buttons of class .like-btn.
 document.querySelectorAll("button.like-btn").forEach((btn) => btn.addEventListener("click", ()=>likeUnlike(btn), false));
