@@ -63,7 +63,7 @@ class DatabaseHelper {
              "username" => $username,
              "date_of_birth" => $dateOfBirth,
              "gender" => $gender,
-             "profilepic" => $profilepic,
+             "profile_image" => $profilepic,
              "email" => $email
          );
  

@@ -52,6 +52,19 @@ function toggleFollow(profileUsername) {
     xhttp.send();
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    let followersContainers = document.querySelectorAll("#followers .userContainer");
+    let followingsContainers = document.querySelectorAll("#followings .userContainer");
+
+    if (followersContainers.length > 0) {
+        followersContainers[followersContainers.length - 1].classList.add = "lastUserContainer";
+    }
+    
+    if (followingsContainers.length > 0) {
+        followingsContainers[followingsContainers.length - 1].classList.add = "lastUserContainer";
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 
     let postElements = document.querySelectorAll('.profile-post');
