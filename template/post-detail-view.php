@@ -3,7 +3,7 @@
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
             <img alt="User Profile Pic" src="<?php echo UPLOAD_DIR.$post['user_profile_image'] ?>" />
-            <a href="profile.html"><?php echo $post['user_username']; ?></a>
+            <a href="profile.php?username=<?php echo $post['user_username']; ?>"><?php echo $post['user_username']; ?></a>
             <p><?php echo calculate_days( $post['posted']); ?></p>
         </header>
         <img alt="Outfit Pic" src="<?php echo UPLOAD_DIR.$post['image']; ?>" />
