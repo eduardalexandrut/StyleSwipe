@@ -32,19 +32,10 @@ document.getElementById('showFollowings').addEventListener('click', function() {
     }).modal('show');
 });
 
-function showPost(post) {
-    document.getElementById('postImage').src = post.querySelector('img').src;
-    /*document.getElementById('postUsername').textContent = post.querySelector('.username').textContent;
-    document.getElementById('postCaption').textContent = post.querySelector('.caption').textContent;*/
-    new bootstrap.Modal(document.getElementById('postModal')).show();
-}
-
 function toggleFollow(profileUsername) {
-    // Esegui una richiesta AJAX per gestire il toggle di seguimento
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // Aggiorna il testo del pulsante in base alla risposta del server
             document.getElementById('followButton').innerText = this.responseText;
         }
     };
@@ -76,14 +67,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function showPostModal(postElement) {
-        // Recupera i dati relativi al post dal DOM
         let postImage = postElement.dataset.postImage;
         let postUsername = postElement.dataset.postUsername;
         let postComment = postElement.dataset.postComment;
         let postDate = postElement.dataset.postDate;
         let postProfilePic = postElement.dataset.postProfilepic;
 
-        // Ora puoi utilizzare questi dati per popolare il modal
         document.getElementById('postImage').src = postImage;
         document.getElementById('postUsername').textContent = '@' + postUsername;
         document.getElementById('postCaption').textContent = postComment;
@@ -96,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = detailPageUrl;
         })
 
-        // Mostra il modal
         new bootstrap.Modal(document.getElementById('postModal')).show();
     }
 });

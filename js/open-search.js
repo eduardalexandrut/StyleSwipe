@@ -1,5 +1,4 @@
 function openNav() {
-    console.log("openNav() called");
     document.querySelector('body').style.overflow = "hidden";
     document.querySelector('nav').style.display = "none";
     if (window.matchMedia("(min-width: 768px)").matches) {
@@ -11,7 +10,6 @@ function openNav() {
 }
 
 function closeNav() {
-    console.log("closeNav() called");
     document.querySelector('body').style.overflow = "scroll";
     document.querySelector('nav').style.display = "flex";
     document.getElementById("search-sidebar").style.width = "0%";

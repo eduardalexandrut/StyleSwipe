@@ -1,6 +1,6 @@
 function searchProfiles() {
     $('#search-bar').on('keyup', function(){
-        var query = $(this).val();
+        let query = $(this).val();
         if (query != '') {
             $.ajax({
                 url: "template/search.php",
