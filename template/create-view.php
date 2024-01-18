@@ -4,8 +4,8 @@
         <!--Image Picker-->
                         <div>
                             <section>
-                                <input type="file" accept="image/*" class="d-none" id="selectedFile" />
-                                <input type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
+                                <input title="Image File" type="file" accept="image/*" class="d-none" id="selectedFile" />
+                                <input title="Button File" type="button" value="Select Photo +"  onclick="document.getElementById('selectedFile').click();" />
                             </section>
                         </div>
                         <!--Items-->
@@ -23,7 +23,7 @@
                         </ul> 
                     </section>
                     <form id = "createForm" action="create.php" method="post" >
-                        <textarea name="comment" placeholder="Add a description of your outfit..." maxlength="250"></textarea>
+                        <textarea title="comment" name="comment" placeholder="Add a description of your outfit..." maxlength="250"></textarea>
                         <input  type="submit" value="Add Post"/>
                         <input  type="button" value="Discard"/>
                     </form>
