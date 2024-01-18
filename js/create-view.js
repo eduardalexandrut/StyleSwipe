@@ -133,6 +133,12 @@ class Pin {
         function setOffset() {
             offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
             offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
+
+            if(document.querySelector("#createMain div div section img") != null) {
+                canvas.width = document.querySelector("#createMain div div section img").width;
+                canvas.height = document.querySelector("#createMain div div section img").height;
+                console.log(canvas.width);
+            }
         }
 
         //Function to create an Item object.
