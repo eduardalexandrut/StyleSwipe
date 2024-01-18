@@ -69,11 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
         
        
-    } else {
-        /*header('HTTP/1.1 400 Bad Request');
-        echo json_encode(['error' => 'postId not provided']);
-        exit;*/
-    }
+    } 
 }
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {

@@ -4,7 +4,7 @@
                 <div class="profile-pic-container">
                     <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt="Profile Picture" />
                 </div>
-                <p><?php echo $templateParams["username"]; ?></p>
+                <p>@<?php echo $templateParams["username"]; ?></p>
                 <?php
                     if (isset($_SESSION['username']) && $_SESSION['username'] !== $templateParams['username']) {
                         $isFollowing = $templateParams["isFollowing"];
