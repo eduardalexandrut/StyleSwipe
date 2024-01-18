@@ -121,7 +121,7 @@
                 <?php
                     $users = $templateParams['followers'];
                     if (empty($users)) {
-                        echo '<p>Nessun utente trovato.</p>';
+                        echo '<p>No user found.</p>';
                     } else {
                         foreach ($users as $user) : ?>
                             <a href="profile.php?username=<?php echo $user['username']; ?>">
@@ -138,7 +138,7 @@
                 <?php
                     $users = $templateParams['followings'];
                     if (empty($users)) {
-                        echo '<p>Nessun utente trovato.</p>';
+                        echo '<p>No user found.</p>';
                     } else {
                         foreach ($users as $user) : ?>
                         <a href="profile.php?username=<?php echo $user['username']; ?>">

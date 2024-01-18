@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         } else {
             $notifications = $dbh->getNotifications($_SESSION["username"]);
         }
-        $_SESSION['count']++;
+        //$_SESSION['count']++;
         //Transform response into JSON.
         $response = [
             "notifications" => $notifications
