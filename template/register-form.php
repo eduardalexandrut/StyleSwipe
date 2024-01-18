@@ -32,36 +32,34 @@
                             </svg>
                             <img id="selected-image" src="#" alt="Selected Profile Picture" />
                         </label>
-                        <input type="file" name="profilepic" id="profile-pic" required/>
+                        <input type="file" name="profilepic" id="profile-pic" title="profile-pic" required/>
                     </li>
                     <li>
-                        <input type="text" id="username" name="username" value="" placeholder="Username" required/>
+                        <input type="text" id="username" name="username" value="" placeholder="Username" title="username" required/>
                         <i class="bi bi-person-fill"></i>
                     </li>
                     <li>
-                        <input type="email" name="email" value="" id="email" placeholder="E-mail" required/>
+                        <input type="email" name="email" value="" id="email" placeholder="E-mail" title="email" required/>
                         <i class="bi bi-envelope"></i>
                     </li>
                     <li id="password-container">
-                        <input type="password" name="password" value="" id="password" placeholder="Password" required/>
+                        <input type="password" name="password" value="" id="password" placeholder="Password" title="password" required/>
                         <i class="bi bi-lock"></i>
                         <p id="password-message"></p>
                     </li>
                     <li>
-                        <input type="text" name="name" value="" id="name" placeholder="Name" required />
+                        <input type="text" name="name" value="" id="name" placeholder="Name" title="name" required />
                         <i class="bi bi-person-fill"></i>
                     </li>
                     <li>
-                        <input type="text" name="surname" value="" id="surname" placeholder="Surname" required/>
+                        <input type="text" name="surname" value="" id="surname" placeholder="Surname" title="surname" required/>
                         <i class="bi bi-person-fill"></i>
                     </li>
                     <li>
-                        <!--<input type="text" placeholder="Birth Date" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        <i class="bi bi-calendar-event-fill"></i>-->
-                        <input type="date" name="dateOfBirth" id="dateOfBirth" required/>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" title="dateOfBirth" required/>
                     </li>
                     <li id = "gender-wrapper">
-                        <select class="select" name="gender" id="gender" required aria-label="Gender">
+                        <select class="select" name="gender" id="gender" title="gender" required aria-label="Gender">
                             <option value="" disabled selected hidden>Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
