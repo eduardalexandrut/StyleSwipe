@@ -1,4 +1,4 @@
-<main>
+<main id="post-detail-main">
     <?php $post=$templateParams["post"]?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
@@ -49,19 +49,15 @@
         <footer>
             <p><?php echo $post['comment']; ?></p>
         </footer>
-    </div><aside class="notificationAside"> 
-        <h3>Notifications:</h3>
-        <div class="notify-main-container">
-            <h3>Notifications:</h3>
-            <button class="refresh-notify">
-                            <i class="bi-plus-circle "></i>
-                        </button>
-            <div class="notifyContainer">
-            </div>
-        </div>
-        </div>
-        
-    </aside>
+    </div>
+</main><aside class="notificationAside"> 
+    <h3>Notifications:</h3>
+    <div class="notify-main-container">
+        <button class="refresh-notify">Refresh +</button>
+        <div class="notifyContainer"></div>
+    </div>
+</aside>
+
     <!--Comments Modal-->
     <div class="modal fade" id="commentsModal">
         <div class="modal-dialog modal-dialog-centered">
@@ -97,7 +93,7 @@
                 </div>
                 <div class="modal-body">
                     <button class="refresh-notify">
-                        <i class="bi-plus-circle "></i>
+                        Refresh +
                     </button>
                 <div class="notifyContainer">
                
@@ -146,10 +142,9 @@
     </div>
     
 </div>
+<?php require("template/search.html"); ?>
 
-    <?php require("template/search.html"); ?>
-
-    <script src="js/open-search.js"></script>
-    <script src= "js/home-view.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</main>
+<script src="js/open-search.js"></script>
+<script src= "js/home-view.js"></script>
+<script src= "js/notifications.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
