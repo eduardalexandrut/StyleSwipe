@@ -119,8 +119,6 @@ document.querySelectorAll(".post button.comment-btn").forEach((btn) => btn.addEv
 //Event listener for button to add a new comment.
 document.getElementById("button-addon2").addEventListener("click", (e)=>addComment(e.target), false);
 
-//Event listener for refresh notify button.
-document.querySelectorAll("button.refresh-notify").forEach((btn) => btn.addEventListener("click", ()=>updateNotifications(), false));
 // Event listener for commentModal input when text is written in it.
 document.querySelector("#commentsModal input[name='comment']").addEventListener("input", (e) => {
     let text = e.target.value;

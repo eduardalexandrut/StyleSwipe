@@ -64,6 +64,7 @@ class Pin {
         ctx.fill();
     }
 };
+document.addEventListener('DOMContentLoaded', function () {
         let offsetX;
         let offsetY;
         let clientX;
@@ -253,4 +254,6 @@ class Pin {
             event.preventDefault();
         }
 
+        updateNotifications();
         setOffset();
+});
