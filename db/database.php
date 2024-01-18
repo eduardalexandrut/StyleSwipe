@@ -136,7 +136,7 @@ class DatabaseHelper {
             //Check if there is any result.
             if ($result->num_rows > 0) {
                 $posts = $result->fetch_all(MYSQLI_ASSOC);
-                return $posts;
+                return array_reverse($posts);
             }else {
                 return [];
             }

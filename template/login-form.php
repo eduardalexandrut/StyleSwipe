@@ -24,7 +24,7 @@
                         <i class="bi bi-envelope"></i>
                     </li>
                     <li>
-                        <input type="password" name="password" value="" id="password1" placeholder="Password" required/>
+                        <input type="password" name="password" value="" id="password" placeholder="Password" required/>
                         <i class="bi bi-lock"></i>
                     </li>
                     <li>

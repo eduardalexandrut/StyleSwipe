@@ -553,6 +553,31 @@ aside#createAside form>input:last-child {
     margin-top: 1%;
 }
 
+.valid-password {
+    border: 2px solid green !important;
+    border-radius: 15px;
+}
+
+.invalid-password {
+    border: 2px solid red !important;
+    border-radius: 15px;
+}
+
+#password-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+#password-message {
+    grid-column: 1 / -1; /* Occupa tutte le colonne disponibili */
+    text-align: left;
+    font-size: 60%;
+    margin-left: 2%;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
 
 /**
 *Home View
@@ -693,15 +718,19 @@ aside#createAside form>input:last-child {
     border-bottom: 1px solid rgb(219, 219, 219);
     margin-bottom: 20px;
 }
+.comment section {
+    flex-grow: 1;
+}
 .comment section header {
     display: flex;
     flex-direction: row;
     margin-top: 10px;
 }
 .comment section header a {
-    color: #000;
+    color: rgba(13, 110, 253, 1);
     font-weight: 500;
     align-items: center;
+    
 }
 .comment section header p {
     margin-left: auto;
@@ -711,7 +740,8 @@ aside#createAside form>input:last-child {
 .comment img {
     width: 60px;
     height: 60px;
-    border-radius: 50px;
+    border-radius: 50%;
+    margin-right: 5%
 }
 
 .modal-content {

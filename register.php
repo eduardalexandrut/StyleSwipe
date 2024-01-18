@@ -11,7 +11,9 @@ require_once 'bootstrap.php';
         $email = $_POST["email"];
         $profilepic = "";
 
-        if (isset($_FILES["profilepic"]) && !empty($_FILES["profilepic"]["name"])) {
+        if (strlen($password) < 8) {
+            $templateParams["erroreRegistrazione"] = "Password must be at least 8 characters long!";
+        } else if (isset($_FILES["profilepic"]) && !empty($_FILES["profilepic"]["name"])) {
             // $_FILES["profilepic"] è definito e contiene un nome di file non vuoto
             list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["profilepic"]);
         

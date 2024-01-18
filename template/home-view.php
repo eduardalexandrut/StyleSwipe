@@ -154,6 +154,7 @@
     <?php require("template/search.html"); ?>
 
     <script src="js/open-search.js"></script>
+    <script  src="js/Pin.js"></script>
     <script src= "js/Item.js"></script>
     <script src= "js/home-view.js"></script>
     <script src= "js/notifications.js"></script>

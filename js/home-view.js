@@ -1,101 +1,3 @@
-//Item class.
-class Item {
-    constructor(name, brand, link, price, size, x, y) {
-        this.name = name;
-        this.brand = brand;
-        this.link = link;
-        this.price = price;
-        this.size = size;
-        this.x = x;
-        this.y = y;
-    }
-
-    // Getters
-    getName() {
-        return this.name;
-    }
-
-    getBrand() {
-        return this.brand;
-    }
-
-    getLink() {
-        return this.link;
-    }
-
-    getPrice() {
-        return this.price;
-    }
-
-    getSize() {
-        return this.size;
-    }
-
-    getX() {
-        return this.x;
-    }
-
-    getY() {
-        return this.y;
-    }
-}
-// Pin class.
-class Pin {
-    x;
-    y;
-    strokeStyle = "white";
-    fillStyle = "#9013FE";
-    lineWidth = 6;
-    radius = 10;
-    animationFrame;
-
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-    };
-
-    /*draw(ctx) {
-        let startTime;
-        const duration = 200; // Animation duration in milliseconds
-        const targetRadius = this.radius;
-
-        const animate = (timestamp) => {
-            if (!startTime) startTime = timestamp;
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-            const currentRadius = targetRadius * progress;
-
-            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, currentRadius, 0, 2 * Math.PI);
-            ctx.strokeStyle = this.strokeStyle;
-            ctx.fillStyle = this.fillStyle;
-            ctx.lineWidth = this.lineWidth;
-            ctx.stroke();
-            ctx.fill();
-
-            if (progress < 1 && currentRadius < targetRadius) {
-                this.animationFrame = requestAnimationFrame(animate);
-            }
-        };
-
-        this.animationFrame = requestAnimationFrame(animate);
-    }
-
-    stopAnimation() {
-        cancelAnimationFrame(this.animationFrame);
-    }*/
-    draw(ctx) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0 , 2*Math.PI);
-        ctx.strokeStyle=this.strokeStyle;
-        ctx.fillStyle = this.fillStyle;
-        ctx.lineWidth = this.lineWidth;
-        ctx.stroke();
-        ctx.fill();
-    }
-};
-
 document.addEventListener('DOMContentLoaded', function () {
 
 const postCanvas = document.querySelectorAll(".post > canvas");
@@ -351,7 +253,7 @@ function starUnstar(btn) {
                     <img alt="User Profile Pic" src="${UPLOAD_DIR}${comment['profile_image']}"/>
                         <section>
                             <header> 
-                                <a href="profile.html">${comment['user_username']}</a>
+                                <a href="profile.php?username=${comment['user_username']}">@${comment['user_username']}</a>
                                 <p>${calculate_days(comment['date_posted'])}</p>
                             </header>
                             <p>${comment['comment_text']}</p>
