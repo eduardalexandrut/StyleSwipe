@@ -219,7 +219,7 @@ main {
 }
 #createMain  section:first-of-type img , #createMain  section:first-of-type canvas{
     width: 100%;
-    height: auto;
+    max-height: auto;
     border-radius: 30px;
     grid-row: 1/ span 1;
     grid-column: 1/span 1;
@@ -551,6 +551,31 @@ aside#createAside form>input:last-child {
     width: 35% !important;
     margin: auto;
     margin-top: 1%;
+}
+
+.valid-password {
+    border: 2px solid green !important;
+    border-radius: 15px;
+}
+
+.invalid-password {
+    border: 2px solid red !important;
+    border-radius: 15px;
+}
+
+#password-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+#password-message {
+    grid-column: 1 / -1; /* Occupa tutte le colonne disponibili */
+    text-align: left;
+    font-size: 60%;
+    margin-left: 2%;
+    margin-bottom: 0;
+    font-weight: 500;
 }
 
 

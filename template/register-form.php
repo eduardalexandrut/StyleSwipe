@@ -42,9 +42,10 @@
                         <input type="email" name="email" value="" id="email" placeholder="E-mail" required/>
                         <i class="bi bi-envelope"></i>
                     </li>
-                    <li>
+                    <li id="password-container">
                         <input type="password" name="password" value="" id="password" placeholder="Password" required/>
                         <i class="bi bi-lock"></i>
+                        <p id="password-message"></p>
                     </li>
                     <li>
                         <input type="text" name="name" value="" id="name" placeholder="Name" required />
