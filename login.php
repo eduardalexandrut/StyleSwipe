@@ -4,11 +4,9 @@ require_once 'bootstrap.php';
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
     if($login_result !== null){
-        // Login riuscito, $login_result contiene i dati dell'utente
         registerLoggedUser($login_result);
     } else {
-        // Login fallito
-        $templateParams["errorelogin"] = "Errore! E-mail e/o password errati.";
+        $templateParams["errorelogin"] = "Error! Incorrect email and/or password.";
     }
 }
 

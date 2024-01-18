@@ -14,7 +14,7 @@ require_once 'bootstrap.php';
         if (strlen($password) < 8) {
             $templateParams["erroreRegistrazione"] = "Password must be at least 8 characters long!";
         } else if (isset($_FILES["profilepic"]) && !empty($_FILES["profilepic"]["name"])) {
-            // $_FILES["profilepic"] è definito e contiene un nome di file non vuoto
+
             list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["profilepic"]);
         
             if ($result != 0) {
@@ -23,9 +23,7 @@ require_once 'bootstrap.php';
                 $registration_result = $dbh->registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $email, $profilepic);
 
                 if (!$registration_result) {
-                    $templateParams["erroreRegistrazione"] = "Errore durante la registrazione. Riprova!";
-                    /*header("Location: register.php");
-                    exit();*/
+                    $templateParams["erroreRegistrazione"] = "Error during registration. Please try again!";
                 } else {
                     registerLoggedUser($registration_result);
                 }
@@ -34,7 +32,7 @@ require_once 'bootstrap.php';
                 header("location: register.php?formmsg=" . $msg);
             }
         } else {
-            $templateParams["erroreRegistrazione"] = "Errore: Nessun file caricato o file non valido.";
+            $templateParams["erroreRegistrazione"] = "Error: No file uploaded or invalid file.";
             header("location: register.php?formmsg=" . $templateParams["erroreRegistrazione"]);
         }
 

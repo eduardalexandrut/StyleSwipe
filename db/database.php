@@ -17,7 +17,6 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         if ($result->num_rows == 0) {
-            // L'utente non esiste
             return null;
         }
 
@@ -25,14 +24,13 @@ class DatabaseHelper {
         $hashedPassword = $userData['password'];
 
         if (password_verify($password, $hashedPassword)) {
-            return $userData; // Login riuscito
+            return $userData;
         } else {
-            return null; // Password non corretta
+            return null;
         }
     }   
 
     public function registerUser($name, $surname, $username, $password, $dateOfBirth, $gender, $email, $profilepic){
-     // Controlla se esiste già un utente con lo stesso username
      $existingUserQuery = "SELECT * FROM user WHERE username = ?";
      $existingUserStmt = $this->db->prepare($existingUserQuery);
      $existingUserStmt->bind_param('s', $username);
@@ -40,23 +38,17 @@ class DatabaseHelper {
      $existingUserResult = $existingUserStmt->get_result();
  
      if ($existingUserResult->num_rows > 0) {
-         // L'utente con questo username esiste già, registrazione fallita
          return false;
      }
  
-     // Hash della password
      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
  
-     // Preparazione della query
      $insertUserQuery = "INSERT INTO user (name, surname, username, password, date_of_birth, gender, profile_image, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
      $insertUserStmt = $this->db->prepare($insertUserQuery);
  
-     // Bind dei parametri
      $insertUserStmt->bind_param('ssssssss', $name, $surname, $username, $hashedPassword, $dateOfBirth, $gender, $profilepic, $email);
  
-     // Esecuzione della query
      if ($insertUserStmt->execute()) {
-         // Registrazione completata con successo, restituisci i dati dell'utente
          $userData = array(
              "name" => $name,
              "surname" => $surname,
@@ -69,7 +61,6 @@ class DatabaseHelper {
  
          return $userData;
      } else {
-         // Registrazione fallita
          return false;
      }
  }

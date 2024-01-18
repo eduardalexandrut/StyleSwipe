@@ -15,7 +15,7 @@ if(isset($_POST["query"])) {
                         </a>';
         }
     } else {
-        $output .= '<p>Utente non trovato</p>';
+        $output .= '<p>User not found</p>';
     }
     $output .= '</div>';
     echo $output;

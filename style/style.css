@@ -1069,6 +1069,13 @@ aside#createAside form>input:last-child {
         overflow-y: scroll;
     }
 
+    .search-container p {
+        margin-left: 4%;
+        opacity: 0.8;
+        font-size: 120%;
+        font-weight: 400;
+    }
+
     #overlay {
         position: fixed;
         display: none;
