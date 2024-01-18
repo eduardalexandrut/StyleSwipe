@@ -77,14 +77,8 @@
         </div>
     </main><aside class="notificationAside">
         <h3>Notifications:</h3>
-            <?php
-                // Check if the displayNotifications function is defined
-                if (function_exists('displayNotifications')) {
-                    // Call the displayNotifications function with the notifications data
-                    displayNotifications($templateParams["notifications"]);
-                }
-            ?>
-        
+        <button class="refresh-notify">Refresh +</button>
+        <div class="notifyContainer"></div>
     </aside>
 
     <!--Notifications Modal-->
@@ -98,13 +92,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?php
-                        // Check if the displayNotifications function is defined
-                        if (function_exists('displayNotifications')) {
-                            // Call the displayNotifications function with the notifications data
-                            displayNotifications($templateParams["notifications"]);
-                        }
-                    ?>
+                    <button class="refresh-notify">Refresh +</button>
+                    <div class="notifyContainer"></div>
                 </div>
             </div>
         </div>
@@ -191,4 +180,5 @@
 
     <script src="js/open-search.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/notifications.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

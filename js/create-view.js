@@ -77,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const image = document.createElement('img');
         const canvas = document.createElement('canvas');
         let ctx = canvas.getContext("2d");
+
+        /*Code to inject current date in #dateTime*/
+        let now = new Date();
+        let date = now.toLocaleString();
+        document.getElementById("dateTime").innerHTML = date;
         
         //reset offest when the window gets resized.
         window.addEventListener("resize", ()=>setOffset(), false);
@@ -221,11 +226,6 @@ document.addEventListener('DOMContentLoaded', function () {
             Array.from(pins).forEach((pin) => pin.draw(ctx));
         }
 
-        /*Code to inject current date in #dateTime*/
-        let now = new Date();
-        let date = now.toLocaleString();
-        document.getElementById("dateTime").innerHTML = date;
-
         //Function to send the json representation of the items to the db and create them.
         function sendItemsToDB(event) {
             // Append the items to the post data.
@@ -254,6 +254,5 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
         }
 
-        updateNotifications();
         setOffset();
 });

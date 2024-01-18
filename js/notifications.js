@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function () {
+
 const UPLOAD_DIR = "upload/";
 
 //Event listener for refresh notify button.
@@ -80,3 +82,6 @@ document.querySelectorAll("button.refresh-notify").forEach((btn) => btn.addEvent
         }
 
     }
+
+    updateNotifications();
+});

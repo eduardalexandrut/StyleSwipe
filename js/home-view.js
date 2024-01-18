@@ -370,74 +370,16 @@ function starUnstar(btn) {
             }
         })
         .then(data => {
-            console.log(data);
             //Erase input's content.
             document.querySelector("#commentsModal .modal-footer input").value = '';
             //Increase number of comments displayed under the comments button.
             let prevNumComm = parseInt(document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML);
             document.querySelector(`div.post[data-post-id="${selectedPost}"] button.comment-btn`).nextElementSibling.innerHTML = prevNumComm + 1;
         })
-        //.catch(error =>console.log('Error:', error));
+        .catch(error =>console.log('Error:', error));
         
     }
 
-    //Function to update notifications.
-    function updateNotifications() {
-        //GET requests to get the comments of the specific post.
-        fetch(`./home.php?update=True`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Network response was not ok");
-            }
-        })
-        .then(data => {
-            const notifyContainer = document.querySelectorAll('.notifyContainer');
-            notifyContainer.forEach(e=>e.innerHTML="");
-
-            if (data.notifications.length == 0) {
-                notifyContainer.forEach(e=>e.innerHTML="<p>No notifications yet.</p>");
-            } else {
-                data.notifications.forEach((notification) => {
-                    let notificationDiv = document.createElement('div');
-                    notificationDiv.classList.add("notification");
-                    notificationDiv.innerHTML =`
-                    <img alt="User Profile Pic" src="${UPLOAD_DIR}${notification['from_user_profile_pic']}"/>
-                    <!-- The notification hasn't been seen -->
-                    ${notification['seen'] == 0 ? `<span class="notify-badge badge rounded-pill bg-primary">New</span>` : ''}
-                
-                    <p class="notification-text">
-                        <span class="notify-user">
-                            <a href="profile.php?username=${notification['from_user_username']}">
-                                ${notification['from_user_username']}
-                            </a>
-                        </span>
-                
-                        <!-- Conditional rendering based on notification type -->
-                        ${
-                            notification['notification_type'] === 'liked'
-                                ? `<a class="notify-liked" href="#">Liked</a> your post.`
-                                : notification['notification_type'] === 'commented'
-                                ? `<a class="notify-commented" href="#">Commented</a> your post.`
-                                : `<a class="notify-stared" href="#">Starred</a> your post.`
-                        }
-                
-                        <span class="notify-time">${calculate_days(notification['date_posted'])}</span>
-                    </p>
-            `;
-                    //notifyContainer[0].appendChild(notificationDiv);
-                    notifyContainer.forEach(e => e.appendChild(notificationDiv.cloneNode(true)));
-                });
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
         
     //Function to get the items of a post.
     function getItems(canvas) {
@@ -545,5 +487,5 @@ function starUnstar(btn) {
     if ( document.querySelector(".post") != null){
         resizeCanvas();
     }
-updateNotifications();
+
 });
