@@ -41,7 +41,6 @@
         /*Function to create a displayable image selected by the user.*/
         function previewImg() {
             let [file] = imgInput.files;
-            console.log("uei");
             if (file) {
                 image.src = URL.createObjectURL(file);
                 document.querySelector("#createMain section:first-of-type").style = "display: grid; grid-template-row: 500px;grid-template-column: 100%; border:none !important";
@@ -132,7 +131,9 @@
         function createPin() {
             setOffset();
             pins.push(new Pin(clientX - offsetX, clientY - offsetY));
-            pins[pins.length - 1].draw(ctx);
+            console.log(pins);
+            
+            Array.from(pins).forEach((pin) => pin.draw(ctx));
         }
 
         //Function to remove an item from the DOM and the list.
