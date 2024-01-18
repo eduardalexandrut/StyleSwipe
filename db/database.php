@@ -24,10 +24,10 @@ class DatabaseHelper {
         $userData = $result->fetch_assoc();
         $hashedPassword = $userData['password'];
 
-        if (password_verify($password, $hashedPassword)) {
-            return $userData; // Login riuscito
+        if ($this->verifyPassword($password, $hashedPassword)) {
+            return $userData;
         } else {
-            return null; // Password non corretta
+            return null;
         }
     }   
 
@@ -45,7 +45,7 @@ class DatabaseHelper {
      }
  
      // Hash della password
-     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+     $hashedPassword = $this->hashPassword($password);
  
      // Preparazione della query
      $insertUserQuery = "INSERT INTO user (name, surname, username, password, date_of_birth, gender, profile_image, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -72,6 +72,17 @@ class DatabaseHelper {
          // Registrazione fallita
          return false;
      }
+ }
+
+ private function hashPassword($password) {
+    $salt = bin2hex(random_bytes(16));
+    $hashedPassword = password_hash($password.$salt, PASSWORD_DEFAULT);
+    return $hashedPassword;
+ }
+
+ private function verifyPassword($password, $hashedPassword) {  
+    $saltedPassword = $password.substr($hashedPassword,0,32);
+    return password_verify($saltedPassword, $hashedPassword);
  }
 
     public function getPostsOfUser($user) {
