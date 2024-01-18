@@ -20,11 +20,11 @@
             <div class="input-box">
                 <ul>
                     <li>
-                        <input type="email" name="email" value="" id="email" placeholder="E-mail" required/>
+                        <input type="email" name="email" value="" id="email" placeholder="E-mail" title="email" required/>
                         <i class="bi bi-envelope"></i>
                     </li>
                     <li>
-                        <input type="password" name="password" value="" id="password" placeholder="Password" required/>
+                        <input type="password" name="password" value="" id="password" placeholder="Password" title="password" required/>
                         <i class="bi bi-lock"></i>
                     </li>
                     <li>

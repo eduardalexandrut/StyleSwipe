@@ -103,7 +103,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
     <!--Followers/Followings Modal-->
     <div id="modalFollow" class="modal fade">
@@ -163,7 +163,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-                <img src="" alt="Profile Picture" id="profilePicPost"/>
+                <img src="img/outfit" alt="Profile Picture" id="profilePicPost"/>
                 <p id="postUsername"></p>
                 <p id="postDate"></p>
                 <button data-bs-dismiss="modal">
@@ -171,7 +171,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <img id="postImage" src="" alt="Post Image" class="img-fluid"/>
+                <img id="postImage" src="img/outfit" alt="Post Image" class="img-fluid"/>
             </div>
             <div class="modal-footer">
                 <p id="postCaption"></p>
