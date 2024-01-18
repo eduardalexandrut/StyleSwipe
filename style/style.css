@@ -218,8 +218,8 @@ main {
     width: 60%;
 }
 #createMain  section:first-of-type img , #createMain  section:first-of-type canvas{
-    width: 100%;
-    max-height: auto;
+    width: 380px;
+    height: 500px;
     border-radius: 30px;
     grid-row: 1/ span 1;
     grid-column: 1/span 1;
@@ -718,15 +718,19 @@ aside#createAside form>input:last-child {
     border-bottom: 1px solid rgb(219, 219, 219);
     margin-bottom: 20px;
 }
+.comment section {
+    flex-grow: 1;
+}
 .comment section header {
     display: flex;
     flex-direction: row;
     margin-top: 10px;
 }
 .comment section header a {
-    color: #000;
+    color: rgba(13, 110, 253, 1);
     font-weight: 500;
     align-items: center;
+    
 }
 .comment section header p {
     margin-left: auto;
@@ -736,7 +740,8 @@ aside#createAside form>input:last-child {
 .comment img {
     width: 60px;
     height: 60px;
-    border-radius: 50px;
+    border-radius: 50%;
+    margin-right: 5%
 }
 
 .modal-content {
@@ -1367,7 +1372,7 @@ aside#createAside form>input:last-child {
     }
     
     /**Home View*/
-    main#homeMain, #profile-main {
+    main#homeMain, #profile-main, #post-detail-main {
         width: 80%;
         border-right: none;
     }
