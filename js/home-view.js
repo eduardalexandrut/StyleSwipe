@@ -94,9 +94,12 @@ const postCanvas = document.querySelectorAll(".post > canvas");
 const pinItem = new Map();
 const randomPins = generateRandomPins();
 const UPLOAD_DIR = "upload/";
-let offsetX = document.querySelector(".post").getBoundingClientRect().x;
-let offsetY = document.querySelector(".post").getBoundingClientRect().y;
 let selectedPost;
+
+if ( document.querySelector(".post") != null) {
+    let offsetX = document.querySelector(".post").getBoundingClientRect().x;
+    let offsetY = document.querySelector(".post").getBoundingClientRect().y;
+}
 
 postCanvas.forEach(elem => elem.addEventListener("click",(e)=>clickPost(elem, e.clientX, e.clientY), false));
 postCanvas.forEach(elem => elem.setAttribute("data-selected", "false"));
@@ -459,6 +462,7 @@ function starUnstar(btn) {
         })
         .then(data => {
             //Add to the map an entry (pin, item).
+            console.log(data.items);
             data.items.forEach(item => {
                 const newItem = new Item(
                         item.name,
@@ -540,7 +544,8 @@ function starUnstar(btn) {
         document.querySelector("input#itemSize").value = item.getSize();
         document.querySelector("input#itemPrice").value = item.getPrice();
     }
-
-resizeCanvas();
+    if ( document.querySelector(".post") != null){
+        resizeCanvas();
+    }
 updateNotifications();
 });

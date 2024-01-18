@@ -6,8 +6,7 @@ $templateParams["name"] = "home-view.php";
 $templateParams["title"] = "Home";
 $templateParams["post"] = $dbh->getPostsOfFollowing($_SESSION["username"]);
 $templateParams["notifications"] = $dbh->getNotifications($_SESSION["username"]);
-$templateParams["items"] = $dbh->getItemsOfPost(1);
-//displayNotifications($templateParams["notifications"]);
+
 // Initialize $count to 0 if it doesn't exist in the session
 if (!isset($_SESSION['count'])) {
     $_SESSION['count'] = 0;

@@ -7,7 +7,7 @@
             <p><?php echo calculate_days( $post['posted']); ?></p>
         </header>
         <img alt="Outfit Pic" src="<?php echo UPLOAD_DIR.$post['image']; ?>" />
-        <canvas></canvas>
+        <canvas data-post-id = "<?php echo $post['id'] ?>"></canvas>
         <section>
             <div>
                 <div>
@@ -114,7 +114,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                   
+                <div class="form-floating mb-3">
+                            <input class="form-control" id="itemName" type="text"  name="link" placeholder="Name"/>
+                            <label for="itemName">Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="itemBrand" type="text"  name="link" placeholder="Brand"/>
+                            <label for="itemBrand">Brand</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="itemLink" type="text"  name="link" placeholder="Link"/>
+                            <label for="itemLink">Link</label>
+                        </div>
+                        <div class="row">
+                            <div class="form-floating mb-3 col-6">
+                                <input class="form-control" id="itemPrice" type="text"  name="link" placeholder="Price"/>
+                                <label for="itemPrice">Price</label>
+                            </div>
+                            <div class="form-floating mb-3 col-6">
+                                <input class="form-control" id="itemSize" type="text" name="link" placeholder="Size"/>
+                                <label for="itemSize">Size</label>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

@@ -3,14 +3,17 @@
 *
 */
 /* width */
+#createMain > p:first-of-type {
+    text-align: center;
+}
 .notifyContainer {
     min-height: fit-content;
 }
 button.refresh-notify{
     background-color: #ffffff;
-    border-radius: 50%;
+    border-radius: 20px;
     border: none;
-    position: relative !important;
+    margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
 }

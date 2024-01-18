@@ -75,11 +75,12 @@ class DatabaseHelper {
  }
 
     public function getPostsOfUser($user) {
-        $query = "SELECT 
+        $query =  "
+        SELECT 
             p.*,
-            COUNT(DISTINCT l.id) AS likes,
-            COUNT(DISTINCT c.id) AS comments,
-            COUNT(DISTINCT s.id) AS stars,
+            COUNT(DISTINCT l.user_username) AS likes,
+            COUNT(DISTINCT c.user_username) AS comments,
+            COUNT(DISTINCT s.user_username) AS stars,
             GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
             GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
         FROM 
@@ -95,7 +96,8 @@ class DatabaseHelper {
         GROUP BY 
             p.id
         ORDER BY 
-            p.posted DESC;";
+            p.posted DESC;
+    ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $user);
         try {
@@ -147,28 +149,31 @@ class DatabaseHelper {
     }
 
     public function getPostById($postId) {
-        $query = "SELECT 
-                    p.*,
-                    u.profile_image AS user_profile_image,
-                    COUNT(DISTINCT l.id) AS likes,
-                    COUNT(DISTINCT c.id) AS comments,
-                    COUNT(DISTINCT s.id) AS stars,
-                    GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
-                    GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
-                FROM 
-                    post p
-                LEFT JOIN 
-                    `like` l ON p.id = l.post_id
-                LEFT JOIN 
-                    comment c ON p.id = c.post_id
-                LEFT JOIN 
-                    star s ON p.id = s.post_id
-                JOIN 
-                    user u ON p.user_username = u.username
-                WHERE 
-                    p.id = ?
-                GROUP BY 
-                    p.id";
+        $query = "
+        SELECT 
+            p.*,
+            u.profile_image AS user_profile_image,
+            COUNT(DISTINCT l.user_username) AS likes,
+            GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
+            COUNT(DISTINCT c.user_username) AS comments,
+            GROUP_CONCAT(DISTINCT c.user_username) AS commented_by,
+            COUNT(DISTINCT s.user_username) AS stars,
+            GROUP_CONCAT(DISTINCT s.user_username) AS starred_by
+        FROM 
+            post p
+        LEFT JOIN 
+            `like` l ON p.id = l.post_id
+        LEFT JOIN 
+            comment c ON p.id = c.post_id
+        LEFT JOIN 
+            star s ON p.id = s.post_id
+        LEFT JOIN 
+            user u ON p.user_username = u.username
+        WHERE 
+            p.id = ?
+        GROUP BY 
+            p.id
+    ";
         
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $postId);
@@ -196,11 +201,12 @@ class DatabaseHelper {
 
     //Method to get all the posts of all the users $user is following,along with the num of likes, num of comments and num of stars.
     public function getPostsOfFollowing($user) {
-        $query = "SELECT 
+        $query = "
+            SELECT 
                 p.*,
-                COUNT(DISTINCT l.id) AS likes,
-                COUNT(DISTINCT c.id) AS comments,
-                COUNT(DISTINCT s.id) AS stars,
+                COUNT(DISTINCT l.user_username) AS likes,
+                COUNT(DISTINCT c.user_username) AS comments,
+                COUNT(DISTINCT s.user_username) AS stars,
                 GROUP_CONCAT(DISTINCT l.user_username) AS liked_by,
                 GROUP_CONCAT(DISTINCT s.user_username) AS starred_by,
                 f.following_username AS following_username,
@@ -222,27 +228,44 @@ class DatabaseHelper {
             GROUP BY 
                 p.id
             ORDER BY 
-                p.posted DESC;";
+                p.posted DESC;
+        ";
+    
+        // Prepare the query
         $stmt = $this->db->prepare($query);
+    
+        // Check for errors during prepare
+        if (!$stmt) {
+            echo 'Prepare failed: (' . $this->db->errno . ') ' . $this->db->error;
+            return false;
+        }
+    
+        // Bind the parameter
         $stmt->bind_param("s", $user);
+    
         try {
+            // Execute the query
             $stmt->execute();
+    
+            // Get the result set
             $result = $stmt->get_result();
-
-            //Check if there is any result.
+    
+            // Check if there is any result.
             if ($result->num_rows > 0) {
                 $posts = $result->fetch_all(MYSQLI_ASSOC);
                 return $posts;
-            }else {
+            } else {
                 return [];
             }
         } catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
             return false;
         } finally {
+            // Close the statement
             $stmt->close();
         }
     }
+    
 
    // Method to add a new post.
 public function createPost($user, $comment, $image) {
