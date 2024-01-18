@@ -1,4 +1,44 @@
+//Item class.
+class Item {
+    constructor(name, brand, link, price, size, x, y) {
+        this.name = name;
+        this.brand = brand;
+        this.link = link;
+        this.price = price;
+        this.size = size;
+        this.x = x;
+        this.y = y;
+    }
 
+    // Getters
+    getName() {
+        return this.name;
+    }
+
+    getBrand() {
+        return this.brand;
+    }
+
+    getLink() {
+        return this.link;
+    }
+
+    getPrice() {
+        return this.price;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    getX() {
+        return this.x;
+    }
+
+    getY() {
+        return this.y;
+    }
+}
 // Pin class.
 class Pin {
     x;
@@ -14,7 +54,7 @@ class Pin {
         this.y = y;
     };
 
-    draw(ctx) {
+    /*draw(ctx) {
         let startTime;
         const duration = 200; // Animation duration in milliseconds
         const targetRadius = this.radius;
@@ -44,6 +84,15 @@ class Pin {
 
     stopAnimation() {
         cancelAnimationFrame(this.animationFrame);
+    }*/
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0 , 2*Math.PI);
+        ctx.strokeStyle=this.strokeStyle;
+        ctx.fillStyle = this.fillStyle;
+        ctx.lineWidth = this.lineWidth;
+        ctx.stroke();
+        ctx.fill();
     }
 };
 
@@ -137,16 +186,27 @@ function setSelected(canvas) {
     }
 }
 
-//Function to resize all the canvas'.
+//Function to resize all the canvas and keep pins' positions the same relative to the change in size.
 function resizeCanvas(canvasList) {
-    let imgW = document.querySelector(".post > img").width;
+    let imgW = document.querySelector(".post > img");
+    let oldWidth = postCanvas[0].width;
+    let oldHeight = postCanvas[0].height;
+
+    //Change pins x,y.
+    pinItem.forEach((v,k) => {
+        k.x = k.x * (imgW.width/oldWidth);
+        k.y = k.y * (imgW.height/oldHeight);
+    })
+
+    //Reset canvas width/height
     postCanvas.forEach((elem) => {
-        elem.width = imgW;
-        elem.height = imgW; 
+        elem.width = imgW.width;
+        elem.height = imgW.height; 
         if (elem.getAttribute("data-selected") == "true"){
             drawPins(elem);
         }
     });
+
 }
 
 //Function to detect if a pin gets clicked. 
@@ -361,7 +421,6 @@ function starUnstar(btn) {
         })
         .then(data => {
             //Add to the map an entry (pin, item).
-            console.log(data.items);
             data.items.forEach(item => {
                 const newItem = new Item(
                         item.name,
@@ -371,14 +430,15 @@ function starUnstar(btn) {
                         item.size,
                         item.x,
                         item.y
-                );
-        
-                const newPin = new Pin(item.x, item.y, newItem);
-                pinItem.set(newPin, newItem);
-            });
-            //console.log(pinItem);
-            drawPins(canvas);
-        })
+                        );
+                        
+                        const newPin = new Pin(item.x, item.y, newItem);
+                        pinItem.set(newPin, newItem);
+                    });
+                    //console.log(pinItem);
+                    drawPins(canvas);
+                    console.log(pinItem);
+                })
         .catch(error => console.error('Error:', error));
     }
     

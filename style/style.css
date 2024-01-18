@@ -218,8 +218,8 @@ main {
     width: 60%;
 }
 #createMain  section:first-of-type img , #createMain  section:first-of-type canvas{
-    width: 100%;
-    height: auto;
+    width: 380px;
+    height: 500px;
     border-radius: 30px;
     grid-row: 1/ span 1;
     grid-column: 1/span 1;
@@ -1342,7 +1342,7 @@ aside#createAside form>input:last-child {
     }
     
     /**Home View*/
-    main#homeMain, #profile-main {
+    main#homeMain, #profile-main, #post-detail-main {
         width: 80%;
         border-right: none;
     }

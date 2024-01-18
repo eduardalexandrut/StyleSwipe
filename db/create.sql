@@ -33,6 +33,8 @@ CREATE TABLE `Item` (
     `y` FLOAT NOT NULL,
     FOREIGN KEY (`post_id`) REFERENCES `Post`(`id`)
 );
+
+
 /* Like Table */
 CREATE TABLE `Like` (
     `user_username` VARCHAR(50) NOT NULL,

@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function () {
 
         let offsetX;
         let offsetY;
@@ -26,7 +27,6 @@
         //Discard button event.
         document.querySelector("#createForm > input[value='Discard']").addEventListener("click", ()=>window.location.href = 'home.php', false);
 
-        document.addEventListener('DOMContentLoaded', function () {
             // Find the addPinBtn element
             let addPinBtn = document.getElementById('addPinBtn');
         
@@ -35,11 +35,10 @@
                 // Add the event listener
                 addPinBtn.addEventListener('click', createItem);
             }
-        });
-
-        
-        /*Function to create a displayable image selected by the user.*/
-        function previewImg() {
+            
+            
+            /*Function to create a displayable image selected by the user.*/
+            function previewImg() {
             let [file] = imgInput.files;
             if (file) {
                 image.src = URL.createObjectURL(file);
@@ -56,7 +55,7 @@
             
         }
         
-
+        
         //Function to set x and y.
         function setClientCo(e) {
             clientX = e.clientX;
@@ -67,11 +66,21 @@
         function setOffset() {
             offsetX = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().x;
             offsetY = document.querySelector("#createMain section:first-of-type").getBoundingClientRect().y;
-
+            console.log("offset.",offsetX, offsetY);
             if(document.querySelector("#createMain div div section img") != null) {
-                canvas.width = document.querySelector("#createMain div div section img").width;
-                canvas.height = document.querySelector("#createMain div div section img").height;
-                console.log(canvas.width);
+                let oldWidth = canvas.width;
+                let oldHeight = canvas.height;
+                //canvas.width = document.querySelector("#createMain div div section img").width;
+                //canvas.height = document.querySelector("#createMain div div section img").height;
+                Array.from(pins).forEach((pin) =>pin.draw(ctx));
+                /*Array.from(pins).forEach((pin) => {
+                    let newX = pin.x * (canvas.width/oldWidth);
+                    let newY = pin.y * (canvas.height/oldHeight);
+
+                    pin.x = pin.x * (canvas.width/oldWidth);
+                    pin.y = pin.y * (canvas.height/oldHeight);
+                    pin.draw(ctx);
+                });*/
             }
         }
 
@@ -86,17 +95,17 @@
             <div class="item">
                                 <div>
                                     <div class="form-floating mb-3">
-                                         <input class="form-control" value="${iName}" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
+                                    <input class="form-control" value="${iName}" id="itemName" type="text"  name="link" placeholder="Name" readonly/>
                                         <label for="itemName">Name</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="itemBrand" value="${iPrice}" type="text"  name="link" placeholder="Brand" readonly/>
-                                        <label for="itemBrand">Brand</label>
+                                    <input class="form-control" id="itemBrand" value="${iPrice}" type="text"  name="link" placeholder="Brand" readonly/>
+                                    <label for="itemBrand">Brand</label>
                                     </div>
                                 </div>                  
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="Link" type="text" value="${iLink}"  name="link" placeholder="Link" readonly/>
-                                    <label for="itemLink">Link</label>
+                                <input class="form-control" id="Link" type="text" value="${iLink}"  name="link" placeholder="Link" readonly/>
+                                <label for="itemLink">Link</label>
                                 </div>
                                 <div>
                                     <div class="form-floating mb-3">
@@ -104,14 +113,11 @@
                                         <label for="itemPrice">Price</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="Size" type="text" value="${iSize}" name="link" placeholder="Size" readonly/>
-                                        <label for="itemSize">Size</label>
+                                    <input class="form-control" id="Size" type="text" value="${iSize}" name="link" placeholder="Size" readonly/>
+                                    <label for="itemSize">Size</label>
                                     </div>
-                                </div>
-                                <div>
-                                    <button class="eyeBtn">
-                                        <i class="bi-eye"></i>
-                                    </button>
+                                    </div>
+                                    <div style="text-align:center">
                                     <button class="trashBtn">
                                         <i class="bi-trash"></i>
                                     </button>
@@ -132,21 +138,22 @@
             setOffset();
             pins.push(new Pin(clientX - offsetX, clientY - offsetY));
             console.log(pins);
+            console.log(clientX, clientY)
             
             Array.from(pins).forEach((pin) => pin.draw(ctx));
         }
-
+        
         //Function to remove an item from the DOM and the list.
         function removeItem(item, index) {
             let xToRemove = items[index].getX();
             let yToRemove = items[index].getY();
             //remove item div.
             itemContainer.removeChild(item);
-
+            
             //Remove pin.
             let pinToRemove = Array.from(pins).filter((pin) => pin.x === xToRemove && pin.y === yToRemove);
             let indexPin = Array.from(pins).indexOf(pinToRemove);
-
+            
             //remove item object an pin.
             if (index > -1) {
                 items.splice(index, 1);
@@ -156,11 +163,11 @@
             
             //redraw canvas.
             ctx.clearRect(0,0, canvas.width, canvas.height);
-
+            
             //redraw pins.
             Array.from(pins).forEach((pin) => pin.draw(ctx));
         }
-
+        
         /*Code to inject current date in #dateTime*/
         let now = new Date();
         let date = now.toLocaleString();
@@ -194,4 +201,7 @@
             event.preventDefault();
         }
 
+        //Function to recalculate pins x and y when the image gets resized.
+        
         setOffset();
+    });

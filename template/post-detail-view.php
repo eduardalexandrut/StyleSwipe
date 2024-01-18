@@ -51,12 +51,16 @@
         </footer>
     </div>
 </main><aside class="notificationAside"> 
-    <h3>Notifications:</h3>
-    <div class="notify-main-container">
-        <button class="refresh-notify">Refresh +</button>
-        <div class="notifyContainer"></div>
-    </div>
-</aside>
+        <div class="notify-main-container">
+            <h3>Notifications:</h3>
+            <button class="refresh-notify">
+                            Refresh +
+                        </button>
+            <div class="notifyContainer">
+            </div>
+        </div>
+        
+    </aside>
 
     <!--Comments Modal-->
     <div class="modal fade" id="commentsModal">
