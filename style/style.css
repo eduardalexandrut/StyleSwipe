@@ -788,6 +788,12 @@ aside#createAside form>input:last-child {
     font-weight: 480;
 }
 
+#profile-info p:first-of-type {
+    font-size: 150%;
+    font-weight: 500;
+    margin-top: 0.5%;
+}
+
 .profile-pic-container {
     width: 30%;
     aspect-ratio: 1 / 1; /* Crea un contenitore quadrato */
