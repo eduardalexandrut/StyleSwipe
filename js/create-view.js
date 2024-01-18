@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <label for="itemName">Name</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                    <input class="form-control" id="itemBrand" value="${iPrice}" type="text"  name="link" placeholder="Brand" readonly/>
+                                    <input class="form-control" id="itemBrand" value="${iBrand}" type="text"  name="link" placeholder="Brand" readonly/>
                                     <label for="itemBrand">Brand</label>
                                     </div>
                                 </div>                  
