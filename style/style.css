@@ -3,6 +3,12 @@
 *
 */
 /* width */
+#homeMain #no-post-txt {
+    text-align: center;
+}
+aside p:first-of-type {
+    text-align: center;
+}
 #createMain > p:first-of-type {
     text-align: center;
 }
@@ -191,7 +197,7 @@ main {
 
 #createMain h1:first-of-type, #createMain h2:first-of-type {
     text-align: center;
-    margin-bottom: 40px;
+    margin: 50px 0 50px 0;
 }
 
 #createMain  section:first-of-type {

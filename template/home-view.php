@@ -1,7 +1,7 @@
 <main id="homeMain">
         <!--Post Structure-->
         <?php if (count($templateParams["post"]) == 0): ?>
-            <p>Follow other users and check out their outfits!</p>
+            <p id="no-post-txt">Follow other users and check out their outfits!</p>
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
