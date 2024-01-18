@@ -1,7 +1,7 @@
 <main id="homeMain">
         <!--Post Structure-->
         <?php if (count($templateParams["post"]) == 0): ?>
-            <p>Follow other users and check out their outfits!</p>
+            <p id="no-post-txt">Follow other users and check out their outfits!</p>
         <?php else: foreach ($templateParams["post"] as $post): ?>
            <div class="post" data-post-id = "<?php echo $post['id'] ?>">
         <header>
@@ -155,6 +155,7 @@
 
     <script src="js/open-search.js"></script>
     <script src= "js/home-view.js"></script>
+    <script src= "js/Item.js"></script>
     <script src= "js/notifications.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       
