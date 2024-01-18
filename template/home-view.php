@@ -56,11 +56,13 @@
      <?php endforeach; ?>
      <?php endif; ?>
     </main><aside class="notificationAside"> 
-        <h3>Notifications:</h3>
-        <button class="refresh-notify">
-                        <i class="bi-plus-circle "></i>
-                    </button>
-        <div class="notifyContainer">
+        <div class="notify-main-container">
+            <h3>Notifications:</h3>
+            <button class="refresh-notify">
+                            <i class="bi-plus-circle "></i>
+                        </button>
+            <div class="notifyContainer">
+            </div>
         </div>
         
     </aside>

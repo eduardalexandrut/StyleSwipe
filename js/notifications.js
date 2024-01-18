@@ -34,7 +34,7 @@ document.querySelectorAll("button.refresh-notify").forEach((btn) => btn.addEvent
                     notificationDiv.innerHTML =`
                     <img alt="User Profile Pic" src="${UPLOAD_DIR}${notification['from_user_profile_pic']}"/>
                     <!-- The notification hasn't been seen -->
-                    ${notification['seen'] == 0 ? `<span class="notify-badge badge rounded-pill bg-primary">New</span>` : ''}
+                    ${notification['seen'] === 0 ? `<span class="notify-badge badge rounded-pill bg-primary">New</span>` : ''}
                 
                     <p class="notification-text">
                         <span class="notify-user">

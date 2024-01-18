@@ -18,7 +18,7 @@
                     <section>
                         <img src="<?php echo UPLOAD_DIR.$templateParams["profilepic"]; ?>" alt=""/>
                         <ul>
-                            <li><h4><?php echo $templateParams["username"]?></h4></li>
+                            <li>@<?php echo $templateParams["username"]?></li>
                             <li><p id="dateTime"></p></li>
                         </ul> 
                     </section>

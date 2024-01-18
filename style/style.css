@@ -6,8 +6,17 @@
 #createMain > p:first-of-type {
     text-align: center;
 }
+div.notify-main-container {
+    height: 100vh;
+    overflow-y: auto;
+    margin-bottom: 100px;
+    display: flex;
+    padding-bottom: 250px;
+    flex-direction: column;
+}
 .notifyContainer {
-    min-height: fit-content;
+    
+    padding-bottom: 50px !important;
 }
 button.refresh-notify{
     background-color: #ffffff;
@@ -282,11 +291,10 @@ aside#createAside > section {
 }
 aside#createAside > section img {
     display: inline;
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
-    border: 3px solid white;
-    box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.25), 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+
 }
 aside#createAside > section > ul li:first-of-type {
     font-size: 22px;
@@ -299,7 +307,7 @@ aside#createAside > section p {
 aside#createAside ul {
     float: inline-end;
     list-style: none;
-    padding-left: 3%;
+    padding-left: 10%;
 }
 aside#createAside form {
     width: 100%;
@@ -724,7 +732,7 @@ aside#createAside form>input:last-child {
     margin-right: auto;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
     display: grid;
     grid-template-columns: 10px 60px 20px auto 10px;
     grid-template-rows: 20px 30px 30px 30px;
@@ -1083,7 +1091,7 @@ aside#createAside form>input:last-child {
     aside {
         float: right;
         min-height: 100vh;
-        overflow-y: scroll;
+        overflow-y: auto !important;
         width: 21% !important;
         position: fixed; 
     }
@@ -1189,6 +1197,7 @@ aside#createAside form>input:last-child {
     aside.notificationAside {
         display: initial;
         padding-top: 50px;
+        overflow-y: scroll; 
     }
 
     aside.notificationAside h3 {
@@ -1287,6 +1296,10 @@ aside#createAside form>input:last-child {
         width: 80%;
         margin: 0;
     }
+    aside#createAside > section img {
+        width: 70px;
+        height: 70px;
+    }
     #createAside section ul li h4 {
         font-size: 80%;
     }
@@ -1344,20 +1357,29 @@ aside#createAside form>input:last-child {
         align-items: center;
         padding: 0;
         margin: 0;
-        
+        flex: 1;
+        height: 100%;
     }
     #createAside > section:first-of-type > img {
-        width: 155px;
-        height: 155px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        border: 5px solid white;
-        box-shadow: -2px -2px 5px 0px rgba(0, 0, 0, 0.25), 2px 2px 5px 0px rgba(0, 0, 0, 0.25);
+        margin-bottom: 5%;
     } 
     #createAside > section:first-of-type ul {
        margin: 0;
        padding: 0;
     }
 
+    #createAside > section:first-of-type ul li {
+        text-align: center;
+    }
+
+    #createAside > form {
+        flex:1;
+        height: 100%;
+        border-left: 1px solid rgb(207, 207, 207);
+    }
    
     
 }
